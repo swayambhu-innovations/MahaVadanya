@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "mahavadnya": {
+      "hosting": {
+        "app": [
+          "mahavadnya"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "mahavadnya"
+  }
+}
