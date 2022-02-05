@@ -1,0 +1,58 @@
+form{
+    background-image: url(/assets/Rectangle-1.png);
+    font-family: 'Poppins',sans-serif;
+    height: 100%;
+}
+.email input{
+    display: block;
+    margin:auto;
+    border: none;
+    color: white;
+    background: transparent;
+}
+form img{
+    display: block;
+    margin: auto;
+}
+.email{
+    display: flex;
+    margin: auto;
+    border: 1px solid white;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    margin:20px auto;
+    width:80%;
+    border-radius:15px;
+    padding: 15px;
+}
+ion-icon{
+    transform: scale(1.5);
+}
+button{
+    display: block;
+    width: 70%;
+    background-color: white;
+    color: #0C3FD5;
+    margin: 15px auto;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 15px;
+}
+form a{
+    display: block;
+    width: 46%;
+    margin: 15px auto;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+.social-links{
+    width: 35%;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    padding: 20px 0px;
+}
