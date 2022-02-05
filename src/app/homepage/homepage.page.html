@@ -1,0 +1,15 @@
+
+  <ion-header>
+    <app-header></app-header>
+    <ion-segment (ionChange)="segmentChanged($event)" color='primary'>
+      <ion-segment-button value="book" color="secondary">
+        <ion-label>Book Slot</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="active">
+        <ion-label>Active Slot</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-header>
+  <ion-content>
+    <ion-router-outlet></ion-router-outlet>
+  </ion-content>
