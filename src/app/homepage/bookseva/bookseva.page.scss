@@ -1,0 +1,28 @@
+ion-grid.slots-section.md.hydrated {
+  background: #f9f9f9;
+  margin: 25px 15px auto;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.35)!important;
+}
+.slots-section ion-chip {
+  min-width: 31%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  padding: 30px 0 !important;
+}
+.ion-padding.date-container {
+  margin: auto 60px;
+  background: #0C3FD4;
+  border-radius: 15px;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+}mat-card.mat-card {
+  background: transparent;
+  color: #fff !important;
+}
+ thead.mat-calendar-table-header {
+  color: #fff !important;
+}
+ tbody.mat-calendar-body * {
+  color: #fff !important;
+}

@@ -24,3 +24,16 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+
+mat-card.mat-card {
+  background: transparent;
+  color: #fff !important;
+}
+ thead.mat-calendar-table-header {
+  color: #fff !important;
+}
+ tbody.mat-calendar-body * {
+  color: #fff !important;
+}

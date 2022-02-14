@@ -1,5 +1,46 @@
 
 
 <ion-content>
+<ion-text color="primary" class="ion-no-padding ion-text-center">
+  <h2>Choose a Date for Booking</h2>
+</ion-text>
+<div class="ion-padding date-container">
+  <mat-card class="demo-inline-calendar-card mat-elevation-z" >
+    <mat-calendar color="light" [(selected)]="selected"></mat-calendar>
+  </mat-card>
+<p>{{selected}}</p>
+</div>
+<ion-item>
+  <ion-range style="--bar-height : 5px; --knob-background: #648cff" [pinFormatter]="customFormatter" snaps="true" ticks="true" id="dual-range" min="00:00" max="24:00" step="1" mode="ios" dual-knobs pin color="primary">
 
+  </ion-range>
+</ion-item>
+
+<ion-grid class="slots-section">
+  <ion-row>
+    <ion-col size="12">
+      <ion-list-header>Select Slot</ion-list-header>
+        <p>
+          <ion-chip color="primary">
+            <ion-label>Primary</ion-label>
+          </ion-chip>
+          <ion-chip  color="primary">
+            <ion-label>Secondary</ion-label>
+          </ion-chip>
+          <ion-chip  color="success">
+            <ion-label>Tertiary</ion-label>
+          </ion-chip>
+          <ion-chip  color="success">
+            <ion-label>Success</ion-label>
+          </ion-chip>
+          <ion-chip  color="success">
+            <ion-label>Warning</ion-label>
+          </ion-chip>
+          <ion-chip  color="success">
+            <ion-label>Danger</ion-label>
+          </ion-chip>
+        </p>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 </ion-content>
