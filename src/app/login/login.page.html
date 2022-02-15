@@ -5,15 +5,17 @@
 </ion-header>
 
 <ion-content>
-  <form>
+  <form [formGroup]="signinForm" (ngSubmit)="login(signinForm)" novalidate>
     <img src="/assets/logo.png" alt="">
     <div class="email">
       <ion-icon name="person"></ion-icon>
-      <input type="email" value="Enter email">
+      <input type="email" formControlName="email" [ngClass]="{'has-error': formErrors.email}" placeholder="Enter email">
+      <span class="text-danger small" *ngIf="formErrors.email" [innerHTML]="formErrors.email"></span>
     </div>
     <div class="email">
       <ion-icon name="key"></ion-icon>
-      <input type="password" value="Enter password">
+      <input type="password" formControlName="password" placeholder="Enter password" [ngClass]="{'has-error': formErrors.password}">
+      <span class="text-danger small" *ngIf="formErrors.password" [innerHTML]="formErrors.password"></span>
     </div>
     <button type="submit">Log In</button>
     <br>

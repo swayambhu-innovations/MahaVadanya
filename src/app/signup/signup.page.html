@@ -2,12 +2,12 @@
 
 <ion-content>
   <ion-content>
-    <form>
+    <form [formGroup]="signupForm" (ngSubmit)="signup(signupForm)" novalidate>
       <img src="/assets/logo.png" alt="">
-        <input type="text" value="Name">
-        <input type="text" value="Email">
-        <input type="password" value="Password">
-        <input type="password" value="Confirm Password">
+        <input type="text" value="Name" formControlName="name" [ngClass]="{'has-error': formErrors.name}">
+        <input type="text" value="Email" formControlName="email" [ngClass]="{'has-error': formErrors.email}">
+        <input type="password" value="Password" formControlName="password" [ngClass]="{'has-error': formErrors.password}">
+        <input type="password" value="Confirm Password" formControlName="confirmPassword" [ngClass]="{'has-error': formErrors.confirmPassword}">
       <button type="submit">Sign Up</button>
       <br>
       <a href="#">Or Sign Up Using</a>
