@@ -35,6 +35,10 @@ const routes: Routes = [
     path:'',
     redirectTo:'home/bookseva',
     pathMatch:'full'
+  },
+  {
+    path: 'activeseva1',
+    loadChildren: () => import('./activeseva1/activeseva1.module').then( m => m.Activeseva1PageModule)
   }
 ];
 

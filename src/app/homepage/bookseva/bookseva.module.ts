@@ -1,3 +1,4 @@
+import { BasecomponentsModule } from './../../basecomponents/basecomponents.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,8 @@ import { BooksevaPage } from './bookseva.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    BooksevaPageRoutingModule
+    BooksevaPageRoutingModule,
+    BasecomponentsModule
   ],
   declarations: [BooksevaPage]
 })

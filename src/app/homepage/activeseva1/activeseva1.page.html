@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<ion-content>
+  <div class="container">
+    <p>Session is Active</p>
+    <p id="medium">Slot:{{slot}}</p>
+    <round-progress [current]="100" [max]="100" [duration]="8000" [radius]="90" [color]="'#0C5CD4'"></round-progress>
+    <p id="small">Session will end at {{endtime}}</p>
+    <div class="round-div">
+      <p>26</p>
+      <p id="pink">min</p>
+    </div>
+    <div class="activity">
+      <p id="avail">Available Services</p>
+      <ion-item>
+        <p>{{sname}}</p>
+      </ion-item>
+      <ion-item>
+        <p>{{sname}}</p>
+      </ion-item>
+      <ion-item>
+        <p>{{sname}}</p>
+      </ion-item>
+      <ion-item>
+        <p>{{sname}}</p>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>
