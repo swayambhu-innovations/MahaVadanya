@@ -26,3 +26,6 @@ ion-grid.slots-section.md.hydrated {
  tbody.mat-calendar-body * {
   color: #fff !important;
 }
+button.mat-calendar-body-cell.mat-calendar-body-disabled {
+  opacity: 0.3;
+}

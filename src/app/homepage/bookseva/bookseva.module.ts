@@ -10,6 +10,8 @@ import { BooksevaPage } from './bookseva.page';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCardModule} from '@angular/material/card';
 import {MatNativeDateModule} from '@angular/material/core';
+import { BooksevaService } from 'src/app/Services/bookseva.service';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   imports: [
@@ -17,8 +19,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     FormsModule,
     IonicModule,
     BooksevaPageRoutingModule,
-    MatDatepickerModule,MatCardModule,MatNativeDateModule
+    MatDatepickerModule,MatCardModule,MatNativeDateModule, MatInputModule
   ],
-  declarations: [BooksevaPage]
+  declarations: [BooksevaPage],
+  providers: [BooksevaService]
 })
 export class BooksevaPageModule {}

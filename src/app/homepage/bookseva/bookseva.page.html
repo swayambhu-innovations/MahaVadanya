@@ -1,12 +1,18 @@
 
 
 <ion-content>
+  <ion-item>
+    <ion-label>Select seva</ion-label>
+    <ion-select ok-text="Okay" cancel-text="Cancel" (ionChange)="onSevaSelect()" [(ngModel)]="selectedSeva">
+      <ion-select-option *ngFor="let seva of sevaList;" value="{{seva.id}}">{{ seva.name }} </ion-select-option>
+    </ion-select>
+  </ion-item>
 <ion-text color="primary" class="ion-no-padding ion-text-center">
   <h2>Choose a Date for Booking</h2>
 </ion-text>
 <div class="ion-padding date-container">
   <mat-card class="demo-inline-calendar-card mat-elevation-z" >
-    <mat-calendar color="light" [(selected)]="selected"></mat-calendar>
+    <mat-calendar color="light" [dateFilter]="myHolidayFilter" [(selected)]="selected"></mat-calendar>
   </mat-card>
 <p>{{selected}}</p>
 </div>
