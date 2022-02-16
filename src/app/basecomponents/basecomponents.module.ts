@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
-const components = [HeaderComponent];
+const components = [HeaderComponent,];
 @NgModule({
   exports:[components],
   declarations: [components],
