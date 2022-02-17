@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { Activeseva1Page } from './activeseva1.page';
+import { InactiveSevaPage } from './Inactiveseva.page';
 
-describe('Activeseva1Page', () => {
-  let component: Activeseva1Page;
-  let fixture: ComponentFixture<Activeseva1Page>;
+describe('Inactiveseva', () => {
+  let component: InactiveSevaPage;
+  let fixture: ComponentFixture<InactiveSevaPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ Activeseva1Page ],
+      declarations: [ InactiveSevaPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Activeseva1Page);
+    fixture = TestBed.createComponent(InactiveSevaPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

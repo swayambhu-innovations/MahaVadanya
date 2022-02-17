@@ -1,5 +1,5 @@
 *{
-    font-family: 'Comfortaa',sans-serif;
+    font-family: 'Poppins',sans-serif;
 }
 .container{
     display: block;
@@ -7,15 +7,15 @@
     text-align: center;
     font-size: 30px;
     color: var(--ion-color-primary);
+    line-height: 10px;
 }
-.qrcode img{
-    width: 90%;
+#small{
+    font-size: 15px;
+    margin-top: 10%;
 }
-.qrcode{
-    border: 2px solid var(--ion-color-primary);
-    margin: 30px;
-    border-radius: 15px;
-    text-align: center;
+#medium{
+    font-size: 20px;
+    line-height: 5px;
 }
 .activity{
     box-shadow: 0px 10px 20px 05px rgba(12, 63, 213, 0.25);
@@ -25,8 +25,29 @@
     border-top-right-radius: 15px;
     margin: 30px;
     padding: 10px;
+    margin-top: 100px;
 }
 ion-item{
     font-family: 'Poppins',sans-serif;
     color: var(--ion-color-primary);
+}
+round-progress{
+    display: block;
+    margin: auto;
+}
+.round-div{
+    box-shadow: #ccdbe8 3px 3px 6px 5px inset, rgb(255 255 255 / 50%) 39px 64px 130px 7px inset;
+    border-radius: 50%;
+    width: 124px;
+    margin: auto;
+    font-size: 36px;
+    padding: 10px;
+    margin-top: -215px;
+}
+#pink{
+    font-size: 15px;
+    color: rgb(243, 61, 91);
+}
+#avail{
+    font-weight: 600;
 }

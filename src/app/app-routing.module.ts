@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./homepage/activeseva1/activeseva1.module').then( m => m.Activeseva1PageModule)
+    loadChildren: () => import('./homepage/activeseva/activeseva.module').then( m => m.ActivesevaPageModule)
   },
 
 ];
