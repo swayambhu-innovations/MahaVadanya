@@ -20,9 +20,9 @@ const routes: Routes = [
         // ]
       },
       {
-        path: 'activeseva',
+        path: 'Inactiveseva',
         // outlet:'home',
-        loadChildren: () => import('./activeseva/activeseva.module').then( m => m.ActivesevaPageModule)
+        loadChildren: () => import('./Inactiveseva/Inactiveseva.module').then( m => m.InactivesevaPageModule)
         // children:[
         //   {
         // path:'',
@@ -38,7 +38,7 @@ const routes: Routes = [
   },
   {
     path: 'activeseva1',
-    loadChildren: () => import('./activeseva1/activeseva1.module').then( m => m.Activeseva1PageModule)
+    loadChildren: () => import('./activeseva/activeseva.module').then( m => m.ActivesevaPageModule)
   }
 ];
 

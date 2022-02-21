@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { Activeseva1Page } from './activeseva1.page';
+import { InactiveSevaPage } from './Inactiveseva.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: Activeseva1Page
+    component: InactiveSevaPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class Activeseva1PageRoutingModule {}
+export class InactivesevaPageRoutingModule {}
