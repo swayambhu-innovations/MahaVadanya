@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BooksevaService } from 'src/app/Services/bookseva.service';
@@ -10,9 +11,12 @@ import { BooksevaService } from 'src/app/Services/bookseva.service';
 export class BooksevaPage implements OnInit, OnDestroy {
   selected: Date | null;
   sevaList: any = [];
+  slotList: any = [];
   selectedSeva: any;
+  showDates = false; showTime = false; showSlots = false;
   sevaSubscribe: Subscription = Subscription.EMPTY;
   alreadyBookedDates: any = [];
+  blockedSlots = [];
   fullyBookedDates: any = ['Tue Feb 15 2022 00:00:00 GMT+0530 (India Standard Time)'];
   constructor(private bookSeva: BooksevaService) {
     this.getBookings();
@@ -20,6 +24,7 @@ export class BooksevaPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadSevas();
+    this.loadSlots();
   }
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.
@@ -36,10 +41,31 @@ export class BooksevaPage implements OnInit, OnDestroy {
       return `${value}:00 Noon`;
     }
   }
+  validateDate(){
+    this.blockedSlots = [];
+    //console.log('selected',this.selected);
+    this.showTime = true; this.showSlots = true;
+    this.alreadyBookedDates.filter(dates => {
+      //console.log(dates.dateOfSeva.toLocaleDateString(), this.selected.toLocaleDateString());
+      if(dates.dateOfSeva.toLocaleDateString() === this.selected.toLocaleDateString()){
+        //console.log('booked slots',dates.selectedSlot);
+        this.blockedSlots.push(dates.selectedSlot);
+        this.slotList.filter(x => x.id === dates.selectedSlot?.id).map(x => {
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          //console.log(x);
+          x.status = false;
+        });
+        //console.log('test',this.slotList);
+      }else {
+        this.loadSlots();
+      }
+    });
+  }
   onSevaSelect(){
     if(this.selectedSeva){
       console.log(this.selectedSeva);
       this.getBookings();
+      this.showDates = true;
     }
   }
   getBookings(){
@@ -91,16 +117,33 @@ export class BooksevaPage implements OnInit, OnDestroy {
       });
     });
   }
+  loadSlots(){
+    this.sevaSubscribe = this.bookSeva.getSlots().subscribe((res) => {
+      this.slotList = [];
+      res.forEach((response: any) => {
+        const a = {
+          id : response.id,
+          name: response.data().name,
+          status: response.data().status
+        };
+        //console.log('a',a);
+        this.slotList.push(a);
+      });
+    });
+  }
+  selectSlot(slot){
+    console.log(slot);
+  }
   myHolidayFilter = (d: Date): boolean => {
     const time=d.toLocaleDateString();
     console.log('time',time);
     const aa = this.fullyBookedDates.filter(x=>{
-      console.log('xxx',x?.toLocaleDateString());
+      //console.log('xxx',x?.toLocaleDateString());
     });
     console.log('aa',aa);
     const day = aa;
     console.log('d',day);
     // return this.fullyBookedDates.find(x=>x===time);
-    return !day;
+    return !this.fullyBookedDates.find(x=>x===time);
   };
 }

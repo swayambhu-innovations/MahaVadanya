@@ -11,6 +11,9 @@ export class BooksevaService {
   getSevaList() {
     return collectionSnapshots(collection(this.firestore, 'sevas'));
   }
+  getSlots() {
+    return collectionSnapshots(collection(this.firestore, 'slotsPerDay'));
+  }
   getBookingList() {
     return collectionSnapshots(collection(this.firestore, 'bookings'));
   }
