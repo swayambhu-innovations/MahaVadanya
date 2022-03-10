@@ -20,7 +20,7 @@ const routes: Routes = [
         // ]
       },
       {
-        path: 'Inactiveseva',
+        path: 'inactiveseva',
         // outlet:'home',
         loadChildren: () => import('./Inactiveseva/Inactiveseva.module').then( m => m.InactivesevaPageModule)
         // children:[
@@ -28,6 +28,10 @@ const routes: Routes = [
         // path:'',
         //   }
         // ]
+      },
+      {
+        path: 'activeseva',
+        loadChildren: () => import('./activeseva/activeseva.module').then( m => m.ActivesevaPageModule)
       }
     ]
   },
@@ -35,10 +39,6 @@ const routes: Routes = [
     path:'',
     redirectTo:'home/bookseva',
     pathMatch:'full'
-  },
-  {
-    path: 'activeseva1',
-    loadChildren: () => import('./activeseva/activeseva.module').then( m => m.ActivesevaPageModule)
   }
 ];
 

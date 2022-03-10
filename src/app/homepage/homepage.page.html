@@ -3,10 +3,13 @@
     <app-header></app-header>
     <ion-segment (ionChange)="segmentChanged($event)" color='primary'>
       <ion-segment-button value="book" color="secondary">
-        <ion-label>Book Slot</ion-label>
+        <ion-label>Book slot</ion-label>
       </ion-segment-button>
       <ion-segment-button value="active">
-        <ion-label>Active Slot</ion-label>
+        <ion-label>Active</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="inactive">
+        <ion-label>Inactive</ion-label>
       </ion-segment-button>
     </ion-segment>
   </ion-header>

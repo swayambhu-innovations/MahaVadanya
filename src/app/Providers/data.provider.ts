@@ -22,7 +22,7 @@ export class DataProvider{
     public dataOne: any;
     public dataTwo: any;
     public logs: any[];
-    public dataThree: any;
-    public dataFour: any;
+    public recentActivities: any = [];
+    public availabelServices: any = [];
     constructor(){}
 }

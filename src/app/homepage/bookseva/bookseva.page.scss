@@ -6,7 +6,7 @@ ion-grid.slots-section.md.hydrated {
 
 .ion-padding.date-container {
   margin: auto 15px;
-  background: #0C3FD4;
+  background: #3880ff;
   border-radius: 15px;
   box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
 }mat-card.mat-card {
@@ -21,4 +21,9 @@ ion-grid.slots-section.md.hydrated {
 }
 button.mat-calendar-body-cell.mat-calendar-body-disabled {
   opacity: 0.3;
+}
+ion-chip {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

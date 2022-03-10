@@ -49,6 +49,7 @@ export class AuthencationService {
     } else {
       this.loggedIn = false;
     }
+    console.log('auth service working');
   }
 
   // Read functions start

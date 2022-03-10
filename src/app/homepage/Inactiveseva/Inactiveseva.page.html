@@ -1,24 +1,15 @@
 <ion-content>
   <div class="container">
     <p>{{status}}</p>
+    <h5>Scan QR to start session</h5>
     <div class="qrcode">
-      <img src="/assets/qrcode.png" alt="">
+      <qrcode [qrdata]="myAngularxQrCode" [width]="300" [errorCorrectionLevel]="'M'"></qrcode>
     </div>
     <div class="activity">
       <p>Recent Activity</p>
-      <ion-item>
-        <p>{{sevastatus}}</p>
-      </ion-item>
-      <ion-item>
-        <p>{{sevastatus}}</p>
-      </ion-item>
-      <ion-item>
-        <p>{{sevastatus}}</p>
-      </ion-item>
-      <ion-item>
-        <p>{{sevastatus}}</p>
+      <ion-item *ngFor="let item of dataProvider.recentActivities">
+        <p>{{item.message}}</p>
       </ion-item>
     </div>
   </div>
 </ion-content>
-

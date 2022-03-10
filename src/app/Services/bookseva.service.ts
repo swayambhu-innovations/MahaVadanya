@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collectionSnapshots } from '@angular/fire/firestore';
+import { addDoc, collectionSnapshots, getDocs, query, where } from '@angular/fire/firestore';
 import { collection, CollectionReference, Firestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -7,14 +7,34 @@ import { collection, CollectionReference, Firestore } from '@angular/fire/firest
 })
 export class BooksevaService {
   sevaColl: CollectionReference;
+  bookingRef: CollectionReference;
   constructor(private firestore: Firestore) { }
   getSevaList() {
     return collectionSnapshots(collection(this.firestore, 'sevas'));
   }
   getSlots() {
-    return collectionSnapshots(collection(this.firestore, 'slotsPerDay'));
+    return getDocs(collection(this.firestore, 'slotsPerDay'));
+    //return collectionSnapshots(collection(this.firestore, 'slotsPerDay'));
   }
-  getBookingList() {
+  async getBookingList(id: any) {
+    //return collectionSnapshots(collection(this.firestore, 'bookings'));
+    const bookRef = collection(this.firestore, 'bookings');
+    const q = query(bookRef, where('sevaDetails.id', '==', id));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot;
+
+  }
+  getAllBookingList() {
     return collectionSnapshots(collection(this.firestore, 'bookings'));
+  }
+  getNewUsersList() {
+    return collectionSnapshots(collection(this.firestore, 'users'));
+  }
+  addBooking(data: any) {
+    this.bookingRef = collection(
+      this.firestore,
+      'bookings'
+    );
+    return addDoc(this.bookingRef, data);
   }
 }

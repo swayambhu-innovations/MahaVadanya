@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { InactivesevaPageRoutingModule } from './Inactiveseva-routing.module';
 
 import { InactiveSevaPage } from './Inactiveseva.page';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InactivesevaPageRoutingModule
+    InactivesevaPageRoutingModule,QRCodeModule
   ],
   declarations: [InactiveSevaPage]
 })
