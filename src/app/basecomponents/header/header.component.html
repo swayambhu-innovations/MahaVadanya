@@ -1,7 +1,12 @@
 
-  <ion-toolbar color="primary">
-    <ion-title>
-      Mahavadanya
-    </ion-title>
-  </ion-toolbar>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Mahavadanya</ion-title>
+      <ion-buttons slot="end">
+        <ion-item class="logout">
+          <ion-icon class="logout" (click)="doLogout()" name="log-out-outline"></ion-icon>
+        </ion-item>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 

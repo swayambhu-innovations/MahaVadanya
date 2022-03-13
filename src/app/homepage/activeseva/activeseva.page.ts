@@ -15,7 +15,8 @@ export class ActivesevaPage implements OnInit, OnDestroy {
   @Input() endtime = '12:00 am';
   @Input() sname = 'Coffee';
   duration = 0;
-  progress = new Date().getTime();
+  progress = 0;
+  remaining = 0;
   progressBar = document.querySelector('.progress-bar');
   intervalId;
   slotId = 0;
@@ -43,6 +44,7 @@ export class ActivesevaPage implements OnInit, OnDestroy {
         (res: any) => {
           console.log(res.data());
           this.duration = res.data().sevaDetails.duration;
+          this.remaining = res.data().sevaDetails.duration;
           console.log(this.duration);
           this.slotId = res.data().selectedSlot.id;
           if(res.data().activated === true){
@@ -67,9 +69,10 @@ export class ActivesevaPage implements OnInit, OnDestroy {
     //const f = new Date(currentDate.getTime() + minutesToAdd*60000).getTime();
     const getDownloadProgress = () => {
       console.log('getDownload', this);
-      if (this.progress > this.duration) {
+      if (this.progress < this.duration) {
         console.log('inside if', this.progress);
         this.progress = this.progress + 1;
+        this.remaining = this.remaining - 1;
         //this.progress = new Date().getTime();
       }
       else {
@@ -108,8 +111,14 @@ export class ActivesevaPage implements OnInit, OnDestroy {
       }
     );
   }
+  showSuccss(e){
+    if(this.duration === e){
+      console.log(e);
+    }
+  }
   buyService(item){
     console.log(item);
+    this.openModal();
   }
 
   dismissModal() {

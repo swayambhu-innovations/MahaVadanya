@@ -2,23 +2,22 @@
   <div class="container">
     <p>Session is Active</p>
     <p id="medium">Slot:{{slotId}}</p>
-    <app-counter #manual mode='manual' [from]=0 [to]=60 [of]=60 [animationTime]="60000" ng-counter-suffix="Sec"></app-counter>
-    <h1>{{ clock }}</h1>
+    <round-progress [current]="remaining" [clockwise]="false" (onRender)="showSuccss($event)" [max]="duration" [duration]="1000" [radius]="90" [color]="'#0C5CD4'"></round-progress>
     <!-- <round-progress [current]="1" [max]="duration" [duration]="10000" [radius]="90" [color]="'#0C5CD4'"></round-progress> -->
     <p id="small">Session will end at {{endingDate}}</p>
     <div class="round-div">
-      <p>{{ duration }}</p>
+      <p>{{ remaining }}</p>
       <p id="pink">min</p>
     </div>
-    <ion-button (click)="openModal()" expand="block" fill="clear" shape="round">
-      Show thank you
-    </ion-button>
     <div class="activity">
       <p id="avail">Available Services</p>
       <ion-item *ngFor="let item of servicesList;" (click)="buyService(item)">
         <p>{{item.name}} - {{item.price}}</p>
       </ion-item>
     </div>
+    <ion-button (click)="openModal()" expand="block" fill="clear" shape="round">
+      Show thank you
+    </ion-button>
   </div>
 </ion-content>
 <ion-modal>
