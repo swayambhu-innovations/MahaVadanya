@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collectionSnapshots, getDocs, query, where } from '@angular/fire/firestore';
+import { addDoc, collectionSnapshots, doc, getDoc, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
 import { collection, CollectionReference, Firestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -15,6 +15,9 @@ export class BooksevaService {
   getSlots() {
     return getDocs(collection(this.firestore, 'slotsPerDay'));
     //return collectionSnapshots(collection(this.firestore, 'slotsPerDay'));
+  }
+  getServices() {
+    return collectionSnapshots(collection(this.firestore, 'services'));
   }
   async getBookingList(id: any) {
     //return collectionSnapshots(collection(this.firestore, 'bookings'));
@@ -36,5 +39,22 @@ export class BooksevaService {
       'bookings'
     );
     return addDoc(this.bookingRef, data);
+  }
+  activateSeva(id){
+    return updateDoc(
+      doc(this.firestore, 'bookings/' + id),
+      {
+        activated: true,
+        activateDate: new Date(),
+      }
+    ).catch((err: any) => {
+      console.log(err);
+    });
+  }
+  getSevaDetails(id) {
+    return getDoc(doc(this.firestore, 'bookings/'+ id)).catch((err: any) => {
+      console.log(err);
+      return err;
+    });;
   }
 }

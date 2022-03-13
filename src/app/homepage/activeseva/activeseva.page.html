@@ -1,18 +1,42 @@
 <ion-content>
   <div class="container">
     <p>Session is Active</p>
-    <p id="medium">Slot:{{slot}}</p>
-    <round-progress [current]="100" [max]="100" [duration]="15000" [radius]="90" [color]="'#0C5CD4'"></round-progress>
-    <p id="small">Session will end at {{endtime}}</p>
+    <p id="medium">Slot:{{slotId}}</p>
+    <app-counter #manual mode='manual' [from]=0 [to]=60 [of]=60 [animationTime]="60000" ng-counter-suffix="Sec"></app-counter>
+    <h1>{{ clock }}</h1>
+    <!-- <round-progress [current]="1" [max]="duration" [duration]="10000" [radius]="90" [color]="'#0C5CD4'"></round-progress> -->
+    <p id="small">Session will end at {{endingDate}}</p>
     <div class="round-div">
-      <p>26</p>
+      <p>{{ duration }}</p>
       <p id="pink">min</p>
     </div>
+    <ion-button (click)="openModal()" expand="block" fill="clear" shape="round">
+      Show thank you
+    </ion-button>
     <div class="activity">
       <p id="avail">Available Services</p>
-      <ion-item *ngFor="let item of dataProvider.availabelServices;">
-        <p>{{item.name}}</p>
+      <ion-item *ngFor="let item of servicesList;" (click)="buyService(item)">
+        <p>{{item.name}} - {{item.price}}</p>
       </ion-item>
     </div>
   </div>
 </ion-content>
+<ion-modal>
+  <ng-template>
+    <ion-header translucent>
+      <ion-toolbar>
+        <ion-title>Thank you</ion-title>
+        <ion-buttons slot="end">
+          <ion-button onclick="dismissModal()">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content fullscreen>
+      <ion-list>
+        <ion-item>
+          <h2>Thank you for purchasing our seva.</h2>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>

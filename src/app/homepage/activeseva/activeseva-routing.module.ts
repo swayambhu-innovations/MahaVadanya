@@ -5,7 +5,7 @@ import { ActivesevaPage } from './activeseva.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: ActivesevaPage
   }
 ];

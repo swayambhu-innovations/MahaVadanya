@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataProvider } from 'src/app/providers/data.provider';
+import { BooksevaService } from 'src/app/Services/bookseva.service';
 
 @Component({
   selector: 'app-activeseva',
@@ -13,7 +14,7 @@ export class InactiveSevaPage implements OnInit {
   @Input() sevastatus = 'D12 Slot Alreaday Booked';
   public myAngularxQrCode: string = null;
   private routeSub: Subscription = Subscription.EMPTY;
-  constructor(private route: ActivatedRoute, public dataProvider: DataProvider) {
+  constructor(private router: Router,private route: ActivatedRoute, public dataProvider: DataProvider, private bookSeva: BooksevaService) {
     this.routeSub = this.route.params.subscribe(params => {
       console.log(params);
       console.log(params.id);
@@ -24,5 +25,17 @@ export class InactiveSevaPage implements OnInit {
 
   ngOnInit() {
   }
-
+  onActivate(){
+    this.dataProvider.activeSeva = true;
+    this.dataProvider.activeSevaId = this.myAngularxQrCode;
+    console.log(this.dataProvider.activeSevaId);
+    if(this.dataProvider.activeSevaId && this.dataProvider.activeSeva === true){
+      this.bookSeva.activateSeva(this.myAngularxQrCode).then(
+        (res) => {
+          console.log(res);
+          this.router.navigate([`/home/activeseva/${this.myAngularxQrCode}`]);
+        }
+      );
+    }
+  }
 }

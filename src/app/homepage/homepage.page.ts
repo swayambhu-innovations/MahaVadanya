@@ -14,7 +14,7 @@ export class HomepagePage implements OnInit {
   getUserReg: any = [];
   getNewSevas: any = [];
   mainActivitesHolder: any = [];
-  constructor(private router: Router, private bookSeva: BooksevaService, private dataProvider : DataProvider) {
+  constructor(private router: Router, private bookSeva: BooksevaService, public dataProvider: DataProvider) {
     this.getRecentActivities();
    }
 
@@ -26,10 +26,10 @@ export class HomepagePage implements OnInit {
       this.router.navigate(['home/bookseva']);
     }
     else if (event.detail.value === 'inactive'){
-      this.router.navigate(['home/inactiveseva/8DViEBeJeFgip2u6EJKP']);
+      this.router.navigate(['home/inactiveseva/0QJwERgV1dK6H0oY5Dyu']);
     }
     else if (event.detail.value === 'active'){
-      this.router.navigate(['home/activeseva']);
+      this.router.navigate(['home/activeseva/0QJwERgV1dK6H0oY5Dyu']);
     }
     // console.log('Segment changed', event.detail.value);
   }

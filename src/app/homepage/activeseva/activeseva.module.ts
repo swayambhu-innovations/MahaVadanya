@@ -9,6 +9,7 @@ import { ActivesevaPageRoutingModule } from './activeseva-routing.module';
 import { ActivesevaPage } from './activeseva.page';
 import { BasecomponentsModule } from 'src/app/basecomponents/basecomponents.module';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import {CounterModule} from 'angular-circle-counter';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { RoundProgressModule } from 'angular-svg-round-progressbar';
     IonicModule,
     ActivesevaPageRoutingModule,
     BasecomponentsModule,
-    RoundProgressModule
+    RoundProgressModule,
+    CounterModule
   ],
   declarations: [ActivesevaPage]
 })

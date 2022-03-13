@@ -5,10 +5,10 @@
       <ion-segment-button value="book" color="secondary">
         <ion-label>Book slot</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="active">
+      <ion-segment-button value="active" *ngIf="dataProvider.activeSeva">
         <ion-label>Active</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="inactive">
+      <ion-segment-button value="inactive" *ngIf="!dataProvider.activeSeva">
         <ion-label>Inactive</ion-label>
       </ion-segment-button>
     </ion-segment>

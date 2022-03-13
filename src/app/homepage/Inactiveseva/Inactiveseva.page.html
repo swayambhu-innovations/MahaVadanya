@@ -5,10 +5,19 @@
     <div class="qrcode">
       <qrcode [qrdata]="myAngularxQrCode" [width]="300" [errorCorrectionLevel]="'M'"></qrcode>
     </div>
+    <ion-item>
+      <ion-label>Click button to activate</ion-label>
+      <ion-button (click)="onActivate()" expand="block" fill="clear" shape="round">
+        Activate
+      </ion-button>
+    </ion-item>
     <div class="activity">
       <p>Recent Activity</p>
       <ion-item *ngFor="let item of dataProvider.recentActivities">
         <p>{{item.message}}</p>
+      </ion-item>
+      <ion-item *ngIf="dataProvider.recentActivities.length === 0">
+        <p>No recent activites.</p>
       </ion-item>
     </div>
   </div>

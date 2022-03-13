@@ -24,5 +24,7 @@ export class DataProvider{
     public logs: any[];
     public recentActivities: any = [];
     public availabelServices: any = [];
+    public activeSeva = false;
+    public activeSevaId: any;
     constructor(){}
 }
