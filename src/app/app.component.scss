@@ -117,3 +117,24 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+ion-toolbar {
+  height:80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  h3{
+
+    font-size: 25px;
+    font-family: var(--font-primary);
+  }
+}
+ion-list{
+  font-family: var(--font-primary);
+  ion-item{
+    color: #0C51D4;
+  }
+  .items{
+    display: flex;
+  }
+}

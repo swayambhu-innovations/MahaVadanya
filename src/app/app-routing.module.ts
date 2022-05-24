@@ -14,6 +14,18 @@ const routes: Routes = [
     path: 'add-details',
     loadChildren: () => import('./add-details/add-details.module').then( m => m.AddDetailsPageModule)
   },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
+  },
+  {
+    path: 'seat-plan',
+    loadChildren: () => import('./seat-plan/seat-plan.module').then( m => m.SeatPlanPageModule)
+  },
 
 ];
 

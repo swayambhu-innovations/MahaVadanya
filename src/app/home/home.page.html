@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="primary ">
+    <ion-title>Mahavadanya</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-icon
+      name="notifications-outline"
+      class="notification"
+      slot="end"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="dark">
+  <section>
+    <div color="primary" class="container">
+      <div class="slot active">BOOK SLOT</div>
+      <div class="slot">ACTIVE SLOT</div>
+    </div>
+    <h3 class="ion-text-center ion-margin" color>Select booking type</h3>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item class="dropdown-container">
+              <ion-label>Book For</ion-label>
+              <ion-select placeholder="Select One">
+                <ion-select-option value="mon">Monday</ion-select-option>
+                <ion-select-option value="mon">Tuesday</ion-select-option>
+                <ion-select-option value="mon">Wednessday</ion-select-option>
+                <ion-select-option value="mon">Thursday</ion-select-option>
+                <ion-select-option value="mon">Friday</ion-select-option>
+                <ion-select-option value="mon">Saturday</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item class="dropdown-container">
+              <ion-label>Time Slot</ion-label>
+              <ion-select placeholder="Select One">
+                <ion-select-option value="s1">10am-12pm</ion-select-option>
+                <ion-select-option value="s2">12pm-2pm</ion-select-option>
+                <ion-select-option value="s3">3pm-5pm</ion-select-option>
+                <ion-select-option value="s4">5pm-7pm</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <span >Select Date</span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center" >
+          <div class="card" >
+            <ion-datetime locale="en-GB-u-hc-h12" class="date"></ion-datetime>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+</ion-content>
+
