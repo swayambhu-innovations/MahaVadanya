@@ -1,0 +1,105 @@
+<app-header></app-header>
+          
+<jw-modal id="modal-1">
+<style>
+  .card{
+    border-radius: 10px;
+  }
+  .date{
+    background-color: var(--ion-color-primary);
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+</style>
+
+  <div class="card">
+    <div class="date" (click)="modalSevices.close('modal-1')">Enter Date of Birth</div>
+    <ion-datetime locale="en-GB-u-hc-h12"></ion-datetime>
+  </div>
+</jw-modal>
+<ion-content color="dark">
+  <section>
+    <h2 class="ion-text-center">Add your details</h2>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="input-container">
+            <ion-label>Full Name</ion-label>
+            <ion-input> </ion-input>
+          </div>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="input-container">
+            <ion-label>Date of Birth</ion-label>
+            <div>
+              <ion-input> </ion-input>
+              <ion-icon  (click)="modalSevices.open('modal-1')" name="calendar-number-outline"></ion-icon>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="input-container">
+            <ion-label>Addhar No.</ion-label>
+            <ion-input> </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          
+        <ion-list>
+         
+          <ion-item class="dropdown-container">
+            <ion-label>Profession</ion-label>
+            <ion-select placeholder="Select One"  >
+              <ion-select-option value="t">Teacher</ion-select-option>
+              <ion-select-option value="s">Student</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="input-container">
+            <ion-label>Age</ion-label>
+            <ion-input> </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="option-container">
+            <ion-label>Gender</ion-label>
+            <div>
+              <div class="radio active"
+                ><ion-text>Male</ion-text>
+                <ion-radio slot="start" value="griff"></ion-radio>
+              </div>
+              <div  class="radio"  
+                ><ion-text>Female</ion-text> <ion-radio slot="start"></ion-radio
+              ></div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center ion-padding">
+         <ion-button class="ion-padding " >
+          Save
+         </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+</ion-content>

@@ -1,0 +1,21 @@
+.input-container{
+    height:45px;
+    width: 86vw;
+    margin: auto;
+    font-family: var( --font-primary);
+    ion-label{
+        margin: 10px 0px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #4D5D8B;
+    }
+    ion-input{
+        height: 100%;
+        width: 100%;
+    margin-top: 10px;
+        border: 1px solid  rgba(0, 0, 0, 0.24) ;
+     
+        border-radius: 8px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 3px;
+    }
+}
