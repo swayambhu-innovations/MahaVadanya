@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SeatPlanPageRoutingModule } from './seat-plan-routing.module';
+import { PaymentStatusPageRoutingModule } from './payment-status-routing.module';
 
-import { SeatPlanPage } from './seat-plan.page';
+import { PaymentStatusPage } from './payment-status.page';
 import { BaseComponentsModule } from '../components/components.module';
 
 @NgModule({
@@ -14,8 +14,9 @@ import { BaseComponentsModule } from '../components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    SeatPlanPageRoutingModule,BaseComponentsModule
+    PaymentStatusPageRoutingModule,
+    BaseComponentsModule
   ],
-  declarations: [SeatPlanPage]
+  declarations: [PaymentStatusPage]
 })
-export class SeatPlanPageModule {}
+export class PaymentStatusPageModule {}

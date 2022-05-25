@@ -121,7 +121,7 @@ ion-toolbar {
   height:80px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   padding: 20px;
   h3{
 
@@ -131,10 +131,33 @@ ion-toolbar {
 }
 ion-list{
   font-family: var(--font-primary);
-  ion-item{
-    color: #0C51D4;
-  }
+ 
   .items{
     display: flex;
+    gap:20px;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    padding:0px 10px;
+    margin-top: 25px;
+    &:hover{
+      background-color: #0c52d42a;
+    
+      
+    }
+    ion-icon{
+      font-size: 35px;
+      margin-bottom: 5px;
+      color: var(--ion-background-color);
+    }
+    b{
+      width: 110%;
+      font-size: 20px;
+      border-bottom: 2px solid var(--ion-background-color);
+      padding-bottom: 10px;
+      // border-radius: 10px;
+      color: var(--ion-background-color);
+    }
   }
 }

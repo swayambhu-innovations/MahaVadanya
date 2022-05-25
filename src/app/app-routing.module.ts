@@ -26,6 +26,14 @@ const routes: Routes = [
     path: 'seat-plan',
     loadChildren: () => import('./seat-plan/seat-plan.module').then( m => m.SeatPlanPageModule)
   },
+  {
+    path: 'payment-status',
+    loadChildren: () => import('./payment-status/payment-status.module').then( m => m.PaymentStatusPageModule)
+  },
+  {
+    path: 'edit-profile',
+    loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },
 
 ];
 

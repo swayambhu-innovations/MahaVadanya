@@ -4,18 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SeatPlanPageRoutingModule } from './seat-plan-routing.module';
-
-import { SeatPlanPage } from './seat-plan.page';
+import { EditProfilePageRoutingModule } from './edit-profile-routing.module';
 import { BaseComponentsModule } from '../components/components.module';
-
+import { EditProfilePage } from './edit-profile.page';
+import { ModalModule } from '../_modal';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SeatPlanPageRoutingModule,BaseComponentsModule
+    EditProfilePageRoutingModule,
+    
+    BaseComponentsModule,ModalModule
   ],
-  declarations: [SeatPlanPage]
+  declarations: [EditProfilePage]
 })
-export class SeatPlanPageModule {}
+export class EditProfilePageModule {}

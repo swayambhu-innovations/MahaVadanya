@@ -1,9 +1,55 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>seat-plan</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
 
-<ion-content>
-
+<ion-content color="dark">
+  <section>
+    <p class="ion-text-center">Select Seat</p>
+    <div class="indicator">
+      <b>Booked</b>
+      <div class="booked"></div>
+      <b>Available</b>
+      <div></div>
+    </div>
+    <div id="seats">
+      <div id="left">
+        <div class="seat">A11</div>
+        <div class="seat">A12</div>
+        <div class="seat booked">A13</div>
+        <div class="seat booked">A14</div>
+        <div class="seat">A15</div>
+        <div class="seat">A16</div>
+        <div class="seat">A17</div>
+        <div class="seat">A18</div>
+        <div class="seat">A19</div>
+      </div>
+      <div id="middle">
+        <div id="m1">
+          <div class="seat booked">A00</div>
+          <div class="seat">A21</div>
+          <div class="seat">A22</div>
+          <div class="seat">A23</div>
+          <div class="seat">A24</div>
+          <div class="seat">A25</div>
+        </div>
+        <div id="m2">
+          <div class="seat">A31</div>
+          <div class="seat">A32</div>
+          <div class="seat">A33</div>
+          <div class="seat">A34</div>
+          <div class="seat">A35</div>
+          <div class="seat">A36</div>
+        </div>
+      </div>
+      <div id="right"> 
+        <div class="entrance">Entrance/
+          
+          Staircase</div>
+        <div class="seat booked">A41</div>
+        <div class="seat">A42</div>
+        <div class="seat">A43</div>
+        <div class="seat">A44</div>
+        <div class="seat">A45</div>
+        <div class="seat">A46</div>
+      </div>
+    </div>
+  </section>
 </ion-content>
