@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { PaymentSuccessfulPageRoutingModule } from './payment-successful-routing.module';
 
-import { HomePage } from './home.page';
+import { PaymentSuccessfulPage } from './payment-successful.page';
 import { BaseComponentsModule } from '../components/components.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { BaseComponentsModule } from '../components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    PaymentSuccessfulPageRoutingModule,
     BaseComponentsModule
   ],
-  declarations: [HomePage]
+  declarations: [PaymentSuccessfulPage]
 })
-export class HomePageModule {}
+export class PaymentSuccessfulPageModule {}

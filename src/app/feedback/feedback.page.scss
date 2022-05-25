@@ -1,0 +1,50 @@
+ion-content{
+    --background: #fff;
+    .container{
+        background-color: #fff;
+        width: 100%;
+        margin: auto;
+        font-family: var(--font-primary);
+        color: var(--ion-color-primary);
+        padding: 15px;
+
+        p{
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            margin: 50px auto;
+        }
+
+        ion-label{
+            color: #4D5D8B;
+            margin-left: 15px;
+        }
+
+        ion-input{
+            margin: 15px;
+            border: 2px solid grey;
+            width: 90%;
+            border-radius: 15px;
+        }
+        textarea{
+            background-color: #fff;
+            border: 2px solid grey;
+            margin: 15px;
+            border-radius: 15px;
+            width: 90%;
+        }
+        ion-button{
+            margin: auto;
+            font-size: var(--medium);
+            font-family: 'Poppins', sans-serif;
+            margin: 15px;
+            width: auto;
+            margin-top: 25px;
+        }
+        .button{
+            width: 100%;
+            margin: auto;
+            text-align: center;
+        }
+    }
+}
