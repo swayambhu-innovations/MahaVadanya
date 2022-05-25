@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+    margin: 10px;
+    border: 2px solid var(--ion-color-primary);
+    border-radius: 15px;
+    padding: 15px;
+    font-family: var(--font-primary);
+    justify-content: space-between;
+    color: var(--ion-color-primary);
+    text-align: center;
+
+    img{
+        width: 60px;
+    }
+    p{
+        display: block;
+        margin: auto;
+        font-size: var(--medium);
+        font-weight: bold;
+    }
+}

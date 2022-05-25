@@ -1,0 +1,32 @@
+ion-content{
+    --background:#fff;
+    .container{
+        display: block;
+        margin: 30px auto;
+        text-align: center;
+        color: var(--ion-color-primary);
+        font-family: var(--font-primary);
+    }
+    #heading{
+        font-size: 25px;
+        font-weight: bold;
+        margin: 15px auto;
+    }
+    ion-icon{
+        color: #31BD58;
+        font-size: 205px;
+        margin: 15px auto;
+    }
+    #normal{
+        width: 80%;
+        display: block;
+        margin: auto;
+        margin-top: -15px;
+    }
+    #sub-heading{
+        font-size: var(--large);
+        margin:40px auto;
+        font-weight: bold;
+        width: 80%;
+    }
+}

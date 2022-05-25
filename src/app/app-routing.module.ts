@@ -6,7 +6,8 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginPageModule),
-  },  {
+  },
+  {
     path: 'signup',
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
@@ -25,6 +26,26 @@ const routes: Routes = [
   {
     path: 'seat-plan',
     loadChildren: () => import('./seat-plan/seat-plan.module').then( m => m.SeatPlanPageModule)
+  },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },
+  {
+    path: 'feedback-sent',
+    loadChildren: () => import('./feedback-sent/feedback-sent.module').then( m => m.FeedbackSentPageModule)
+  },
+  {
+    path: 'payment-mode',
+    loadChildren: () => import('./payment-mode/payment-mode.module').then( m => m.PaymentModePageModule)
+  },
+  {
+    path: 'payment-successful',
+    loadChildren: () => import('./payment-successful/payment-successful.module').then( m => m.PaymentSuccessfulPageModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./payment-failed/payment-failed.module').then( m => m.PaymentFailedPageModule)
   },
 
 ];

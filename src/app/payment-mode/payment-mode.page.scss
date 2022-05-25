@@ -1,0 +1,11 @@
+ion-content{
+    --background:#fff;
+    p{
+        font-family: var(--font-primary);
+        font-size: 25px;
+        font-weight: bold;
+        margin: 30px auto;
+        text-align: center;
+        color: var(--ion-color-primary);
+    }
+}
