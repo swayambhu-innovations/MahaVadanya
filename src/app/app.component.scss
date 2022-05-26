@@ -161,3 +161,17 @@ ion-list{
     }
   }
 }
+
+ion-icon{
+  color: var(--ion-color-primary);
+  font-size: 20px;
+}
+ion-text{
+  color: var(--ion-color-primary);
+}
+ion-col{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:30px;
+}

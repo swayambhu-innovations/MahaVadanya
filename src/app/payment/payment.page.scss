@@ -1,13 +1,4 @@
-ion-header{
-    ion-title{
-        font-family: var(--font-primary);
-    }
-  
-}
-.notification {
-  margin-right: 30px;
-  font-size: 21px;
-}
+
 section{
   font-family: var(--font-primary);
 
@@ -42,24 +33,24 @@ section{
     display: flex;
     align-items:center;
     justify-content: flex-start;
-  &:hover{
-    background-color: var(--ion-color-primary);
-    ion-img{
-      background-color: var(--ion-color-primary);
-      stroke: white;
-      color: white;
-      fill: white;
-    }
-    .payment_desc{
-      color: white;
-      font-family: var(--font-primary);
-      margin-right: 20px;
-      b{
-        color: white;
-        font-family: var(--font-primary);
-      }
-    }
-  }
+  // &:hover{
+  //   background-color: var(--ion-color-primary);
+  //   ion-img{
+  //     background-color: var(--ion-color-primary);
+  //     stroke: white;
+  //     color: white;
+  //     fill: white;
+  //   }
+  //   .payment_desc{
+  //     color: white;
+  //     font-family: var(--font-primary);
+  //     margin-right: 20px;
+  //     b{
+  //       color: white;
+  //       font-family: var(--font-primary);
+  //     }
+  //   }
+  // }
     ion-img{
       height: 40px;
       width: 40px;

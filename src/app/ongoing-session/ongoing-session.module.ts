@@ -9,8 +9,9 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
 import { OngoingSessionPageRoutingModule } from './ongoing-session-routing.module';
 import {  } from '@angular/material';
 import { OngoingSessionPage } from './ongoing-session.page';
-import { BaseComponentsModule } from '../components/components.module';
+// import { BaseComponentsModule } from '../components/components.module';
 import { ModalModule } from '../_modal';
+import { BaseComponentsModule } from '../base-components/base-components.module';
 // import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 @NgModule({
   imports: [
@@ -18,8 +19,9 @@ import { ModalModule } from '../_modal';
     FormsModule,
     IonicModule,
     OngoingSessionPageRoutingModule,
-    BaseComponentsModule,
+BaseComponentsModule,
     RoundProgressModule,ModalModule,
+  
   ],
   declarations: [OngoingSessionPage]
 })

@@ -1,3 +1,29 @@
+<jw-modal id="modal-2">
+  <style>
+    .card {
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+   
+  </style>
+
+  <div class="card">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-text> <ion-icon name="help-circle"></ion-icon>Are you sure you want to logout now?</ion-text>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button  routerLink="/login"  (click)="modalSevices.close('modal-2')">Yes</ion-button>
+          <ion-button color="danger" routerLink="/home" (click)="modalSevices.close('modal-1')" (click)="modalSevices.close('modal-2')">no</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</jw-modal>
 <ion-app>
   <ion-menu contentId="content1" side="start">
     <ion-header>
@@ -7,19 +33,19 @@
     </ion-header>
     <ion-content color="dark">
       <ion-list>
-        <div class="items">
+        <div class="items" routerLink="/edit-profile">
           <ion-icon name="person-circle-outline"></ion-icon> <b>Profile</b>
         </div>
 
-        <div class="items">
+        <div class="items" routerLink="/history" >
           <ion-icon name="document-text-outline"></ion-icon>
           <b>Booking history</b>
         </div>
-        <div class="items">
+        <div class="items" (click)="modalSevices.close('modal-1')" (click)="modalSevices.open('modal-2')">
           <ion-icon name="log-out-outline"></ion-icon> <b>Logout</b>
         </div>
-        <div class="items">
-          <ion-icon name="alert-outline"></ion-icon> <b>Report an issue</b>
+        <div class="items"  routerLink="/feedback" >
+          <ion-icon name="alert-outline" ></ion-icon> <b>Report an issue</b>
         </div>
       </ion-list>
     </ion-content>
