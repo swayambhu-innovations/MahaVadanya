@@ -67,6 +67,10 @@ const routes: Routes = [
     path: 'notification',
     loadChildren: () => import('./notification/notification.module').then( m => m.NotificationPageModule)
   },
+  {
+    path: 'session-ended',
+    loadChildren: () => import('./session-ended/session-ended.module').then( m => m.SessionEndedPageModule)
+  },
 
 
 ];
