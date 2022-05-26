@@ -37,6 +37,10 @@ const routes: Routes = [
    
   },
   {
+    path:'feedback',
+    loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },
+  {
     path: 'feedback-sent',
     loadChildren: () => import('./feedback-sent/feedback-sent.module').then( m => m.FeedbackSentPageModule)
   },
@@ -51,7 +55,19 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./payment-failed/payment-failed.module').then( m => m.PaymentFailedPageModule)
+  },  {
+    path: 'ongoing-session',
+    loadChildren: () => import('./ongoing-session/ongoing-session.module').then( m => m.OngoingSessionPageModule)
   },
+  {
+    path: 'select-seat',
+    loadChildren: () => import('./select-seat/select-seat.module').then( m => m.SelectSeatPageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./notification/notification.module').then( m => m.NotificationPageModule)
+  },
+
 
 ];
 
