@@ -71,6 +71,10 @@ const routes: Routes = [
     path: 'session-ended',
     loadChildren: () => import('./session-ended/session-ended.module').then( m => m.SessionEndedPageModule)
   },
+  {
+    path: 'history',
+    loadChildren: () => import('./history/history.module').then( m => m.HistoryPageModule)
+  },
 
 
 ];

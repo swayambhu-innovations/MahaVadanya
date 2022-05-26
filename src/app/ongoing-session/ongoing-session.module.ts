@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
+// import {RoundProgressModule} from 'angular-svg-round-progressbar';
+
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
-
 import { OngoingSessionPageRoutingModule } from './ongoing-session-routing.module';
-
+import {  } from '@angular/material';
 import { OngoingSessionPage } from './ongoing-session.page';
 import { BaseComponentsModule } from '../components/components.module';
-
+import { ModalModule } from '../_modal';
+// import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +19,7 @@ import { BaseComponentsModule } from '../components/components.module';
     IonicModule,
     OngoingSessionPageRoutingModule,
     BaseComponentsModule,
-    RoundProgressModule
+    RoundProgressModule,ModalModule,
   ],
   declarations: [OngoingSessionPage]
 })

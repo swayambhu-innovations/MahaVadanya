@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ModalService } from '../_modal';
 @Component({
   selector: 'app-ongoing-session',
   templateUrl: './ongoing-session.page.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OngoingSessionPage implements OnInit {
 
-  constructor() { }
+  constructor(public modalSevices:ModalService  ) { }
 
   ngOnInit() {
   }
