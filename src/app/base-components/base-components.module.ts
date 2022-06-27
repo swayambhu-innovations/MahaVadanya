@@ -2,12 +2,13 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
+import { SlotsComponent } from './slots/slots.component';
 
 
-const Components = [HeaderComponent]
+const components = [HeaderComponent,SlotsComponent];
 @NgModule({
-  exports:[Components],
-  declarations: [Components],
+  exports:[components],
+  declarations: [components],
   imports: [
     CommonModule,
     IonicModule

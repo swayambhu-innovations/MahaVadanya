@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from '../_modal';
 
 @Component({
   selector: 'app-add-details',
@@ -8,8 +7,11 @@ import { ModalService } from '../_modal';
 })
 export class AddDetailsPage implements OnInit {
 
-  constructor(public modalSevices:ModalService) { }
-
+  isModalOpen = false;
+  constructor() { }
+  toggleOpen() {
+    this.isModalOpen =  !this.isModalOpen;
+  }
   ngOnInit() {
   }
 

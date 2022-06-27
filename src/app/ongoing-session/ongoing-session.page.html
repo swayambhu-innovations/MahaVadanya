@@ -1,93 +1,34 @@
 <app-header></app-header>
-<ion-header></ion-header>
-<jw-modal id="modal-2">
-    <style>
-      .card {
-        border-radius: 10px;
-        box-sizing: border-box;
-      }
-     
-    </style>
-  
-    <div class="card">
-      <ion-grid>
-          <ion-row class="ion-text-center" >
-              <ion-col>
-                  <ion-avatar>
-                      <ion-img src="../../assets/exchange.svg"></ion-img>
-                  </ion-avatar>
-              </ion-col>
-          </ion-row>
-          <ion-row class="ion-text-center">
-            <ion-col class="ion-margin">
-                <ion-text>Exchange Successful</ion-text>
-            </ion-col>
-        </ion-row>
-        <ion-row class="ion-text-center">
-            <ion-col class="ion-margin">
-                <ion-text >New Seat : A20</ion-text>
-            </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-  </jw-modal>
-
-<jw-modal id="modal-1">
-  <style>
-    .card {
-      border-radius: 10px;
-      box-sizing: border-box;
-    }
-    span {
-      color: var(--ion-color-primary);
-      font-size: 20px;
-      font-family: var(--font-primary);
-    }
-  </style>
-
-  <div class="card">
-    <ion-grid>
-      <ion-row class="ion-text-center">
-        <ion-col>
-          <span
-            >Select Seat for<br />
-            Exchange</span
-          >
-        </ion-col>
-      </ion-row>
-      <ion-row>
-          <ion-col>
-            <!-- <mat-form-field appearance="fill">
-                <mat-label>Favorite food</mat-label>
-                <mat-select>
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field> -->
-             
-              <ion-list>
-                <ion-item color="dark"   (click)="modalSevices.close('modal-1')">
-                  <ion-label>Seat </ion-label>
-                  <ion-select value="dog" >
-                    <ion-select-option value="cat">A20</ion-select-option>
-                    <ion-select-option value="dog">A80</ion-select-option>
-                    <ion-select-option value="dog">A60</ion-select-option>
-                  </ion-select>
-                </ion-item>
-                <ion-button expand="full" shape="round" (click)="modalSevices.close('modal-1')" (click)="modalSevices.open('modal-2')">Request for Exchange</ion-button>
-              
-            </ion-list>
-          </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-</jw-modal>
+<app-slots activeslot="active"></app-slots>
 <ion-content color="dark">
-    <div color="primary" class="container">
-        <div class="slot " routerLink="/home">BOOK SLOT</div>
-        <div class="slot active"  routerLink="/ongoing-session">ACTIVE SLOT</div>
-      </div>
+  <ion-modal class="exchange_Seat" [isOpen]="exchangeseat">
+    <ng-template>
+      <ion-content color="dark">
+        <div class="card">
+          <ion-grid>
+            <ion-row class="ion-text-center">
+              <ion-col>
+                <ion-avatar>
+                  <ion-img src="../../assets/exchange.svg"></ion-img>
+                </ion-avatar>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-text-center">
+              <ion-col class="ion-margin">
+                <ion-text>Exchange Successful</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-text-center">
+              <ion-col class="ion-margin">
+                <ion-text>New Seat : A20</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
   <ion-grid class="ion-text-center">
     <ion-row>
       <ion-col>
@@ -133,7 +74,48 @@
   <ion-button
     expand="full"
     class="ion-text-center ion-margin"
-    (click)="modalSevices.open('modal-1')"
+    (click)="setOpen(true)"
     >EXCHANGE SEAT</ion-button
   >
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title slot="secondary">Exchange Seat</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content color="dark">
+        <ion-grid>
+          <ion-row class="ion-text-center">
+            <ion-col>
+              <span
+                >Select Seat for<br />
+                Exchange</span
+              >
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-item color="dark">
+                  <ion-label>Seat </ion-label>
+                  <ion-select value="dog">
+                    <ion-select-option value="cat">A20</ion-select-option>
+                    <ion-select-option value="dog">A80</ion-select-option>
+                    <ion-select-option value="dog">A60</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <ion-button expand="full" shape="round" (click)="seatExchange()"
+                  >Request for Exchange</ion-button
+                >
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

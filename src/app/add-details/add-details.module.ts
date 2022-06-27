@@ -8,7 +8,6 @@ import { AddDetailsPageRoutingModule } from './add-details-routing.module';
 
 import { AddDetailsPage } from './add-details.page';
 import { BaseComponentsModule } from '../components/components.module';
-import { ModalModule } from '../_modal';
 
 @NgModule({
   imports: [
@@ -16,7 +15,7 @@ import { ModalModule } from '../_modal';
     FormsModule,
     IonicModule,
     AddDetailsPageRoutingModule,
-    BaseComponentsModule,ModalModule
+    BaseComponentsModule,
   ],
   declarations: [AddDetailsPage]
 })

@@ -1,4 +1,5 @@
 <div color="primary" class="container">
-  <div class="slot active">BOOK SLOT</div>
-  <div class="slot" routerLink="/ongoing-session">ACTIVE SLOT</div>
+  <div class="slot" [ngClass]="{'active': activeslot==='book'}" routerLink="/home"> BOOK SLOT</div>
+  <div class="slot" [ngClass]="{'active': activeslot==='active'}" routerLink="/ongoing-session">ACTIVE SLOT</div>
 </div>
+
