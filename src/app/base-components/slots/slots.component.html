@@ -1,5 +1,8 @@
-<div color="primary" class="container">
-  <div class="slot" [ngClass]="{'active': activeslot==='book'}" routerLink="/home"> BOOK SLOT</div>
-  <div class="slot" [ngClass]="{'active': activeslot==='active'}" routerLink="/ongoing-session">ACTIVE SLOT</div>
-</div>
-
+<ion-segment value="all" class="container" color="dark">
+  <ion-segment-button routerLink="/home" value="BOOK_SLOT" >
+    <ion-label >BOOK SLOT</ion-label>
+  </ion-segment-button>
+  <ion-segment-button routerLink="/ongoing-session" value="ACTIVE_SLOT"   >
+    <ion-label  >ACTIVE SLOT</ion-label>
+  </ion-segment-button>
+</ion-segment>

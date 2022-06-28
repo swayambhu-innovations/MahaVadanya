@@ -34,18 +34,18 @@
     </ion-header>
     <ion-content color="dark">
       <ion-list>
-        <div class="items" routerLink="/edit-profile">
+        <div class="items" routerLink="/edit-profile" (click)="close()">
           <ion-icon name="person-circle-outline"></ion-icon> <b>Profile</b>
         </div>
 
-        <div class="items" routerLink="/history" >
+        <div  (click)="close()" class="items" routerLink="/history" >
           <ion-icon name="document-text-outline"></ion-icon>
           <b>Booking history</b>
         </div>
-        <div class="items" (click)="setOpen(true)" >
+        <div (click)="close()"  class="items" (click)="setOpen(true)" >
           <ion-icon name="log-out-outline" ></ion-icon> <b>Logout</b>
         </div>
-        <div class="items"  routerLink="/feedback" >
+        <div  (click)="close()" class="items"  routerLink="/feedback" >
           <ion-icon name="alert-outline" ></ion-icon> <b>Report an issue</b>
         </div>
       </ion-list>

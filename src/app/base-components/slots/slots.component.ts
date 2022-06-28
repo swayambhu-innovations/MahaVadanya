@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-slots',
   templateUrl: './slots.component.html',
@@ -7,8 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SlotsComponent implements OnInit {
   @Input() activeslot = '';
-  constructor() { }
-
+  constructor( private router: Router) { }
+navigate(){
+// this.router.navigate([`/${link}`]);
+console.log('hioi');
+}
+segmentChanged(link: any){
+  this.router.navigate([`/${link}`]);
+}
   ngOnInit() {}
 
 }

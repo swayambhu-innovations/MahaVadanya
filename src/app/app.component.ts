@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -15,8 +16,11 @@ export class AppComponent {
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   isModalOpen = false;
-  constructor() {}
+  constructor(private menu: MenuController) {}
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
+  }
+  close(){
+    this.menu.close();
   }
 }
