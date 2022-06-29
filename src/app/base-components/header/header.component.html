@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar color="primary ">
     <ion-title>Mahavadanya</ion-title>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" class="ion-padding-end" *ngIf="pannel =='others'" >
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start" *ngIf="pannel =='home'">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
     <ion-icon
