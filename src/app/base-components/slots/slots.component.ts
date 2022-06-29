@@ -6,11 +6,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./slots.component.scss'],
 })
 export class SlotsComponent implements OnInit {
+  
   segmentValue: string = '';
 
   constructor(public router: Router) {}
 
   ngOnInit() {
-    console.log(this.router.url)
+    console.log(this.router.url);
   }
 }

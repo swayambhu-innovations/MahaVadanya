@@ -31,24 +31,6 @@
         <h3>Menu</h3>
       </ion-toolbar>
     </ion-header>
-    <!-- <ion-content color="dark">
-      <ion-list>
-        <div class="items" routerLink="/edit-profile" (click)="close()">
-          <ion-icon name="person-circle-outline"></ion-icon> <b>Profile</b>
-        </div>
-
-        <div  (click)="close()" class="items" routerLink="/history" >
-          <ion-icon name="document-text-outline"></ion-icon>
-          <b>Booking history</b>
-        </div>
-        <div (click)="close()"  class="items" (click)="setOpen(true)" >
-          <ion-icon name="log-out-outline" ></ion-icon> <b>Logout</b>
-        </div>
-        <div  (click)="close()" class="items"  routerLink="/feedback" >
-          <ion-icon name="alert-outline" ></ion-icon> <b>Report an issue</b>
-        </div>
-      </ion-list>
-    </ion-content> -->
     <ion-content color="dark">
       <ion-list>
         <ion-item (click)="close()" routerLink="/edit-profile">
@@ -72,4 +54,5 @@
     </ion-content>
   </ion-menu>
   <ion-router-outlet id="content1" main></ion-router-outlet>
+
 </ion-app>

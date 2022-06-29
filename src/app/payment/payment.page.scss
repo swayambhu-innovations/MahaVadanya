@@ -1,34 +1,20 @@
 
 section{
   font-family: var(--font-primary);
-
-.container {
-    display: flex;
-    width: 100vw;
-    height: 55px;
-    background-color: var(--ion-color-primary);
-    .slot {
-      width: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.475);
-    }
-    .active{
-        background: linear-gradient(to bottom,rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.395));
-    }
-  }
-  h4{
-    font-size: 18px;
+ion-grid{
+  margin-top: 30px;
+}
+  ion-label{
+    font-size: 20px;
     color: var(--ion-color-primary);
+    margin: 50px auto;
   }
   ion-card{
-    width: 90vw;
-    margin: 15px auto;
+    width: 100%;
     height: 60px;
     border: 2px solid var(--ion-color-primary);
-    padding: 0px 10px;
-    border-radius: 15PX;
+    margin: 5px auto;
+    border-radius: 12PX;
     background-color: white;
     display: flex;
     align-items:center;
@@ -55,15 +41,16 @@ section{
       height: 40px;
       width: 40px;
       background-color: white;
-      margin:0px 50px;
+      margin:0px 45px;
     }
     .payment_desc{
       display: flex;
       // align-items: center;
       flex-direction: column;
-      gap:5px;
+      align-items: flex-start;
+  
      
-      b{
+      ion-text{
         font-size: 18px;
         color: var(--ion-color-primary);
       }

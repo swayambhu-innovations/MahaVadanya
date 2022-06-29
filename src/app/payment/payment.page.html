@@ -1,38 +1,50 @@
 <app-header></app-header>
 <ion-content color="dark">
 <section>
-  <div color="primary" class="container">
-    <div class="slot active">BOOK SLOT</div>
-    <div class="slot" routerLink="/ongoing-session">ACTIVE SLOT</div>
-  </div>
-  <h4 class="ion-text-center">  Payment Mode</h4>
-  <ion-card>
-    <ion-img src="../../assets/card.svg"></ion-img>
-    <div class="payment_desc">
-      <b>ATM Card</b>
-      <small>Visa, MasterCard ,RuPay & More </small>
-    </div>
-  </ion-card>
-  <ion-card>
-    <ion-img src="../../assets/netbanking.svg"></ion-img>
-    <div class="payment_desc">
-      <b>NET Banking</b>
-      <!-- <small>description </small> -->
-    </div>
-  </ion-card>
-  <ion-card>
-    <ion-img src="../../assets/upi.svg"></ion-img>
-    <div class="payment_desc">
-      <b>BHIM UPI</b>
-      <!-- <small>description </small> -->
-    </div>
-  </ion-card>
-  <ion-card>
-    <ion-img src="../../assets/wallet.svg"></ion-img>
-    <div class="payment_desc">
-      <b>wallet</b>
-      <!-- <small>description </small> -->
-    </div>
-  </ion-card>
+<ion-grid>
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <ion-label>  Payment Mode</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-margin-top">
+    <ion-col class="ion-text-center"  routerLink="/payment-status">
+      <ion-card>
+        <ion-img src="../../assets/card.svg"></ion-img>
+        <div class="payment_desc">
+          <ion-text>ATM Card</ion-text>
+          <small>Visa, MasterCard ,RuPay & More </small>
+        </div>
+      </ion-card>
+    </ion-col>
+    <ion-col class="ion-text-center">
+      <ion-card>
+        <ion-img src="../../assets/netbanking.svg"></ion-img>
+        <div class="payment_desc">
+          <ion-text>NET Banking</ion-text>
+          <small></small>
+        </div>
+      </ion-card>
+    </ion-col>
+    <ion-col class="ion-text-center">
+      <ion-card>
+        <ion-img src="../../assets/upi.svg"></ion-img>
+        <div class="payment_desc">
+          <ion-text>BHIM UPI</ion-text>
+          <small></small>
+        </div>
+      </ion-card>
+    </ion-col>
+    <ion-col class="ion-text-center">
+      <ion-card>
+        <ion-img  src="../../assets/wallet.svg"></ion-img>
+        <div class="payment_desc">
+          <ion-text>Wallet</ion-text>
+          <small></small>
+        </div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 </section>
 </ion-content>
