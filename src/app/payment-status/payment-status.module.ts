@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PaymentStatusPageRoutingModule } from './payment-status-routing.module';
 
 import { PaymentStatusPage } from './payment-status.page';
-import { BaseComponentsModule } from '../components/components.module';
+import { BaseComponentsModule } from '../base-components/base-components.module';
 
 @NgModule({
   imports: [

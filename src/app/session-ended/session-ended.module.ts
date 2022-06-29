@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SessionEndedPageRoutingModule } from './session-ended-routing.module';
 
 import { SessionEndedPage } from './session-ended.page';
-import { BaseComponentsModule } from '../components/components.module';
+import { BaseComponentsModule } from '../base-components/base-components.module';
 
 @NgModule({
   imports: [

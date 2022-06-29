@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { AddDetailsPageRoutingModule } from './add-details-routing.module';
 
 import { AddDetailsPage } from './add-details.page';
-import { BaseComponentsModule } from '../components/components.module';
+import { BaseComponentsModule } from '../base-components/base-components.module';
+// import { BaseComponentsModule } from '../components/components.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { BaseComponentsModule } from '../components/components.module';
     FormsModule,
     IonicModule,
     AddDetailsPageRoutingModule,
-    BaseComponentsModule,
+    BaseComponentsModule
   ],
   declarations: [AddDetailsPage]
 })

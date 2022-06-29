@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SeatPlanPageRoutingModule } from './seat-plan-routing.module';
 
 import { SeatPlanPage } from './seat-plan.page';
-import { BaseComponentsModule } from '../components/components.module';
+import { BaseComponentsModule } from '../base-components/base-components.module';
 
 @NgModule({
   imports: [

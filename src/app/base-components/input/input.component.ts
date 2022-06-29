@@ -10,7 +10,6 @@ export class InputComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-   
 }
 
 }

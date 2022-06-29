@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { FeedbackPageRoutingModule } from './feedback-routing.module';
 
 import { FeedbackPage } from './feedback.page';
-import { BaseComponentsModule } from '../components/components.module';
+import { BaseComponentsModule } from '../base-components/base-components.module';
 
 @NgModule({
   imports: [

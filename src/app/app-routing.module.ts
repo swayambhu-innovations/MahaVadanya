@@ -34,7 +34,7 @@ const routes: Routes = [
   {
     path: 'edit-profile',
     loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
-   
+
   },
   {
     path:'feedback',
@@ -48,14 +48,8 @@ const routes: Routes = [
     path: 'payment-mode',
     loadChildren: () => import('./payment-mode/payment-mode.module').then( m => m.PaymentModePageModule)
   },
+
   {
-    path: 'payment-successful',
-    loadChildren: () => import('./payment-successful/payment-successful.module').then( m => m.PaymentSuccessfulPageModule)
-  },
-  {
-    path: '',
-    loadChildren: () => import('./payment-failed/payment-failed.module').then( m => m.PaymentFailedPageModule)
-  },  {
     path: 'ongoing-session',
     loadChildren: () => import('./ongoing-session/ongoing-session.module').then( m => m.OngoingSessionPageModule)
   },
