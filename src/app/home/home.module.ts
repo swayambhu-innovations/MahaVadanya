@@ -17,8 +17,8 @@ import { BaseComponentsModule } from '../base-components/base-components.module'
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-   BaseComponentsModule
+    BaseComponentsModule,
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
 })
 export class HomePageModule {}

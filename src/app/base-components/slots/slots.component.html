@@ -1,8 +1,8 @@
-<ion-segment value="all" class="container" color="dark">
-  <ion-segment-button routerLink="/home" value="BOOK_SLOT" >
-    <ion-label >BOOK SLOT</ion-label>
+<ion-segment [value]="router.url">
+  <ion-segment-button value="/home/book-slots" routerLink="/home/book-slots">
+    <ion-label>Book Slots</ion-label>
   </ion-segment-button>
-  <ion-segment-button routerLink="/ongoing-session" value="ACTIVE_SLOT"   >
-    <ion-label  >ACTIVE SLOT</ion-label>
+  <ion-segment-button value="/home/ongoing-session" routerLink="/home/ongoing-session">
+    <ion-label>Active Slot</ion-label>
   </ion-segment-button>
 </ion-segment>

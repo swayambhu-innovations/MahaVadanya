@@ -4,15 +4,12 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { SlotsComponent } from './slots/slots.component';
 import { InputComponent } from './input/input.component';
+import { RouterModule } from '@angular/router';
 
-
-const components = [HeaderComponent,SlotsComponent,InputComponent];
+const components = [HeaderComponent, SlotsComponent, InputComponent];
 @NgModule({
-  exports:[components],
+  exports: [components],
   declarations: [components],
-  imports: [
-    CommonModule,
-    IonicModule
-  ]
+  imports: [CommonModule, IonicModule, RouterModule],
 })
-export class BaseComponentsModule { }
+export class BaseComponentsModule {}

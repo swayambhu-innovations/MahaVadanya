@@ -1,0 +1,47 @@
+<section>
+  <h3 class="ion-text-center ion-margin">Select booking type</h3>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item class="dropdown-container">
+            <ion-label>Book For</ion-label>
+            <ion-select placeholder="Select One">
+              <ion-select-option value="mon">1 day</ion-select-option>
+              <ion-select-option value="mon">2 day</ion-select-option>
+              <ion-select-option value="mon">1 week</ion-select-option>
+              <ion-select-option value="mon">1 month</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item class="dropdown-container">
+            <ion-label>Time Slot</ion-label>
+            <ion-select placeholder="Select One">
+              <ion-select-option value="s1">10am-12pm</ion-select-option>
+              <ion-select-option value="s2">12pm-2pm</ion-select-option>
+              <ion-select-option value="s3">3pm-5pm</ion-select-option>
+              <ion-select-option value="s4">5pm-7pm</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <span>Select Date</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <div class="card">
+          <ion-datetime locale="en-GB-u-hc-h12" class="date"></ion-datetime>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</section>
