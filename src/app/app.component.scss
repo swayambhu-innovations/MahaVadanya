@@ -118,13 +118,12 @@ ion-item.selected {
   --color: var(--ion-color-primary);
 }
 ion-toolbar {
-  height: 80px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 20px;
+  padding: 0 1.2rem;
   h3 {
-    font-size: 25px;
+    font-size: 20px;
     font-family: var(--font-primary);
   }
 }
@@ -173,4 +172,10 @@ ion-modal {
 ion-modal {
   background: rgba(209, 213, 219, 0.359);
   opacity: 1;
+}
+#logout-button{
+  border:none;
+  background-color:var(--color-primary);
+  color:white;
+  border-radius:5px;
 }

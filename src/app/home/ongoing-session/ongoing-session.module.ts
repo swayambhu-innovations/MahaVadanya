@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 import { OngoingSessionPageRoutingModule } from './ongoing-session-routing.module';
@@ -14,7 +14,8 @@ import { RoundprogressModule } from 'angular-svg-round-progressbar';
     IonicModule,
     OngoingSessionPageRoutingModule,
     BaseComponentsModule,
-    RoundprogressModule
+    RoundprogressModule,
+    ReactiveFormsModule
   ],
   declarations: [OngoingSessionPage]
 })
