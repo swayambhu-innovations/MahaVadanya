@@ -41,15 +41,16 @@
           <ion-icon name="document-text-outline" slot="start"></ion-icon>
           <ion-label>Booking history</ion-label>
         </ion-item>
-        <ion-item (click)="close()" (click)="setOpen(true)">
-          <ion-icon name="log-out-outline" slot="start"></ion-icon>
-          <ion-label>Logout</ion-label>
-        </ion-item>
+    
         <ion-item (click)="close()" routerLink="/feedback">
           <ion-icon name="alert-outline" slot="start"></ion-icon>
           <ion-label>Report an issue</ion-label>
         </ion-item>
-        
+  
+          <ion-button class="ion-margin" color="primary" id="logout-button" (click)="setOpen(true)">Logout <ion-icon slot="end" name="person">
+          </ion-icon>
+        </ion-button>
+      
       </ion-list>
     </ion-content>
   </ion-menu>

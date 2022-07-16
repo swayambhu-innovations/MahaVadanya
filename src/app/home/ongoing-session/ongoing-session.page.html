@@ -1,4 +1,4 @@
-<ion-modal class="exchange_Seat" [isOpen]="exchangeseat">
+<ion-modal class="exchange_Seat" [isOpen]="exchangeSeat">
   <ng-template>
     <ion-content color="dark">
       <div class="card">
@@ -17,7 +17,7 @@
           </ion-row>
           <ion-row class="ion-text-center">
             <ion-col class="ion-margin">
-              <ion-text>New Seat : A20</ion-text>
+              <ion-text>New Seat :{{exchangeSeatNumber}} </ion-text>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -97,17 +97,24 @@
         <ion-row>
           <ion-col>
             <ion-list>
-              <ion-item color="dark">
-                <ion-label>Seat </ion-label>
-                <ion-select value="dog">
-                  <ion-select-option value="cat">A20</ion-select-option>
-                  <ion-select-option value="dog">A80</ion-select-option>
-                  <ion-select-option value="dog">A60</ion-select-option>
+              <form  [formGroup]="seatExchangeForm" (ngSubmit)="submit()">
+              <ion-item color="light">
+                <ion-label color="primary">Seat </ion-label>
+
+                <ion-select formControlName="seat" *ngIf="availableSeats">
+                  <ion-select-option  *ngFor="let seat of availableSeats" [value]="seat" >{{seat.seatNumber}}</ion-select-option>
+            
+                </ion-select>
+                <ion-select>
+                  <ion-text color="danger">
+ Sorry No Seats Available
+                  </ion-text>
                 </ion-select>
               </ion-item>
-              <ion-button expand="full" shape="round" (click)="seatExchange()"
+              <ion-button expand="full" shape="round" (click)="seatExchange()" type="submit"   [disabled]="!seatExchangeForm.valid"
                 >Request for Exchange</ion-button
               >
+            </form>
             </ion-list>
           </ion-col>
         </ion-row>
