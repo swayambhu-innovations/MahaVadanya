@@ -42,7 +42,6 @@ import {
   setUserProperties,
   setUserId,
 } from '@angular/fire/analytics';
-import { Geolocation } from '@capacitor/geolocation';
 import { DatabaseService } from './database.service';
 import { httpsCallable, Functions, } from '@angular/fire/functions';
 
@@ -94,30 +93,30 @@ export class AuthencationService {
   public get getUser(): Observable<User | null> {
     return this.user;
   }
-  private async markAttendanceRecord(uid: string) {
-    const position = await Geolocation.getCurrentPosition({
-      enableHighAccuracy: true,
-    });
-    console.log(position,25.405786219197363, 82.04665038548019);
-    if (
-      position.coords.latitude > 25.405456518905478 &&
-      position.coords.longitude > 82.04632513743458 &&
-      position.coords.latitude > 25.40537278770115 &&
-      position.coords.longitude > 82.04674295693499 &&
-      position.coords.latitude < 25.406111159423588 &&
-      position.coords.longitude < 82.0467081729854 &&
-      position.coords.latitude < 25.405906929399315 &&
-      position.coords.longitude < 82.04708383964083
-    ) {
-      this.setTodayAttendance(uid)
-    } else {
-      logEvent(this.analytics, 'Marked_Attendance_Outside');
-      this.alertify.presentToast(
-        'You are outside the campus. You can ask admin for attendance',
-        'error'
-      );
-    }
-  }
+  // private async markAttendanceRecord(uid: string) {
+  //   const position = await Geolocation.getCurrentPosition({
+  //     enableHighAccuracy: true,
+  //   });
+  //   console.log(position,25.405786219197363, 82.04665038548019);
+  //   if (
+  //     position.coords.latitude > 25.405456518905478 &&
+  //     position.coords.longitude > 82.04632513743458 &&
+  //     position.coords.latitude > 25.40537278770115 &&
+  //     position.coords.longitude > 82.04674295693499 &&
+  //     position.coords.latitude < 25.406111159423588 &&
+  //     position.coords.longitude < 82.0467081729854 &&
+  //     position.coords.latitude < 25.405906929399315 &&
+  //     position.coords.longitude < 82.04708383964083
+  //   ) {
+  //     this.setTodayAttendance(uid)
+  //   } else {
+  //     logEvent(this.analytics, 'Marked_Attendance_Outside');
+  //     this.alertify.presentToast(
+  //       'You are outside the campus. You can ask admin for attendance',
+  //       'error'
+  //     );
+  //   }
+  // }
   setTodayAttendance(uid:string) {
     getDoc(doc(this.firestore, 'users/' + uid)).then((document: any) => {
       let data = document.data();
@@ -146,51 +145,49 @@ export class AuthencationService {
       }
     });
   }
-  async markAttendance(uid: string) {
-    if (this.platform.is('capacitor')) {
-      await Geolocation.checkPermissions().then(async (permissions) => {
-        if (permissions.location == 'prompt') {
-          await Geolocation.requestPermissions()
-            .then((value: any) => {
-              console.log('requested permissions', JSON.stringify(value));
-              this.markAttendanceRecord(uid);
-            })
-            .catch(async (error) => {
-              if (
-                confirm(
-                  'Your attendance will not be recorded. Please provide permission for location.'
-                )
-              ) {
-                await Geolocation.requestPermissions().then((value: any) => {
-                  console.log('errored permissions', JSON.stringify(value));
-                  this.markAttendanceRecord(uid);
-                });
-              } else {
-                this.alertify.presentToast(
-                  'Now your attendance will not be recorded. If you want you have to enable location permission.',
-                  'error'
-                );
-              }
-            });
-        } else if (permissions.location == 'granted') {
-          this.markAttendanceRecord(uid);
-          this.alertify.presentToast('Marking attendance');
-        } else {
-          this.alertify.presentToast(
-            'Provide location permission or no attendance will be recorded',
-            'error'
-          );
-        }
-      });
-    } else {
-      // await Geolocation.requestPermissions()
-      this.markAttendanceRecord(uid);
-      this.alertify.presentToast(
-        'You are not using app. Attendance will not be marked',
-        'error'
-      );
-    }
-  }
+  // async markAttendance(uid: string) {
+  //   if (this.platform.is('capacitor')) {
+  //     await Geolocation.checkPermissions().then(async (permissions) => {
+  //       if (permissions.location == 'prompt') {
+  //         await Geolocation.requestPermissions()
+  //           .then((value: any) => {
+  //             console.log('requested permissions', JSON.stringify(value));
+  //             this.markAttendanceRecord(uid);
+  //           })
+  //           .catch(async (error) => {
+  //             if (
+  //               confirm(
+  //                 'Your attendance will not be recorded. Please provide permission for location.'
+  //               )
+  //             ) {
+  //               await Geolocation.requestPermissions().then((value: any) => {
+  //                 console.log('errored permissions', JSON.stringify(value));
+  //                 this.markAttendanceRecord(uid);
+  //               });
+  //             } else {
+  //               this.alertify.presentToast(
+  //                 'Now your attendance will not be recorded. If you want you have to enable location permission.',
+  //                 'error'
+  //               );
+  //             }
+  //           });
+  //       } else if (permissions.location == 'granted') {
+  //         this.alertify.presentToast('Marking attendance');
+  //       } else {
+  //         this.alertify.presentToast(
+  //           'Provide location permission or no attendance will be recorded',
+  //           'error'
+  //         );
+  //       }
+  //     });
+  //   } else {
+  //     // await Geolocation.requestPermissions()
+  //     this.alertify.presentToast(
+  //       'You are not using app. Attendance will not be marked',
+  //       'error'
+  //     );
+  //   }
+  // }
   // markAllAttendance() {
   //   getDocs(collection(this.firestore, 'users')).then((documents: any) => {
   //     documents.forEach((user: any) => {
