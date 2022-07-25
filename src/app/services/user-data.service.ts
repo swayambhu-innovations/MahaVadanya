@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { User, UserCredential } from '@angular/fire/auth';
 import { Firestore, addDoc, collectionData,DocumentReference, CollectionReference , collection , setDoc, doc, updateDoc, deleteDoc, docSnapshots, docData, getDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { UserAccess } from 'functions/src';
 import { throwError } from 'rxjs';
 import { DataProvider } from '../providers/data.provider';
 import { ExtraLoginEmailInfo, ExtraLoginGoogleInfo } from '../structures/method.structure';
-import { bloodGroup, department, designation, UserData } from '../structures/user.structure';
+import { bloodGroup, department, designation, UserAccess, UserData } from '../structures/user.structure';
 import { AlertsAndNotificationsService } from './uiService/alerts-and-notifications.service';
 
 @Injectable({

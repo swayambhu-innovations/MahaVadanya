@@ -43,7 +43,7 @@ import {
   setUserId,
 } from '@angular/fire/analytics';
 import { DatabaseService } from './database.service';
-import { httpsCallable, Functions, } from '@angular/fire/functions';
+import { httpsCallable, Functions } from '@angular/fire/functions';
 
 @Injectable({
   providedIn: 'root',
@@ -63,10 +63,16 @@ export class AuthencationService {
     private router: Router,
     private platform: Platform,
     private dataProvider: DataProvider,
-    private functions: Functions,
-
+    private functions: Functions
   ) {
     if (auth) {
+      GoogleAuth.initialize({
+        clientId:
+          '525383161466-cr4dgb3mnfbd5gdrds6ths2gqo1jsc1e.apps.googleusercontent.com',
+        scopes: ['profile', 'email'],
+        grantOfflineAccess: true,
+      });
+
       // GoogleAuth.signIn();
       this.user = authState(this.auth);
       this.setDataObserver(this.user);
@@ -80,7 +86,7 @@ export class AuthencationService {
       this.loggedIn = false;
     }
   }
-  public createNewUser = httpsCallable(this.functions, 'createUser')
+  public createNewUser = httpsCallable(this.functions, 'createUser');
   private userServerSubscription: Subscription | undefined = undefined;
   private readonly userDisposable: Subscription | undefined;
   public readonly user: Observable<User | null> = EMPTY;
@@ -117,7 +123,7 @@ export class AuthencationService {
   //     );
   //   }
   // }
-  setTodayAttendance(uid:string) {
+  setTodayAttendance(uid: string) {
     getDoc(doc(this.firestore, 'users/' + uid)).then((document: any) => {
       let data = document.data();
       if (data.attendanceDate) {
@@ -204,43 +210,71 @@ export class AuthencationService {
           googleUser.authentication.idToken,
           googleUser.authentication.accessToken
         );
-        signInWithCredential(this.auth, credential).then((credentials:UserCredential)=>{
-          console.log("Credentials ",credentials);
-          getDoc(doc(this.firestore, 'users/' + credentials.user.uid)).then((userDocument:any)=>{
-            if (!userDocument.exists()) {
-              logEvent(this.analytics, 'Marked_Attendance');
-              if (credentials.user.phoneNumber == null) {
-                this.userData.setGoogleUserData(credentials.user, {
-                  phoneNumber: '',
-                }).then(()=>{
+        signInWithCredential(this.auth, credential)
+          .then((credentials: UserCredential) => {
+            console.log('Credentials ', credentials);
+            getDoc(doc(this.firestore, 'users/' + credentials.user.uid))
+              .then((userDocument: any) => {
+                if (!userDocument.exists()) {
+                  logEvent(this.analytics, 'Marked_Attendance');
+                  if (credentials.user.phoneNumber == null) {
+                    this.userData
+                      .setGoogleUserData(credentials.user, {
+                        phoneNumber: '',
+                      })
+                      .then(() => {
+                        this.router.navigate(['']);
+                      });
+                  } else {
+                    this.userData
+                      .setGoogleUserData(credentials.user, {
+                        phoneNumber: credentials.user.phoneNumber || '',
+                      })
+                      .then(() => {
+                        this.router.navigate(['']);
+                      });
+                  }
+                } else {
+                  this.dataProvider.pageSetting.blur = false;
+                  this.alertify.presentToast(
+                    'Logged In.',
+                    'info',
+                    5000,
+                    [],
+                    true,
+                    ''
+                  );
                   this.router.navigate(['']);
-                });;
-              } else {
-                this.userData.setGoogleUserData(credentials.user, {
-                  phoneNumber: credentials.user.phoneNumber || '',
-                }).then(()=>{
-                  this.router.navigate(['']);
-                });
-              }
-            } else {
-              this.dataProvider.pageSetting.blur = false;
-              this.alertify.presentToast('Logged In.', 'info', 5000, [], true, '');
-              this.router.navigate(['']);
-            }
-          }).catch((error)=>{
-            console.log('ErrorCatched getting data',error);
-            this.dataProvider.pageSetting.blur = false;
-            this.alertify.presentToast(error.message, 'error', 5000, [], true, '');  ;
+                }
+              })
+              .catch((error) => {
+                console.log('ErrorCatched getting data', error);
+                this.dataProvider.pageSetting.blur = false;
+                this.alertify.presentToast(
+                  error.message,
+                  'error',
+                  5000,
+                  [],
+                  true,
+                  ''
+                );
+              });
           })
-        })
-        .catch((error)=>{
-          console.log('ErrorCatched authorizing',error);
-          this.dataProvider.pageSetting.blur = false;
-          this.alertify.presentToast(error.message, 'error', 5000, [], true, '');  
-        });
+          .catch((error) => {
+            console.log('ErrorCatched authorizing', error);
+            this.dataProvider.pageSetting.blur = false;
+            this.alertify.presentToast(
+              error.message,
+              'error',
+              5000,
+              [],
+              true,
+              ''
+            );
+          });
       })
       .catch((error) => {
-        console.log('ErrorCatched',error);
+        console.log('ErrorCatched', error);
         this.dataProvider.pageSetting.blur = false;
         this.alertify.presentToast(error.message, 'error', 5000, [], true, '');
       });
@@ -255,17 +289,15 @@ export class AuthencationService {
   public async loginEmailPassword(email: string, password: string) {
     this.dataProvider.pageSetting.blur = true;
     this.dataProvider.pageSetting.lastRedirect = '';
-    let data = await signInWithEmailAndPassword(
-      this.auth,
-      email,
-      password
-    ).then((credentials: UserCredential) => {
-      logEvent(this.analytics, 'Logged_In');
-      this.router.navigate(['']);
-    }).catch((error) => {
-      this.dataProvider.pageSetting.blur = false;
-      this.alertify.presentToast(error.message, 'error', 5000);
-    });
+    let data = await signInWithEmailAndPassword(this.auth, email, password)
+      .then((credentials: UserCredential) => {
+        logEvent(this.analytics, 'Logged_In');
+        this.router.navigate(['']);
+      })
+      .catch((error) => {
+        this.dataProvider.pageSetting.blur = false;
+        this.alertify.presentToast(error.message, 'error', 5000);
+      });
     this.dataProvider.pageSetting.blur = false;
   }
   public signUpWithEmailAndPassword(
@@ -326,7 +358,7 @@ export class AuthencationService {
     logEvent(this.analytics, 'Logged_Out');
     this.router.navigate(['../login']);
   }
-  
+
   private async setDataObserver(user: Observable<User | null>) {
     // console.log('Starting data observer')
     if (user) {
@@ -375,12 +407,12 @@ export class AuthencationService {
       }
     }
   }
-  setMissingFields(){
+  setMissingFields() {
     if (!this.dataProvider.userData?.phoneNumber) {
       const res = prompt('Enter your phone number');
-      if (res.length === 10){
-        setDoc(doc(this.firestore,'users/'+this.dataProvider.userID), {
-          phoneNumber: '+91'+res,
+      if (res.length === 10) {
+        setDoc(doc(this.firestore, 'users/' + this.dataProvider.userID), {
+          phoneNumber: '+91' + res,
         });
       } else {
         this.alertify.presentToast('Invalid Phone Number', 'error', 5000);
@@ -392,38 +424,23 @@ export class AuthencationService {
   // }
 }
 const geoFenceData = {
-  "type": "FeatureCollection",
-  "features": [
+  type: 'FeatureCollection',
+  features: [
     {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
+      type: 'Feature',
+      properties: {},
+      geometry: {
+        type: 'Polygon',
+        coordinates: [
           [
-            [
-              82.04677820205688,
-              25.406187098992433
-            ],
-            [
-              82.04637050628662,
-              25.405552321150648
-            ],
-            [
-              82.04677820205688,
-              25.405341535403377
-            ],
-            [
-              82.04722344875334,
-              25.405956931840397
-            ],
-            [
-              82.04677820205688,
-              25.406187098992433
-            ]
-          ]
-        ]
-      }
-    }
-  ]
-}
+            [82.04677820205688, 25.406187098992433],
+            [82.04637050628662, 25.405552321150648],
+            [82.04677820205688, 25.405341535403377],
+            [82.04722344875334, 25.405956931840397],
+            [82.04677820205688, 25.406187098992433],
+          ],
+        ],
+      },
+    },
+  ],
+};
