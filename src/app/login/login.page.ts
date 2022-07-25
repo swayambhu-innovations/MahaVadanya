@@ -9,6 +9,8 @@ import { AlertsAndNotificationsService } from '../services/uiService/alerts-and-
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  showPassword = false;
+  showCnfPwd = false;
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', Validators.required),
@@ -33,6 +35,14 @@ export class LoginPage implements OnInit {
         'error',
         3000
       );
+    }
+  }
+
+  togglePassword(type) {
+    if (type === 'p') {
+      this.showPassword = !this.showPassword;
+    } else if (type === 'c') {
+      this.showCnfPwd = !this.showCnfPwd;
     }
   }
 }

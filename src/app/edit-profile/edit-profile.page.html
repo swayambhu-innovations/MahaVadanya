@@ -48,7 +48,7 @@
         <ion-col>
           <div class="input-container">
             <ion-label>Addhar No.</ion-label>
-            <ion-input placeholder="XXXX-XXXX-XXXX"> </ion-input>
+            <ion-input placeholder="XXXX-XXXX-XXXX"></ion-input>
           </div>
         </ion-col>
       </ion-row>
@@ -58,8 +58,8 @@
             <ion-item class="dropdown-container">
               <ion-label>Profession</ion-label>
               <ion-select placeholder="Select One">
-                <ion-select-option value="t">Teacher</ion-select-option>
-                <ion-select-option value="s">Student</ion-select-option>
+                <ion-select-option>Teacher</ion-select-option>
+                <ion-select-option>Student</ion-select-option>
               </ion-select>
             </ion-item>
           </ion-list>
@@ -69,7 +69,7 @@
         <ion-col>
           <div class="input-container">
             <ion-label>Age</ion-label>
-            <ion-input placeholder="Age" type="number"> </ion-input>
+            <ion-input placeholder="Age"> </ion-input>
           </div>
         </ion-col>
       </ion-row>
@@ -77,14 +77,14 @@
         <ion-col>
           <div class="option-container">
             <ion-label>Gender</ion-label>
-            <div>
-              <div class="radio active">
-                <ion-text>Male</ion-text>
-                <ion-radio slot="start" value="griff"></ion-radio>
-              </div>
-              <div class="radio">
-                <ion-text>Female</ion-text> <ion-radio slot="start"></ion-radio>
-              </div>
+            <div class="gender">
+              <ion-item>
+                  <ion-select placeholder="choose">
+                    <ion-select-option ionFocus color = 'primary'>Male</ion-select-option>
+                    <ion-select-option ionFocus color = 'primary'>Female</ion-select-option>
+                    <ion-select-option ionFocus color = 'primary'>Undefined</ion-select-option>
+                  </ion-select>
+              </ion-item>
             </div>
           </div>
         </ion-col>

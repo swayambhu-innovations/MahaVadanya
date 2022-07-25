@@ -1,44 +1,51 @@
-section{
+section {
     width: 90vw;
     margin: auto;
-height: 90vh;
+    height: 90vh;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
 
-display: flex;
-align-items:center;
-justify-content:  center;
-flex-direction: column;
-gap:40px;
-.payment_details{
-    margin-top: 50px;
-}
-.status-text{
-    font-size: 25px;
-    margin: 30px 0px;
-}
-    ion-img{
+    .payment_details {
+        margin-top: 50px;
+    }
+
+    .status-text {
+        font-size: 25px;
+        margin: 30px 0px;
+    }
+
+    ion-img {
         margin-top: 50px;
         width: 70px;
         height: 70px;
         margin: auto;
-    } 
-    p{
+    }
+
+    p {
         margin: 50px 0px;
         font-size: 20px;
-    } 
-    .booking_slot{
-        
+    }
+
+    .booking_slot {
+
         font-size: 35px;
         color: var(--ion-background-color);
     }
-    .try_again{
+
+    .try_again {
         background-color: transparent;
-        border-radius:30px;
+        border-radius: 30px;
         border: 3px solid var(--ion-background-color);
         // padding: 10px;
         width: 250px;
         color: var(--ion-background-color);
     }
-   .sucess_btn{
+
+    .sucess_btn {
         width: 90vw;
         height: 50px;
     }
