@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-seat-plan',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./seat-plan.page.scss'],
 })
 export class SeatPlanPage implements OnInit {
+  @Input() buttonColor: string = "#28ba62";
 
   constructor() { }
 
