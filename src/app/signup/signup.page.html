@@ -17,27 +17,29 @@
         <form
           size="11"
           offset="0.5"
+          [formGroup]="signupForm"
+          (ngSubmit)="submit()"
         >
           <ion-card>
             <ion-input
+              type="text"
               placeholder="Username"
               autocomplete="off"
               autocorrect="off"
               autofocus="true"
-              name="username"
+              formControlName="username"
             >
             </ion-input>
           </ion-card>
           <ion-card>
             <ion-input
-           
+              type="email"
               class="input-reverse ion-no-border"
               autocomplete="off"
               placeholder="Email"
               autocorrect="off"
-              autofocus="true"
               color="dark"
-              name="Email"
+              formControlName="email"
               pattern="email"
             >
              
@@ -45,30 +47,14 @@
           </ion-card>
           <ion-card>
             <ion-input
-           
+              type="password"
               class="input-reverse ion-no-border"
               autocomplete="off"
               placeholder="Password"
               autocorrect="off"
-              autofocus="true"
               color="dark"
-              name="Password"
+              formControlName="password"
               pattern="password"
-            >
-             
-            </ion-input>
-          </ion-card>
-          <ion-card>
-            <ion-input
-           
-              class="input-reverse ion-no-border"
-              autocomplete="off"
-              placeholder="Confirm Password"
-              autocorrect="off"
-              autofocus="true"
-              color="dark"
-              name="ConfirmPassword"
-              pattern="confirmPassword"
             >
              
             </ion-input>
@@ -79,7 +65,6 @@
           fill="solid"
           size="large"
           color="primary"
-          routerLink="/"
           type="submit"
           
           >
@@ -96,7 +81,7 @@
     
       <ion-row class="ion-text-center ion-margin-top">
         <ion-col>
-          <button id="social-icon">
+          <button id="social-icon" (click)="authService.signInWithGoogle()">
             <ion-icon name="logo-google"></ion-icon>
           </button>
         </ion-col>
@@ -231,8 +216,8 @@
           src="../../assets/icon/google.png"
           (click)="authService.signInWithGoogle()"
         ></ion-img>
-        <!-- <ion-img src="../../assets/icon/facebook.png"></ion-img>
-        <ion-img src="../../assets/icon/twitter.png"></ion-img> -->
+        <ion-img src="../../assets/icon/facebook.png"></ion-img>
+        <ion-img src="../../assets/icon/twitter.png"></ion-img>
       </div>
     </div>
   </section>

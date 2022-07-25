@@ -78,7 +78,7 @@
       </ion-row>
       <ion-row class="ion-text-center ion-margin-top">
         <ion-col>
-          <button id="social-icon">
+          <button id="social-icon" (click)="authService.signInWithGoogle()">
             <ion-icon name="logo-google"></ion-icon>
           </button>
         </ion-col>
