@@ -17,14 +17,16 @@
         <form
           size="11"
           offset="0.5"
+          [formGroup]="signupForm"
+          (ngSubmit)="submit()"
         >
           <ion-card>
             <ion-input
               placeholder="Username"
               autocomplete="off"
               autocorrect="off"
-              autofocus="true"
               name="username"
+              formControlName="username"
             >
             </ion-input>
           </ion-card>
@@ -35,10 +37,11 @@
               autocomplete="off"
               placeholder="Email"
               autocorrect="off"
-              autofocus="true"
               color="dark"
               name="Email"
               pattern="email"
+              
+              formControlName="email"
             >
              
             </ion-input>
@@ -50,10 +53,11 @@
               autocomplete="off"
               placeholder="Password"
               autocorrect="off"
-              autofocus="true"
               color="dark"
               name="Password"
               pattern="password"
+              
+              formControlName="password"
             >
              
             </ion-input>
@@ -65,10 +69,11 @@
               autocomplete="off"
               placeholder="Confirm Password"
               autocorrect="off"
-              autofocus="true"
               color="dark"
               name="ConfirmPassword"
-              pattern="confirmPassword"
+              pattern="Password"
+              
+              formControlName="confirmPassword"
             >
              
             </ion-input>
@@ -79,20 +84,14 @@
           fill="solid"
           size="large"
           color="primary"
-          routerLink="/"
           type="submit"
-          
           >
           Sign Up
         </ion-button>
       </form>
         </ion-col>
       </ion-row>
-      <!-- <ion-row>
-        <ion-col class="ion-text-center" > 
-         <ion-text color="dark">Or</ion-text>
-        </ion-col>
-      </ion-row> -->
+   
     
       <ion-row class="ion-text-center ion-margin-top">
         <ion-col>
@@ -111,113 +110,3 @@
     </ion-grid>
   </section>
 </ion-content>
-
-<!-- <div>
-          <ion-item class="input-wrap ion-margin-bottom">
-            <ion-input type="password" class="ion-no-border" autocomplete="off" placeholder="Username" autocorrect="off" autofocus="true"  name="username"></ion-input>
-          </ion-item>
-
-          <ion-item class="input-wrap ion-margin-bottom ion-no-border">
-            <ion-input [type]="showPassword === false ? 'password' : 'text'" class="input-reverse ion-no-border"  autocomplete="off" placeholder="Password" autocorrect="off" autofocus="true" color="dark" name="password" pattern="email">
-              <button class="ion-float-end pwd-icon-box"  (click)="togglePassword()">
-                <ion-icon class="show-option" [hidden]="!showPassword" name="eye-off-outline"></ion-icon>
-                <ion-icon class="hide-option" [hidden]="showPassword" name="eye-outline"></ion-icon>
-             </button>
-            </ion-input>
-          </ion-item>
-            <ion-button class="" expand="block" fill="solid" size="large" shape="round" color="primary">
-             Login
-            </ion-button>
-        </div> -->
-
-<!-- <ion-icon class="ion-float-right" name="eye-off-outline"></ion-icon> -->
-
-<!-- <ion-col>
-        <ion-row size="6" offSet="3">
-<h3>hii</h3>
-        </ion-row>
-      </ion-col>
-      <ion-col size="3"></ion-col>
-      <ion-col size="6">
-          <ion-img src="assets/sss-logo.svg" class="logo"></ion-img>
-      </ion-col>
-      <ion-col size="3"></ion-col>
-      <ion-col size="12" class="class="ion-padding>
-        <div>
-          <ion-item class="input-wrap ion-margin-bottom">
-            <ion-input type="password" class="ion-no-border" autocomplete="off" placeholder="Username" autocorrect="off" autofocus="true"  name="username"></ion-input>
-          </ion-item>
-
-          <ion-item class="input-wrap ion-margin-bottom ion-no-border">
-            <ion-input [type]="showPassword === false ? 'password' : 'text'" class="input-reverse ion-no-border"  autocomplete="off" placeholder="Password" autocorrect="off" autofocus="true" color="dark" name="password" pattern="email">
-              <button class="ion-float-end pwd-icon-box"  (click)="togglePassword()">
-                <ion-icon class="show-option" [hidden]="!showPassword" name="eye-off-outline"></ion-icon>
-                <ion-icon class="hide-option" [hidden]="showPassword" name="eye-outline"></ion-icon>
-             </button>
-            </ion-input>
-          </ion-item>
-            <ion-button class="" expand="block" fill="solid" size="large" shape="round" color="primary">
-             Login
-            </ion-button>
-        </div>
-        <ion-text class="ion-text-center">
-          <h6 class="text-green" routerLink="/forget-password">Forget Password ?</h6>
-        </ion-text>
-      </ion-col>
-      <ion-col size="2"></ion-col>
-      <ion-col size="4">
-        <ion-img src="assets/icon/google.svg" class="social-media-svg ion-padding-horizontal"></ion-img>
-      </ion-col>
-      <ion-col size="4">
-        <ion-img src="assets/icon/facebook.svg" class="social-media-svg ion-padding-horizontal"></ion-img>
-      </ion-col>
-      <ion-col size="2"></ion-col>
-      <ion-col size="12">
-        <ion-text class="ion-text-center">
-          <h6>Don't have an account ? <span class="text-light-green" routerLink="/signup">Signup Now</span></h6>
-        </ion-text>
-      </ion-col> -->
-
-
-
-
-
-
-
-<!-- <ion-content>
-  <section>
-    <div>
-      <ion-img src="../../assets/logo.png" alt="Mahavadanya Logo" id="logo"></ion-img>
-      <h1>Mahavadanya</h1>
-    </div>
-    <div>
-      <form>
-        <ion-item lines="none">
-          <ion-icon name="person"></ion-icon>
-          <ion-input
-            type="email"
-            placeholder="Email Address"
-            autofocus="true"
-          ></ion-input>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-icon name="lock-open"></ion-icon>
-          <ion-input type="password" placeholder="Password"></ion-input>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-icon name="lock-open"></ion-icon>
-          <ion-input type="password" placeholder="Confirm Password"></ion-input>
-        </ion-item>
-        <ion-button expand="block" routerLink="/home">Sign Up</ion-button>
-      </form>
-    </div>
-    <div id="other-sign-up-options">
-      <p >or sign up with</p>
-      <div id="sign-up-options">
-        <ion-img src="../../assets/icon/google.png"></ion-img>
-        <ion-img src="../../assets/icon/facebook.png"></ion-img>
-        <ion-img src="../../assets/icon/twitter.png"></ion-img>
-      </div>
-    </div>
-  </section>
-</ion-content> -->

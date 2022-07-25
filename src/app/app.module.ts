@@ -20,6 +20,7 @@ import { provideFunctions, getFunctions } from '@angular/fire/functions';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BaseComponentsModule } from './base-components/base-components.module';
+import { DataProvider } from './providers/data.provider';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,12 +36,13 @@ import { BaseComponentsModule } from './base-components/base-components.module';
     provideFunctions(() => getFunctions()),
     provideStorage(() => getStorage()),
     BrowserAnimationsModule,
-    BaseComponentsModule
+    BaseComponentsModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ScreenTrackingService,
     UserTrackingService,
+    DataProvider,
   ],
   bootstrap: [AppComponent],
 })

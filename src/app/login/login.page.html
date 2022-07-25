@@ -8,74 +8,77 @@
       </ion-row>
       <ion-row id="form">
         <ion-col size="11" offset="0.5">
-        <form
-          size="11"
-          offset="0.5"
-        >
-          <ion-card>
-            <ion-input
-              placeholder="Username"
-              autocomplete="off"
-              autocorrect="off"
-              autofocus="true"
-              name="username"
-            >
-            </ion-input>
-          </ion-card>
-          <ion-card>
-            <ion-input
-              [type]="showPassword === false ? 'password' : 'text'"
-              class="input-reverse ion-no-border"
-              autocomplete="off"
-              placeholder="Password"
-              autocorrect="off"
-              autofocus="true"
-              color="dark"
-              name="password"
-              pattern="email"
-            >
-              <button
-                class="ion-float-end pwd-icon-box"
-                (click)="togglePassword('p')"
-              >
-                <ion-icon
-                  class="show-option"
-                  [hidden]="!showPassword"
-                  name="eye-off-outline"
-                ></ion-icon>
-                <ion-icon
-                  class="hide-option"
-                  [hidden]="showPassword"
-                  name="eye-outline"
-                ></ion-icon>
-              </button>
-            </ion-input>
-          </ion-card>
-          <ion-button
-            class="ion-margin login_btn"
-            expand="block"
-            fill="solid"
-            size="large"
-            color="primary"
-            routerLink="/"
-            type="submit"
-            
+          <form
+            size="11"
+            offset="0.5"
+            [formGroup]="loginForm"
+            (ngSubmit)="submit()"
           >
-            Login
-          </ion-button>
-        </form>
+            <ion-card>
+              <ion-input
+                type="email"
+                placeholder="Email"
+                autocomplete="off"
+                autocorrect="off"
+                autofocus="true"
+                formControlName="email"
+              >
+              </ion-input>
+            </ion-card>
+            <ion-card>
+              <ion-input
+                [type]="showPassword === false ? 'password' : 'text'"
+                class="input-reverse ion-no-border"
+                autocomplete="off"
+                placeholder="Password"
+                autocorrect="off"
+                color="dark"
+                formControlName="password"
+                pattern="email"
+              >
+                <button
+                  class="ion-float-end pwd-icon-box"
+                  (click)="togglePassword('p')"
+                >
+                  <ion-icon
+                    class="show-option"
+                    [hidden]="!showPassword"
+                    name="eye-off-outline"
+                  ></ion-icon>
+                  <ion-icon
+                    class="hide-option"
+                    [hidden]="showPassword"
+                    name="eye-outline"
+                  ></ion-icon>
+                </button>
+              </ion-input>
+            </ion-card>
+            <ion-button
+              class="ion-margin login_btn"
+              expand="block"
+              fill="solid"
+              size="large"
+              color="primary"
+              type="submit"
+            >
+              Login
+            </ion-button>
+          </form>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="ion-text-center">
-          <ion-text class="ion-text-center fogotPass" routerLink="/forget-password">
+          <ion-text
+            class="ion-text-center fogotPass"
+            routerLink="/forget-password"
+          >
             Forgot Password?
           </ion-text>
         </ion-col>
       </ion-row>
       <ion-row class="ion-text-center ion-margin-top">
         <ion-col>
-          <button id="social-icon">
+          <button id="social-icon" (click)="authService.signInWithGoogle()">
             <ion-icon name="logo-google"></ion-icon>
           </button>
         </ion-col>

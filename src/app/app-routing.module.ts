@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -35,7 +35,7 @@ const routes: Routes = [
       import('./payment/payment.module').then((m) => m.PaymentPageModule),
   },
   {
-    path: 'select-seat',
+    path: 'seat-plan',
     loadChildren: () =>
       import('./seat-plan/seat-plan.module').then((m) => m.SeatPlanPageModule),
   },
