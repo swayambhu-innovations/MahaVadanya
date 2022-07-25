@@ -6,7 +6,10 @@ import {
   doc,
   query,
   updateDoc,
+  increment,
+  addDoc,
 } from '@angular/fire/firestore';
+import { Booking } from '../structures/booking.structure';
 import { Seat } from '../structures/seat.structure';
 
 @Injectable({
@@ -23,6 +26,14 @@ export class DatabaseService {
   }
   editSeat(seatId: string, seat: Seat) {
     return updateDoc(doc(this.fs, 'seats/' + seatId), seat);
+  }
+
+
+  async addBooking(booking: Booking) {
+    await updateDoc(doc(this.fs, 'sitedata/counters'), {
+      totalBookings: increment(1),
+    });
+    return addDoc(collection(this.fs, 'bookings'), booking);
   }
 
 

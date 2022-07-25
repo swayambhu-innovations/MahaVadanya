@@ -35,7 +35,7 @@ const routes: Routes = [
       import('./payment/payment.module').then((m) => m.PaymentPageModule),
   },
   {
-    path: 'seat-plan',
+    path: 'select-seat',
     loadChildren: () =>
       import('./seat-plan/seat-plan.module').then((m) => m.SeatPlanPageModule),
   },
@@ -97,7 +97,8 @@ const routes: Routes = [
     path: 'history',
     loadChildren: () =>
       import('./history/history.module').then((m) => m.HistoryPageModule),
-  },  {
+  },
+  {
     path: 'forgot-password',
     loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },

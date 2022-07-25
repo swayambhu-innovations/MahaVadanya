@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Timestamp } from '@angular/fire/firestore';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Console } from 'console';
+import { BookingServiceService } from 'src/app/services/booking-service.service';
+import { DatabaseService } from 'src/app/services/database.service';
+import { Booking } from 'src/app/structures/booking.structure';
 
 @Component({
   selector: 'app-book-slots',
@@ -6,10 +12,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-slots.page.scss'],
 })
 export class BookSlotsPage implements OnInit {
+  bookingForm: FormGroup = new FormGroup({
+    date: new FormControl('', [Validators.required]),
+    timeSlot: new FormControl(null, [Validators.required]),
+    bookedFor: new FormControl(null, [Validators.required]),
+  });
+  constructor(private bookingService: BookingServiceService) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit() {}
+  async submit() {
+    this.bookingForm.value.date = Timestamp.fromDate(
+      new Date(this.bookingForm.get('date')?.value)
+    );
+    this.bookingService.booking={
+      paymentFor: 'bank-transfer',
+      ...this.bookingForm.value,
+    };
+console.log(this.bookingService.booking);
   }
-
 }
