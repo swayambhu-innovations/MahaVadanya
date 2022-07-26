@@ -3,6 +3,7 @@ import { Timestamp } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Console } from 'console';
+import { DataProvider } from 'src/app/providers/data.provider';
 import { BookingServiceService } from 'src/app/services/booking-service.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Booking } from 'src/app/structures/booking.structure';
@@ -18,16 +19,18 @@ export class BookSlotsPage implements OnInit {
     timeSlot: new FormControl(null, [Validators.required]),
     bookedFor: new FormControl(null, [Validators.required]),
   });
-  constructor(private bookingService: BookingServiceService,private router: Router) {}
+    constructor(private bookingService: BookingServiceService,private router: Router,private dataProvider: DataProvider) {}
 
   ngOnInit() {}
   async submit() {
+
     this.bookingForm.value.date = Timestamp.fromDate(
       new Date(this.bookingForm.get('date')?.value)
     );
     this.bookingService.booking={
-      paymentFor: 'booking-form',
       ...this.bookingForm.value,
+      userId:this.dataProvider?.userData?.userId,
+      bookedBy:this.dataProvider?.userData?.displayName,
     };
     this.router.navigate(['/seat-plan']);
 console.log(this.bookingService.booking);

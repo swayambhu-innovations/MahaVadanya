@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthencationService } from '../services/authencation.service';
 import { AlertsAndNotificationsService } from '../services/uiService/alerts-and-notifications.service';
 
@@ -18,7 +19,9 @@ export class LoginPage implements OnInit {
 
   constructor(
     public authService: AuthencationService,
-    private alertify: AlertsAndNotificationsService
+    private alertify: AlertsAndNotificationsService,
+    private router: Router
+
   ) {}
 
   ngOnInit() {}
@@ -29,7 +32,10 @@ export class LoginPage implements OnInit {
       this.authService.loginEmailPassword(
         this.loginForm.get('email').value,
         this.loginForm.get('password').value
-      );
+      ).then(() => {
+      this.router.navigate(['/home']);
+      }).catch(() => {
+      });
     } else {
       this.alertify.presentToast(
         'Please fill all the fields correctly',

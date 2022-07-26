@@ -1,32 +1,24 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-declare const UIkit: any;
+import { DataProvider } from '../providers/data.provider';
+// declare const UIkit: any;
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.page.html',
   styleUrls: ['./edit-profile.page.scss'],
 })
 export class EditProfilePage implements OnInit {
-  editMode = false;
+  editProfile = false;
   currentEditId = '';
   isModalOpen = false;
 
-  constructor() {}
+  constructor(public dataProvider: DataProvider) {}
+  ngOnInit() {
+    console.log(this.dataProvider.userData);
+  }
   toggleOpen() {
     this.isModalOpen = !this.isModalOpen;
+  };
+  toggleEditProfile() {
+    this.editProfile = !this.editProfile;
   }
-
-  editItem(item: any): void {
-    this.editMode = true;
-
-    const itemModal = document.getElementById('employee-modal');
-    if (itemModal) {
-      itemModal.addEventListener('hidden', () => {
-        this.editMode = false;
-        this.currentEditId = '';
-      });
-      UIkit.modal(itemModal).show();
-    }
-  }
-
-  ngOnInit() {}
 }

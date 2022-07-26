@@ -18,13 +18,31 @@ ion-avatar {
   background-color: rebeccapurple;
   transform: scale(1.54);
 }
+.display-container{
+  display: flex;
+  width: 90%;
+  margin: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap:1rem;
+  ion-label{
+    font-size: 20px;
+    color: var(--ion-color-primary);
+    font-weight: 500;
+  }
+  ion-text{
+    font-size: 18px;
+    font-family: var(--font-primary);
+    color:black;
+  }
+}
 
 .input-container,
 .option-container {
   height: 45px;
   width: 86vw;
   margin: 15px auto;
-  font-family: var(--font-primary);
 
   div {
     display: flex;
@@ -40,26 +58,17 @@ ion-avatar {
   }
 
   ion-label {
-    margin: 10px 0px;
     font-size: 15px;
     color: #4d5d8b;
+    margin-left: 15px;
   }
 
-  ion-input {
-    height: 100%;
-    width: 100%;
-    margin-top: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.24);
-    color: black;
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 3px;
-
-    ion-icon {
-      font-size: 20px;
-      color: #4d5d8b;
-      margin-left: 90%;
-    }
+  ion-icon {
+    font-size: 20px;
+    color: #4d5d8b;
+    margin-right: 35px;
   }
+
 }
 
 ion-datetime {
@@ -68,14 +77,9 @@ ion-datetime {
 }
 
 .dropdown-container {
-  height: 45px;
   width: 86vw;
   margin: auto;
   margin-top: 30px;
-  border: 1px solid rgba(0, 0, 0, 0.24);
-
-  border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 3px;
   color: #4d5d8b;
 }
 
@@ -115,5 +119,25 @@ ion-modal {
     margin-top: 15px;
     width: 90vw;
     --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+}
+
+.dob {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95vw;
+  ion-item{
+    display: flex;
+    width: 100%;
+    ion-input{
+      width: 70%;
+    }
+  }
+}
+.age{
+  margin-bottom: 40px;
+  ion-label{
+    margin-left: 2px;
   }
 }

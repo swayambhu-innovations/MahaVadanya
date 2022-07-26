@@ -48,11 +48,10 @@ export class SeatPlanPage implements OnInit {
     console.log('jjj');
     this.bookingService.booking = {
       ...this.bookingService.booking,
-      seatNo: this.bookedSeat.seatNo,
+      seat: this.bookedSeat,
+      bookingId:this.bookedSeat.id
     };
     this.router.navigate(['/payment-mode']);
-    this.bookedSeat.available=false;
-    // await this.databaseService.editSeat(this.bookedSeat.id, this.bookedSeat);
 
   }
 }

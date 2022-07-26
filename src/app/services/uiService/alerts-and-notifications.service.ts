@@ -50,13 +50,11 @@ export class AlertsAndNotificationsService {
   playAudio(type: 'toast' | 'errorToast') {
     if (type === 'toast') {
       if(this.platform.is('android') || this.platform.is('ios')) {
-        NativeAudio.play({assetId: 'toast',time:0});
       } else {
         this.toastAudio.play();
       }
     } else if (type === 'errorToast') {
       if(this.platform.is('android') || this.platform.is('ios')) {
-        NativeAudio.play({assetId: 'error',time:0});
       } else {
         this.toastErrorAudio.play();
       }
@@ -121,5 +119,4 @@ export class AlertsAndNotificationsService {
     console.log('onDidDismiss resolved with role', role);
     return role;
   }
-
 }
