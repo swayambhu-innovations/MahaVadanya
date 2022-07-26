@@ -25,21 +25,25 @@
       <ion-row>
         <ion-col>
           <div class="input-container">
-            <ion-label>Full Name</ion-label>
-            <ion-input placeholder="Name"> </ion-input>
+            <ion-item>
+              <ion-label position="floating">Full Name</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
           </div>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <div class="input-container">
-            <ion-label>Date of Birth</ion-label>
-            <div>
-              <ion-input placeholder="DD-MM-YYYY"> </ion-input>
-              <ion-icon
-              (click)="toggleOpen()"
-                name="calendar-number-outline"
-              ></ion-icon>
+            <div class="dob">
+              <ion-item>
+                <ion-label position="floating">D.O.B</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+              <ion-icon id="icon"
+                (click)="toggleOpen()"
+                  name="calendar-number-outline"
+                ></ion-icon>
             </div>
           </div>
         </ion-col>
@@ -47,29 +51,33 @@
       <ion-row>
         <ion-col>
           <div class="input-container">
-            <ion-label>Addhar No.</ion-label>
-            <ion-input placeholder="XXXX-XXXX-XXXX"></ion-input>
+            <ion-item>
+              <ion-label position="floating">Aadhar Number</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
           </div>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-list>
-            <ion-item class="dropdown-container">
-              <ion-label>Profession</ion-label>
-              <ion-select placeholder="Select One">
-                <ion-select-option>Teacher</ion-select-option>
-                <ion-select-option>Student</ion-select-option>
-              </ion-select>
-            </ion-item>
-          </ion-list>
+            <ion-list>
+              <ion-item class="dropdown-container">
+                <ion-label>Profession</ion-label>
+                <ion-select placeholder="Select One">
+                  <ion-select-option>Teacher</ion-select-option>
+                  <ion-select-option>Student</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <div class="input-container">
-            <ion-label>Age</ion-label>
-            <ion-input placeholder="Age"> </ion-input>
+          <div class="input-container age">
+            <ion-item>
+              <ion-label position="floating">Age</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
           </div>
         </ion-col>
       </ion-row>
