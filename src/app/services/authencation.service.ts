@@ -66,13 +66,6 @@ export class AuthencationService {
     private functions: Functions
   ) {
     if (auth) {
-      GoogleAuth.initialize({
-        clientId:
-          '525383161466-cr4dgb3mnfbd5gdrds6ths2gqo1jsc1e.apps.googleusercontent.com',
-        scopes: ['profile', 'email'],
-        grantOfflineAccess: true,
-      });
-
       // GoogleAuth.signIn();
       this.user = authState(this.auth);
       this.setDataObserver(this.user);
@@ -206,13 +199,15 @@ export class AuthencationService {
     this.dataProvider.pageSetting.lastRedirect = '';
     GoogleAuth.signIn()
       .then((googleUser: any) => {
+        console.log('googleUser', googleUser);
         const credential = GoogleAuthProvider.credential(
           googleUser.authentication.idToken,
           googleUser.authentication.accessToken
         );
+        console.log('credential', credential);
         signInWithCredential(this.auth, credential)
           .then((credentials: UserCredential) => {
-            console.log('Credentials ', credentials);
+            console.log('UserCredentials ', credentials);
             getDoc(doc(this.firestore, 'users/' + credentials.user.uid))
               .then((userDocument: any) => {
                 if (!userDocument.exists()) {
@@ -381,22 +376,24 @@ export class AuthencationService {
           this.userServerSubscription = docData(this.userDoc).subscribe(
             async (data: any) => {
               // console.log("Received new data",data)
-              if (data.status) {
-                if (!this.allowedStatuses.includes(data.status.access)) {
-                  this.logout();
+              if (data){
+                if (data.status) {
+                  if (!this.allowedStatuses.includes(data.status.access)) {
+                    this.logout();
+                  }
+                } else {
+                  updateDoc(doc(this.firestore, 'users/' + u.uid), {
+                    status: { access: 'active', isOnline: true },
+                  });
                 }
-              } else {
-                updateDoc(doc(this.firestore, 'users/' + u.uid), {
-                  status: { access: 'active', isOnline: true },
+                this.dataProvider.userData = data;
+                // this.setMissingFields();
+                this.dataProvider.gettingUserData = false;
+                await Storage.set({
+                  key: 'userData',
+                  value: JSON.stringify(data),
                 });
               }
-              this.dataProvider.userData = data;
-              // this.setMissingFields();
-              this.dataProvider.gettingUserData = false;
-              await Storage.set({
-                key: 'userData',
-                value: JSON.stringify(data),
-              });
             }
           );
         }

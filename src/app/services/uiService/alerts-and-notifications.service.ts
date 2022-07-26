@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { NativeAudio } from '@capacitor-community/native-audio';
 import { AlertController, Platform } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 
@@ -15,13 +14,11 @@ export class AlertsAndNotificationsService {
   playAudio(type: 'toast' | 'errorToast') {
     if (type === 'toast') {
       if(this.platform.is('android') || this.platform.is('ios')) {
-        NativeAudio.play({assetId: 'toast',time:0});
       } else {
         this.toastAudio.play();
       }
     } else if (type === 'errorToast') {
       if(this.platform.is('android') || this.platform.is('ios')) {
-        NativeAudio.play({assetId: 'error',time:0});
       } else {
         this.toastErrorAudio.play();
       }
@@ -93,26 +90,7 @@ export class AlertsAndNotificationsService {
     private platform: Platform
   ) {
     if (platform.is('capacitor')) {
-      NativeAudio.preload({
-        assetId: 'toast',
-        assetPath: 'toast.mp3',
-        audioChannelNum: 1,
-        isUrl: false,
-      });
-      NativeAudio.preload({
-        assetId: 'error',
-        assetPath: 'error.mp3',
-        audioChannelNum: 1,
-        isUrl: false,
-      });
-      NativeAudio.setVolume({
-        assetId: 'toast',
-        volume: 0.4,
-      });
-      NativeAudio.setVolume({
-        assetId: 'error',
-        volume: 0.4,
-      });
+
     } else {
       this.toastAudio.src = '/assets/audio/tones/toast.mp3';
       this.toastAudio.volume = 0.4;

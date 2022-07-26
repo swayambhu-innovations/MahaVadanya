@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, Platform } from '@ionic/angular';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -16,7 +19,20 @@ export class AppComponent {
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   isModalOpen = false;
-  constructor(private menu: MenuController) {}
+  constructor(private menu: MenuController,private platform: Platform) {
+    if (!this.platform.is('capacitor')) {
+      this.platform.ready().then(() => {
+        GoogleAuth.initialize();
+        GoogleAuth.initialize({
+          clientId:
+            '525383161466-cr4dgb3mnfbd5gdrds6ths2gqo1jsc1e.apps.googleusercontent.com',
+          scopes: ['profile', 'email'],
+          grantOfflineAccess: true,
+        })
+        console.log(GoogleAuth)
+      })
+    }
+  }
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
