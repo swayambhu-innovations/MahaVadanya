@@ -1,4 +1,5 @@
 export type UserData = {
+    then(arg0: (user: any) => void);
     userId:string;
     displayName:string;
     email:string;

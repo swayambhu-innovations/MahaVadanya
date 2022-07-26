@@ -24,6 +24,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   submit() {
+    console.log(this.loginForm.value);
     if (this.loginForm.valid) {
       this.authService.loginEmailPassword(
         this.loginForm.get('email').value,

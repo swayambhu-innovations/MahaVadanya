@@ -5,7 +5,7 @@
     <ion-grid class="ion-text-center payment_details">
       <ion-row>
         <ion-col  class="ion-margin">
-          <ion-text  color="success" class="status-text ion-margin">payment Successful </ion-text>
+          <ion-text  color="success" class="status-text ion-margin">payment {{status}} </ion-text>
           <!-- <ion-text  color="danger" class="status-text ion-margin">payment failure </ion-text> -->
         </ion-col>
       </ion-row>
@@ -17,7 +17,7 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <p>Your payment of ₹300.00 was successfull</p>
+          <p>Your payment of ₹{{paidAmount}} was successfull</p>
           <!-- <p>  Your Bank is currently facing a server issue.  </p> -->
         
  
@@ -31,6 +31,6 @@
       </ion-row>
     </ion-grid>
    
-    <ion-button class="sucess_btn" expand="block" routerLink="/">Done</ion-button>
+    <ion-button class="sucess_btn" expand="block" (click)="submit()">Done</ion-button>
   </section>
 </ion-content>

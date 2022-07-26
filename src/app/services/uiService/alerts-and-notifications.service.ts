@@ -7,11 +7,46 @@ import { ToastController } from '@ionic/angular';
   providedIn: 'root',
 })
 export class AlertsAndNotificationsService {
+  toastAudio = new Audio();
+  toastErrorAudio = new Audio();
+  constructor(
+   private alertController: AlertController,
+    private toastController: ToastController,
+    private platform: Platform
+  ) {
+    if (platform.is('capacitor')) {
+      NativeAudio.preload({
+        assetId: 'toast',
+        assetPath: 'toast.mp3',
+        audioChannelNum: 1,
+        isUrl: false,
+      });
+      NativeAudio.preload({
+        assetId: 'error',
+        assetPath: 'error.mp3',
+        audioChannelNum: 1,
+        isUrl: false,
+      });
+      NativeAudio.setVolume({
+        assetId: 'toast',
+        volume: 0.4,
+      });
+      NativeAudio.setVolume({
+        assetId: 'error',
+        volume: 0.4,
+      });
+    } else {
+      this.toastAudio.src = '/assets/audio/tones/toast.mp3';
+      this.toastAudio.volume = 0.4;
+      this.toastAudio.load();
+      this.toastErrorAudio.src = '/assets/audio/tones/error.mp3';
+      this.toastErrorAudio.volume = 0.4;
+      this.toastErrorAudio.load();
+    }
+  }
   testFunction() {
     console.log('testFunction');
   }
-  toastAudio = new Audio();
-  toastErrorAudio = new Audio();
   playAudio(type: 'toast' | 'errorToast') {
     if (type === 'toast') {
       if(this.platform.is('android') || this.platform.is('ios')) {
@@ -39,9 +74,9 @@ export class AlertsAndNotificationsService {
       duration = 3000;
     }
     const toast = await this.toastController.create({
-      message: message,
-      duration: duration,
-      icon: icon,
+      message,
+      duration,
+      icon,
       buttons: action,
     });
     if (sound && type === 'info') {
@@ -87,39 +122,4 @@ export class AlertsAndNotificationsService {
     return role;
   }
 
-  constructor(
-    private alertController: AlertController,
-    private toastController: ToastController,
-    private platform: Platform
-  ) {
-    if (platform.is('capacitor')) {
-      NativeAudio.preload({
-        assetId: 'toast',
-        assetPath: 'toast.mp3',
-        audioChannelNum: 1,
-        isUrl: false,
-      });
-      NativeAudio.preload({
-        assetId: 'error',
-        assetPath: 'error.mp3',
-        audioChannelNum: 1,
-        isUrl: false,
-      });
-      NativeAudio.setVolume({
-        assetId: 'toast',
-        volume: 0.4,
-      });
-      NativeAudio.setVolume({
-        assetId: 'error',
-        volume: 0.4,
-      });
-    } else {
-      this.toastAudio.src = '/assets/audio/tones/toast.mp3';
-      this.toastAudio.volume = 0.4;
-      this.toastAudio.load();
-      this.toastErrorAudio.src = '/assets/audio/tones/error.mp3';
-      this.toastErrorAudio.volume = 0.4;
-      this.toastErrorAudio.load();
-    }
-  }
 }

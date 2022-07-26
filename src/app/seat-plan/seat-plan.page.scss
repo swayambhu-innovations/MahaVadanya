@@ -27,14 +27,14 @@ section {
     margin: 40px auto 0px;
     display: flex;
     width: 90vw;
+    height: 60vh;
     box-sizing: border-box;
-    #middle{
-        display: flex;
-        gap:8px;
-        #m1{
-            margin-top: 35px;
-        }
-    }
+      display: flex;
+      gap:5px;
+position: relative;
+      flex-direction: column;
+      flex-wrap: wrap;
+  
     .seat {
       margin-top: 7px;
       height: 50px;
@@ -69,7 +69,7 @@ section {
     
     }
     .booked{
-        
+      color:var(--ion-color-secondary);
       background-color: rgba(92, 92, 92, 0.33);
       color: rgba(0, 0, 0, 0.39);
       font-weight: 400; 

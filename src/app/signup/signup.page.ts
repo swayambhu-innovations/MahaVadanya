@@ -25,25 +25,25 @@ export class SignupPage implements OnInit {
 
   submit() {
     console.log(this.signupForm.value);
-    // if (this.signupForm.valid) {
-    //   if(this.signupForm.value.password===this.signupForm.value.confirmPassword){
+    if (this.signupForm.valid) {
+      if(this.signupForm.value.password===this.signupForm.value.confirmPassword){
 
-    //     this.authService.signUpWithEmailAndPassword(
-    //       this.signupForm.get('username').value,
-    //       this.signupForm.get('email').value,
-    //       this.signupForm.get('password').value,
-    //       );
-    //       console.log(this.signupForm.value);
-    //     }
-    //     else{
-    //       this.alertify.presentToast('Password and Confirm Password do not match ','error',3000);
-    //     }
-    // } else {
-    //   this.alertify.presentToast(
-    //     'Please fill all the fields correctly',
-    //     'error',
-    //     3000
-    //   );
-    // }
+        this.authService.signUpWithEmailAndPassword(
+          this.signupForm.get('username').value,
+          this.signupForm.get('email').value,
+          this.signupForm.get('password').value,
+          );
+          console.log(this.signupForm.value);
+        }
+        else{
+          this.alertify.presentToast('Password and Confirm Password do not match ','error',3000);
+        }
+    } else {
+      this.alertify.presentToast(
+        'Please fill all the fields correctly',
+        'error',
+        3000
+      );
+    }
   }
 }

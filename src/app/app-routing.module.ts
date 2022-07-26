@@ -5,12 +5,12 @@ import { AuthGuard } from './guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
     path: 'home',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import('./home/home.module').then((m) => m.HomePageModule),
   },
@@ -26,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'add-details',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import('./add-details/add-details.module').then(
         (m) => m.AddDetailsPageModule
@@ -34,20 +34,20 @@ const routes: Routes = [
   },
   {
     path: 'payment',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import('./payment/payment.module').then((m) => m.PaymentPageModule),
   },
   {
     path: 'seat-plan',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
 
     loadChildren: () =>
       import('./seat-plan/seat-plan.module').then((m) => m.SeatPlanPageModule),
   },
   {
     path: 'payment-status',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import('./payment-status/payment-status.module').then(
         (m) => m.PaymentStatusPageModule
@@ -55,7 +55,7 @@ const routes: Routes = [
   },
   {
     path: 'edit-profile',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import('./edit-profile/edit-profile.module').then(
         (m) => m.EditProfilePageModule
@@ -63,13 +63,13 @@ const routes: Routes = [
   },
   {
     path: 'feedback',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import('./feedback/feedback.module').then((m) => m.FeedbackPageModule),
   },
   {
     path: 'feedback-sent',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import('./feedback-sent/feedback-sent.module').then(
         (m) => m.FeedbackSentPageModule
@@ -77,7 +77,7 @@ const routes: Routes = [
   },
   {
     path: 'payment-mode',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import('./payment-mode/payment-mode.module').then(
         (m) => m.PaymentModePageModule
@@ -85,7 +85,7 @@ const routes: Routes = [
   },
   {
     path: 'select-seat',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import('./select-seat/select-seat.module').then(
         (m) => m.SelectSeatPageModule
@@ -93,7 +93,7 @@ const routes: Routes = [
   },
   {
     path: 'notification',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import('./notification/notification.module').then(
         (m) => m.NotificationPageModule
@@ -101,7 +101,7 @@ const routes: Routes = [
   },
   {
     path: 'session-ended',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import('./session-ended/session-ended.module').then(
         (m) => m.SessionEndedPageModule
@@ -109,7 +109,7 @@ const routes: Routes = [
   },
   {
     path: 'history',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import('./history/history.module').then((m) => m.HistoryPageModule),
   },

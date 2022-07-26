@@ -20,31 +20,27 @@
       </ion-row>
       <ion-row>
         <ion-col id="seats">
-          <ion-col id="left">
-            <ion-card class="seat">A22</ion-card>
-          </ion-col>
-          <ion-col id="middle">
-            <div class="m1"> <ion-card class="seat">A22</ion-card>
-              <ion-card class="seat booked">A22</ion-card>
-              <ion-card class="seat">A22</ion-card>
-              <ion-card class="seat">A22</ion-card>
-              <ion-card class="seat">A22</ion-card>
-              <ion-card class="seat">A22</ion-card>
-              <ion-card class="seat">A22</ion-card></div>
-            <div class="m1"> <ion-card class="seat">A22</ion-card></div>
-          </ion-col>
-          <ion-col id="right">
-            <ion-card class="entrance">Entrance/ Staircase</ion-card>
-            <ion-card class="seat">A22</ion-card>
-          </ion-col>
+          <ion-card
+            class="seat"
+            *ngFor="let seat of seats"
+            (click)="submit(seat)"
+            [ngClass]="{'booked': !seat.available}"
+            >{{seat.seatNo}}</ion-card
+          >
+          <!-- <ion-card class="entrance">Entrance/ Staircase</ion-card> -->
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button
+            *ngIf="selected"
+            class="ion-margin"
+            expand="full"
+            (click)="next()"
+            >Next</ion-button
+          >
         </ion-col>
       </ion-row>
     </ion-grid>
-
-    <ion-row>
-      <ion-col class="ion-text-center">
-        <ion-button class="ion-margin" expand="full" routerLink="/payment">Next</ion-button>
-      </ion-col>
-    </ion-row>
   </section>
 </ion-content>

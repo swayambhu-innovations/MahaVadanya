@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Timestamp } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Console } from 'console';
 import { BookingServiceService } from 'src/app/services/booking-service.service';
 import { DatabaseService } from 'src/app/services/database.service';
@@ -17,7 +18,7 @@ export class BookSlotsPage implements OnInit {
     timeSlot: new FormControl(null, [Validators.required]),
     bookedFor: new FormControl(null, [Validators.required]),
   });
-  constructor(private bookingService: BookingServiceService) {}
+  constructor(private bookingService: BookingServiceService,private router: Router) {}
 
   ngOnInit() {}
   async submit() {
@@ -25,9 +26,10 @@ export class BookSlotsPage implements OnInit {
       new Date(this.bookingForm.get('date')?.value)
     );
     this.bookingService.booking={
-      paymentFor: 'bank-transfer',
+      paymentFor: 'booking-form',
       ...this.bookingForm.value,
     };
+    this.router.navigate(['/seat-plan']);
 console.log(this.bookingService.booking);
   }
 }
