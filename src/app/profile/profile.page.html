@@ -1,13 +1,25 @@
 <app-header pannel="others"></app-header>
-<ion-modal [isOpen]="isModalOpen">
-  <ng-template>
-    <ion-content color="dark">
-      <div class="card">
-        <ion-datetime locale="en-GB-u-hc-h12"></ion-datetime>
-      </div>
-    </ion-content>
-  </ng-template>
-</ion-modal>
+
+
+<ion-list>
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+</ion-list>
+<ion-list>
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+</ion-list>
+<ion-list>
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+</ion-list>
+<!-- 
 <ion-content color="dark" *ngIf="!editProfile">
   <section>
     <ion-grid>
@@ -80,15 +92,15 @@
       </ion-row>
       <ion-row>
         <ion-col class="ion-text-center ion-padding">
-          <ion-button class="ion-padding" (click)="toggleEditProfile()">
+          <ion-button class="ion-padding"  (click)="goToEditMode()" >
             Edit Profile
           </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
   </section>
-</ion-content>
-<ion-content color="dark" *ngIf="editProfile">
+</ion-content> -->
+<!-- <ion-content color="dark" *ngIf="!editProfile">
   <section>
     <ion-grid>
       <ion-row class="ion-margin-top">
@@ -102,12 +114,13 @@
           </ion-avatar>
         </ion-col>
       </ion-row>
+    <form [formGroup]="editForm" (ngSubmit)="submit()">
       <ion-row>
         <ion-col>
           <div class="display-container">
             <ion-item>
               <ion-label position="floating">Full Name</ion-label>
-              <ion-input></ion-input>
+              <ion-input [formControlName]="displayName">ddd</ion-input>
             </ion-item>
           </div>
         </ion-col>
@@ -118,7 +131,7 @@
             <div class="dob">
               <ion-item>
                 <ion-label position="floating">D.O.B</ion-label>
-                <ion-input></ion-input>
+                <ion-input formControlName="dob"></ion-input>
               </ion-item>
               <ion-icon
                 id="icon"
@@ -126,6 +139,15 @@
                 name="calendar-number-outline"
               ></ion-icon>
             </div>
+            <ion-modal [isOpen]="isModalOpen">
+              <ng-template>
+                <ion-content color="dark">
+                  <div class="card">
+                    <ion-datetime formControlName="dob" locale="en-GB-u-hc-h12"></ion-datetime>
+                  </div>
+                </ion-content>
+              </ng-template>
+            </ion-modal>
           </div>
         </ion-col>
       </ion-row>
@@ -134,7 +156,7 @@
           <div class="display-container">
             <ion-item>
               <ion-label position="floating">Aadhar Number</ion-label>
-              <ion-input></ion-input>
+              <ion-input formControlName="aadharNo"></ion-input>
             </ion-item>
           </div>
         </ion-col>
@@ -144,7 +166,7 @@
           <ion-list>
             <ion-item class="dropdown-container">
               <ion-label>Profession</ion-label>
-              <ion-select placeholder="Select One">
+              <ion-select formControlName="profession"   placeholder="Select One">
                 <ion-select-option>Teacher</ion-select-option>
                 <ion-select-option>Student</ion-select-option>
               </ion-select>
@@ -157,7 +179,7 @@
           <div class="display-container age">
             <ion-item>
               <ion-label position="floating">Age</ion-label>
-              <ion-input></ion-input>
+              <ion-input formControlName="age" ></ion-input>
             </ion-item>
           </div>
         </ion-col>
@@ -168,7 +190,7 @@
             <ion-label>Gender</ion-label>
             <div class="gender">
               <ion-item>
-                <ion-select placeholder="choose">
+                <ion-select placeholder="choose" formControlName="gender">
                   <ion-select-option ionFocus color="primary"
                     >Male</ion-select-option
                   >
@@ -186,11 +208,12 @@
       </ion-row>
       <ion-row>
         <ion-col class="ion-text-center ion-padding">
-          <ion-button class="ion-padding" (click)="toggleEditProfile">
+          <ion-button class="ion-padding" type="submit" (click)=saveEdit>
             Save
           </ion-button>
         </ion-col>
       </ion-row>
+    </form>
     </ion-grid>
   </section>
-</ion-content>
+</ion-content> -->

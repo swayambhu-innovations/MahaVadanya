@@ -57,7 +57,7 @@ const routes: Routes = [
     path: 'profile',
     canActivate: [AuthGuard],
     loadChildren: () =>
-      import('./edit-profile/edit-profile.module').then(
+      import('./profile/profile.module').then(
         (m) => m.EditProfilePageModule
       ),
   },

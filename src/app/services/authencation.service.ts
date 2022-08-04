@@ -370,13 +370,13 @@ export class AuthencationService {
             value: JSON.stringify(u),
           });
           // console.log("User data from auth",u);
-          if (this.userServerSubscription != undefined) {
+          if (this.userServerSubscription !== undefined) {
             this.userServerSubscription.unsubscribe();
           }
           this.userServerSubscription = docData(this.userDoc).subscribe(
             async (data: any) => {
               // console.log("Received new data",data)
-              if (data){
+              if (data) {
                 if (data.status) {
                   if (!this.allowedStatuses.includes(data.status.access)) {
                     this.logout();
@@ -399,7 +399,7 @@ export class AuthencationService {
         }
       });
     } else {
-      if (this.userServerSubscription != undefined) {
+      if (this.userServerSubscription !== undefined) {
         this.userServerSubscription.unsubscribe();
       }
     }

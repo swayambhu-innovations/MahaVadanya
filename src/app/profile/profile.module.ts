@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EditProfilePageRoutingModule } from './edit-profile-routing.module';
+import { EditProfilePageRoutingModule } from './profile-routing.module';
 
-import { EditProfilePage } from './edit-profile.page';
+import { EditProfilePage } from './profile.page';
 import { BaseComponentsModule } from '../base-components/base-components.module';
 @NgModule({
   imports: [
@@ -14,7 +14,8 @@ import { BaseComponentsModule } from '../base-components/base-components.module'
     FormsModule,
     IonicModule,
     EditProfilePageRoutingModule,
-    BaseComponentsModule
+    BaseComponentsModule,
+    ReactiveFormsModule
   ],
   declarations: [ EditProfilePage ],
 })

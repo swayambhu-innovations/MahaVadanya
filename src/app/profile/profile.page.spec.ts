@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { EditProfilePage } from './edit-profile.page';
+import { EditProfilePage } from './profile.page';
 
 describe('EditProfilePage', () => {
   let component: EditProfilePage;

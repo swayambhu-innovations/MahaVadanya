@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MenuController, Platform } from '@ionic/angular';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { DataProvider } from './providers/data.provider';
+import { AuthencationService } from './services/authencation.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,12 @@ export class AppComponent {
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   isModalOpen = false;
-  constructor(private menu: MenuController, private platform: Platform) {
+  constructor(
+    private menu: MenuController,
+    private platform: Platform,
+    private dataProvider: DataProvider,
+    private authService: AuthencationService
+  ) {
     if (!this.platform.is('capacitor')) {
       this.platform.ready().then(() => {
         GoogleAuth.initialize();
