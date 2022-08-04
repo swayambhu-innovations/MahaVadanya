@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuController, Platform } from '@ionic/angular';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
-import { DataProvider } from './providers/data.provider';
 import { AuthencationService } from './services/authencation.service';
+import { DatabaseService } from './services/database.service';
+import { Router } from '@angular/router';
+import { SplashScreen } from '@capacitor/splash-screen';
+import { DataProvider } from './providers/data.provider';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public appPages = [
     { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
     { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
@@ -23,8 +27,10 @@ export class AppComponent {
   constructor(
     private menu: MenuController,
     private platform: Platform,
-    private dataProvider: DataProvider,
-    private authService: AuthencationService
+    public databaseService: DatabaseService,
+    public authService: AuthencationService,
+    private router: Router,
+    public dataProvider:DataProvider
   ) {
     if (!this.platform.is('capacitor')) {
       this.platform.ready().then(() => {
@@ -44,5 +50,24 @@ export class AppComponent {
   }
   close() {
     this.menu.close();
+  }
+  ngOnInit() {
+    this.authService.user.subscribe((user) => {
+      if (user) {
+        this.databaseService.getUser(user.uid).then((user) => {
+          if (user.exists){
+            this.router.navigate(['']);
+          }
+        });
+        // this.router.navigate(['/admin']);
+      } else {
+        SplashScreen.hide();
+        this.router.navigate(['login']);
+      }
+    });
+  }
+  logout(){
+    this.close()
+    this.authService.logout();
   }
 }

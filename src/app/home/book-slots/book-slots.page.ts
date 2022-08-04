@@ -19,20 +19,23 @@ export class BookSlotsPage implements OnInit {
     timeSlot: new FormControl(null, [Validators.required]),
     bookedFor: new FormControl(null, [Validators.required]),
   });
-    constructor(private bookingService: BookingServiceService,private router: Router,private dataProvider: DataProvider) {}
+  constructor(
+    private bookingService: BookingServiceService,
+    private router: Router,
+    private dataProvider: DataProvider
+  ) {}
 
   ngOnInit() {}
   async submit() {
-
     this.bookingForm.value.date = Timestamp.fromDate(
       new Date(this.bookingForm.get('date')?.value)
     );
-    this.bookingService.booking={
+    this.bookingService.booking = {
       ...this.bookingForm.value,
-      userId:this.dataProvider?.userData?.userId,
-      bookedBy:this.dataProvider?.userData?.displayName,
+      userId: this.dataProvider?.userData?.userId,
+      bookedBy: this.dataProvider?.userData?.displayName,
     };
     this.router.navigate(['/seat-plan']);
-console.log(this.bookingService.booking);
+    console.log(this.bookingService.booking);
   }
 }

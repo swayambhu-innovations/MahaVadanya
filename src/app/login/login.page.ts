@@ -12,9 +12,11 @@ import { AlertsAndNotificationsService } from '../services/uiService/alerts-and-
 export class LoginPage implements OnInit {
   showPassword = false;
   showCnfPwd = false;
-  loginForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.email, Validators.required]),
-    password: new FormControl('', Validators.required),
+  emailControl:FormControl = new FormControl('',[Validators.required,Validators.email])
+  passwordControl:FormControl = new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(50)])
+  signInForm:FormGroup = new FormGroup({
+    email: this.emailControl,
+    password: this.passwordControl,
   });
 
   constructor(
@@ -26,25 +28,14 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
-  submit() {
-    console.log(this.loginForm.value);
-    if (this.loginForm.valid) {
-      this.authService.loginEmailPassword(
-        this.loginForm.get('email').value,
-        this.loginForm.get('password').value
-      ).then(() => {
-      this.router.navigate(['/home']);
-      }).catch(() => {
-      });
+  login():void{
+    console.log(this.signInForm);
+    if (this.signInForm.status === 'VALID'){
+      this.authService.loginEmailPassword(this.emailControl.value,this.passwordControl.value);
     } else {
-      this.alertify.presentToast(
-        'Please fill all the fields correctly',
-        'error',
-        3000
-      );
+      this.alertify.presentToast('Please fill all the fields correctly','error',3000);
     }
   }
-
   togglePassword(type) {
     if (type === 'p') {
       this.showPassword = !this.showPassword;

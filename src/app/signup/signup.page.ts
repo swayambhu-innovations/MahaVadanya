@@ -9,11 +9,15 @@ import { AlertsAndNotificationsService } from '../services/uiService/alerts-and-
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-  signupForm: FormGroup = new FormGroup({
-    username: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.email, Validators.required]),
-    password: new FormControl('', Validators.required),
-    confirmPassword:new FormControl('', Validators.required),
+  fullNameControl:FormControl = new FormControl('',[Validators.required,Validators.minLength(2),Validators.maxLength(50)])
+  emailControl:FormControl = new FormControl('',[Validators.required,Validators.email])
+  passwordControl:FormControl = new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(50)])
+  confirmPasswordControl:FormControl = new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(50)])
+  signupForm:FormGroup = new FormGroup({
+    fullName: this.fullNameControl,
+    email: this.emailControl,
+    password: this.passwordControl,
+    confirmPassword:this.confirmPasswordControl,
   });
 
   constructor(
@@ -23,27 +27,17 @@ export class SignupPage implements OnInit {
 
   ngOnInit() {}
 
-  submit() {
-    console.log(this.signupForm.value);
-    if (this.signupForm.valid) {
-      if(this.signupForm.value.password===this.signupForm.value.confirmPassword){
-
-        this.authService.signUpWithEmailAndPassword(
-          this.signupForm.get('username').value,
-          this.signupForm.get('email').value,
-          this.signupForm.get('password').value,
-          );
-          console.log(this.signupForm.value);
-        }
-        else{
-          this.alertify.presentToast('Password and Confirm Password do not match ','error',3000);
-        }
+  signup():void{
+    console.log(this.signupForm,this.confirmPasswordControl);
+    if (this.signupForm.status === 'VALID'){
+      if (this.signupForm.value.password === this.signupForm.value.confirmPassword){
+        console.log(this.signupForm.value)
+        this.authService.signUpWithEmailAndPassword(this.signupForm.value.email,this.signupForm.value.password,this.signupForm.value.fullName)
+      } else {
+        this.alertify.presentToast("Password and Confirm Password do not match",'error',3000);
+      }
     } else {
-      this.alertify.presentToast(
-        'Please fill all the fields correctly',
-        'error',
-        3000
-      );
+      this.alertify.presentToast('Please fill all the fields correctly','error',3000);
     }
   }
 }

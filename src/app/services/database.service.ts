@@ -8,6 +8,7 @@ import {
   updateDoc,
   increment,
   addDoc,
+  getDoc,
 } from '@angular/fire/firestore';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from '@angular/fire/storage';
 import { Booking } from '../structures/booking.structure';
@@ -59,5 +60,7 @@ export class DatabaseService {
     return addDoc(collection(this.fs, 'bookings'), booking);
   }
 
-
+  getUser(id: string) {
+    return getDoc(doc(this.fs, 'users/' + id));
+  }
 }

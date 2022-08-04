@@ -46,14 +46,15 @@
           <ion-icon name="alert-outline" slot="start"></ion-icon>
           <ion-label>Report an issue</ion-label>
         </ion-item>
-  
-          <ion-button class="ion-margin" color="primary" id="logout-button" (click)="setOpen(true)">Logout <ion-icon slot="end" name="person">
-          </ion-icon>
-        </ion-button>
-      
+        <ion-item (click)="logout()" routerLink="/feedback">
+          <ion-icon name="alert-outline" slot="start"></ion-icon>
+          <ion-label>Logout</ion-label>
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
   <ion-router-outlet id="content1" main></ion-router-outlet>
-
+  <div class="overlay" *ngIf="dataProvider?.pageSetting.blur">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+  </div>
 </ion-app>

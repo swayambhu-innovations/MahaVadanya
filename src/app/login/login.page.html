@@ -1,123 +1,48 @@
-<ion-content class="login-screen" color="light">
-  <section>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="3" offset="4.5">
-          <ion-img src="assets/logo.png" id="logo"></ion-img>
-        </ion-col>
-      </ion-row>
-      <ion-row id="form">
-        <ion-col size="11" offset="0.5">
-          <form size="11" offset="0.5" [formGroup]="loginForm" (ngSubmit)="submit()">
-            <ion-card>
-              <ion-input type="email" placeholder="Email" autocomplete="off" autocorrect="off" autofocus="true"
-                formControlName="email">
-              </ion-input>
-            </ion-card>
-            <ion-card>
-              <ion-input [type]="showPassword === false ? 'password' : 'text'" class="input-reverse ion-no-border"
-                autocomplete="off" placeholder="Password" autocorrect="off" color="dark" formControlName="password"
-                pattern="email">
-                <button class="ion-float-end pwd-icon-box" (click)="togglePassword('p')">
-                  <ion-icon class="show-option" [hidden]="!showPassword" name="eye-off-outline"></ion-icon>
-                  <ion-icon class="hide-option" [hidden]="showPassword" name="eye-outline"></ion-icon>
-                </button>
-              </ion-input>
-            </ion-card>
-            <ion-button class="ion-margin login_btn" expand="block" fill="solid" size="large" color="primary"
-              type="submit">
-              Login
-            </ion-button>
-          </form>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="ion-text-center">
-          <ion-text class="ion-text-center fogotPass" routerLink="/forget-password">
-            Forgot Password?
-          </ion-text>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-text-center ion-margin-top">
-        <ion-col>
-          <button id="social-icon" (click)="authService.signInWithGoogle()">
-            <ion-icon name="logo-google"></ion-icon>
-          </button>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-text-center ion-margin-top">
-        <ion-col class="create-account">
-          <ion-text>
-            Don't have account? <span routerLink="/signup">Sign Up</span>
-          </ion-text>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </section>
-</ion-content>
-
-<!-- <div>
-          <ion-item class="input-wrap ion-margin-bottom">
-            <ion-input type="password" class="ion-no-border" autocomplete="off" placeholder="Username" autocorrect="off" autofocus="true"  name="username"></ion-input>
-          </ion-item>
-
-          <ion-item class="input-wrap ion-margin-bottom ion-no-border">
-            <ion-input [type]="showPassword === false ? 'password' : 'text'" class="input-reverse ion-no-border"  autocomplete="off" placeholder="Password" autocorrect="off" autofocus="true" color="dark" name="password" pattern="email">
-              <button class="ion-float-end pwd-icon-box"  (click)="togglePassword()">
-                <ion-icon class="show-option" [hidden]="!showPassword" name="eye-off-outline"></ion-icon>
-                <ion-icon class="hide-option" [hidden]="showPassword" name="eye-outline"></ion-icon>
-             </button>
-            </ion-input>
-          </ion-item>
-            <ion-button class="" expand="block" fill="solid" size="large" shape="round" color="primary">
-             Login
-            </ion-button>
-        </div> -->
-
-<!-- <ion-icon class="ion-float-right" name="eye-off-outline"></ion-icon> -->
-
-<!-- <ion-col>
-        <ion-row size="6" offSet="3">
-<h3>hii</h3>
-        </ion-row>
-      </ion-col>
-      <ion-col size="3"></ion-col>
-      <ion-col size="6">
-          <ion-img src="assets/sss-logo.svg" class="logo"></ion-img>
-      </ion-col>
-      <ion-col size="3"></ion-col>
-      <ion-col size="12" class="class="ion-padding>
-        <div>
-          <ion-item class="input-wrap ion-margin-bottom">
-            <ion-input type="password" class="ion-no-border" autocomplete="off" placeholder="Username" autocorrect="off" autofocus="true"  name="username"></ion-input>
-          </ion-item>
-
-          <ion-item class="input-wrap ion-margin-bottom ion-no-border">
-            <ion-input [type]="showPassword === false ? 'password' : 'text'" class="input-reverse ion-no-border"  autocomplete="off" placeholder="Password" autocorrect="off" autofocus="true" color="dark" name="password" pattern="email">
-              <button class="ion-float-end pwd-icon-box"  (click)="togglePassword()">
-                <ion-icon class="show-option" [hidden]="!showPassword" name="eye-off-outline"></ion-icon>
-                <ion-icon class="hide-option" [hidden]="showPassword" name="eye-outline"></ion-icon>
-             </button>
-            </ion-input>
-          </ion-item>
-            <ion-button class="" expand="block" fill="solid" size="large" shape="round" color="primary">
-             Login
-            </ion-button>
+<ion-content>
+  <div class="bubbleContainer"></div>
+  <div class="container">
+    <img src="assets/logo.png" alt="Mahavadnya">
+    <h1>Hello Again!</h1>
+    <p>Welcome back you've</p>
+    <p>been missed</p>
+    <form [formGroup]="signInForm" (ngSubmit)="login()">
+      <input type="email" [formControl]="emailControl" placeholder="Enter email">
+      <div class="text-danger"
+        *ngIf="emailControl && emailControl.errors && (emailControl.dirty || emailControl.touched)">
+        <div *ngIf="emailControl.errors?.['required']">
+          <small>Email is required</small>
         </div>
-        <ion-text class="ion-text-center">
-          <h6 class="text-green" routerLink="/forget-password">Forget Password ?</h6>
-        </ion-text>
-      </ion-col>
-      <ion-col size="2"></ion-col>
-      <ion-col size="4">
-        <ion-img src="assets/icon/google.svg" class="social-media-svg ion-padding-horizontal"></ion-img>
-      </ion-col>
-      <ion-col size="4">
-        <ion-img src="assets/icon/facebook.svg" class="social-media-svg ion-padding-horizontal"></ion-img>
-      </ion-col>
-      <ion-col size="2"></ion-col>
-      <ion-col size="12">
-        <ion-text class="ion-text-center">
-          <h6>Don't have an account ? <span class="text-light-green" routerLink="/signup">Signup Now</span></h6>
-        </ion-text>
-      </ion-col> -->
+        <div *ngIf="emailControl.errors?.['email']">
+          <small>Please provide a correct email address</small>
+        </div>
+      </div>
+      <input type="password" [formControl]="passwordControl" placeholder="Enter password">
+      <div class="text-danger"
+        *ngIf="passwordControl && passwordControl.errors && (passwordControl.dirty || passwordControl.touched)">
+        <div *ngIf="passwordControl.errors?.['required']">
+          <small>Password is required</small>
+        </div>
+        <div *ngIf="passwordControl.errors?.['minlength']">
+          <small>Minimum length for password is 8</small>
+        </div>
+        <div *ngIf="passwordControl.errors?.['maxlength']">
+          <small>Maximum length for password is 50</small>
+        </div>
+      </div>
+      <p routerLink="../forgot-password">Recovery Password</p>
+      <button type="submit">Sign In</button>
+    </form>
+    <div class="liner">
+      <hr>
+      <p>Or Continue With</p>
+      <hr>
+    </div>
+    <!-- <h5>Forgot Password?</h5> -->
+    <div class="social">
+      <button (click)="authService.signInWithGoogle()" fill="clear">
+        <ion-icon name="logo-google" class="logo"></ion-icon>
+      </button>
+    </div>
+    <h4 class="register">Don't have an account ? <span routerLink="../signup">Sign Up</span></h4>
+  </div>
+</ion-content>

@@ -1,108 +1,124 @@
-section {
-  min-height: 100vh;
-  min-width: 100vw;
-  position: relative;
-  background-color: #4f7fed;
-  #logo {
-    margin-top: 50px;
-    height: 100%;
-    width: 100%;
+small{
+  color:rgba(255, 116, 103, 0.972);
+  font-size:15px;
+  font-weight: 400;
+  text-align: center;
+  margin-left: 5px;
+  font-family: var(--fontPrimary);
+}
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.container{
+  display:flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  background-color:#edecf18c;
+  color:black;
+  position: absolute;
+  top:0px;
+  height:100vh;
+  padding:20px;
+  width:100%;
+  border-radius: 20px 20px 0 0;
+  img{
+    margin-top:100px;
+    width: auto;
+    height: 100px;
   }
-  #form {
-    margin-top: 50px;
-  }
-  ion-input {
-    color: var(--ion-true-dark);
-  }
-  ion-card {
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    height: 55px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: none;
-    padding: 8px;
-    ion-input {
-      --placeholder-color:grey;
-      font-size: 19px;
-      font-weight: 400;
-      box-sizing: border-box;
-      color: rgb(155, 154, 154);
-      .pwd-icon-box {
-        background-color: transparent;
-        color:grey;
-      }
-    }
-    #eye {
-      font-weight: 900;
-      font-size: 27px;
-    }
-  }
-  .login_btn {
-    border-radius: 5px;
-    margin-top: 2rem;
-    height: 3rem;
-    font-size: var(--small);
-   
-  }
-  .fogotPass {
-    color:white;
-    font-size: 20px;
-    font-weight: 500;
-    &:hover {
-      color: var(--ion-text-color-1);
-    }
-  }
-  #social-icon {
-    width: 59px;
-    height: 45px;
-    border-radius: 25px;
-    background-color: transparent;
-    margin: 0px 30px;
-    color: white;
-    ion-icon {
-      font-size: 40px;
-      font-weight: 900;
-    }
-  }
-  .create-account {
-    margin: auto;
-    padding: 30px 0px;
-   ion-text {
-      font-size: 18px;
-      color:white;
-      letter-spacing: 1.2px;
+  h1{
+      color:rgb(65, 67, 104);
+      font-size:25px;
       font-weight: 500;
-      span {
-        text-decoration: none;
-        color: var(--ion-color-secondary);
-      }
-    }
+      margin-bottom: 10px;
   }
-}
-
-.input-wrap {
-  border: 2px solid #4f7fed;
-  border-radius: 15px;
-}
-.input-reverse {
-  display: flex;
-  flex-direction: row-reverse;
-}
---ion-padding-vertical {
-  padding: 25px 0;
-}
-.main-row {
-  min-height: 100vh;
-  height: 100%;
-  overflow: scroll;
-  padding: 50px 30px;
-}
-.pwd-icon-box {
-  line-height: 25px;
-  font-size: 22px;
-  height: 100%;
-  display: flex;
+  p{
+      margin: 0px;
+      font-weight: 400;
+      color:rgb(53, 54, 78);
+  }
+  form{
+      margin-top: 50px;
+      width:80vw;
+      p{
+          color:rgb(91, 92, 121);
+          text-align: right;
+          font-size:15px;
+          font-weight: 500;
+          margin-bottom:20px;
+      }
+      button{
+          color:white;
+          font-size:17px;
+          font-weight: 500;
+          width:80vw;
+          height:50px;
+          border-radius:8px;
+          background-color:#7595ff;
+          box-shadow: 5px 1px 10px 10px #7595ff2c;
+      }
+      input{
+          color:rgb(65, 67, 104);
+          font-weight: 500;
+          padding:10px;
+          border:none;
+          width:80vw;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          height:50px;
+          background-color:white;
+          border-radius: 8px;
+          box-shadow: 5px 2px 10px 5px rgba(120, 228, 255, 0.089);
+      }
+  }
+  .liner{
+      display:flex;
+      justify-content: space-evenly;
+      margin-top: 70px;
+      font-size:17px;
+      font-weight: 500;
+      color:rgb(91, 92, 121);
+      hr{
+          width:20vw;
+          height:0px;
+          border:2px solid rgb(91, 92, 121);
+          margin-top:10px;
+          margin-bottom:10px;
+      }
+      p{
+          margin-left: 10px;
+          margin-right:10px;
+      }
+  }
+  .social{
+      display:flex;
+      justify-content: space-evenly;
+      margin-top: 20px;
+      font-size:30px;
+      font-weight: 500;
+      color:rgb(91, 92, 121);
+      button {
+          background-color:transparent;
+          ion-icon{
+              border:2px white solid;
+              padding:5px;
+              font-size:30px;
+              color:rgb(91, 92, 121);
+              border-radius:5px;
+          }
+      }
+  }
+  .register{
+      margin-top: 20px;
+      font-size:15px;
+      font-weight: 500;
+      color:rgb(91, 92, 121);
+      span{
+          color:#7595ff;
+      }
+  }
+  // box-shadow: 0px -5px 10px 5px rgba(10,10,10,0.2);
 }

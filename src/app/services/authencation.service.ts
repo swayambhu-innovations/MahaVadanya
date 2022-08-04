@@ -17,6 +17,7 @@ import {
   createUserWithEmailAndPassword,
   UserCredential,
   signInWithCredential,
+  signInWithRedirect,
 } from '@angular/fire/auth';
 import { EMPTY, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -197,82 +198,142 @@ export class AuthencationService {
   public async signInWithGoogle() {
     this.dataProvider.pageSetting.blur = true;
     this.dataProvider.pageSetting.lastRedirect = '';
-    GoogleAuth.signIn()
-      .then((googleUser: any) => {
-        console.log('googleUser', googleUser);
-        const credential = GoogleAuthProvider.credential(
-          googleUser.authentication.idToken,
-          googleUser.authentication.accessToken
-        );
-        console.log('credential', credential);
-        signInWithCredential(this.auth, credential)
-          .then((credentials: UserCredential) => {
-            console.log('UserCredentials ', credentials);
-            getDoc(doc(this.firestore, 'users/' + credentials.user.uid))
-              .then((userDocument: any) => {
-                if (!userDocument.exists()) {
-                  logEvent(this.analytics, 'Marked_Attendance');
-                  if (credentials.user.phoneNumber == null) {
-                    this.userData
-                      .setGoogleUserData(credentials.user, {
-                        phoneNumber: '',
-                      })
-                      .then(() => {
-                        this.router.navigate(['']);
-                      });
+    if (this.platform.is('capacitor')) {
+      GoogleAuth.signIn()
+        .then((googleUser: any) => {
+          const credential = GoogleAuthProvider.credential(
+            googleUser.authentication.idToken,
+            googleUser.authentication.accessToken
+          );
+          signInWithCredential(this.auth, credential)
+            .then((credentials: UserCredential) => {
+              console.log('Credentials ', credentials);
+              getDoc(doc(this.firestore, 'users/' + credentials.user.uid))
+                .then((userDocument: any) => {
+                  if (!userDocument.exists()) {
+                    logEvent(this.analytics, 'Marked_Attendance');
+                    if (credentials.user.phoneNumber == null) {
+                      this.userData
+                        .setGoogleUserData(credentials.user, {
+                          phoneNumber: '',
+                        })
+                        .then(() => {
+                          this.router.navigate(['']);
+                        });
+                    } else {
+                      this.userData
+                        .setGoogleUserData(credentials.user, {
+                          phoneNumber: credentials.user.phoneNumber || '',
+                        })
+                        .then(() => {
+                          this.router.navigate(['']);
+                        });
+                    }
                   } else {
-                    this.userData
-                      .setGoogleUserData(credentials.user, {
-                        phoneNumber: credentials.user.phoneNumber || '',
-                      })
-                      .then(() => {
-                        this.router.navigate(['']);
-                      });
+                    this.dataProvider.pageSetting.blur = false;
+                    this.alertify.presentToast(
+                      'Logged In.',
+                      'info',
+                      5000,
+                      [],
+                      true,
+                      ''
+                    );
+                    this.router.navigate(['']);
                   }
-                } else {
+                })
+                .catch((error) => {
+                  console.log('ErrorCatched getting data', error);
                   this.dataProvider.pageSetting.blur = false;
                   this.alertify.presentToast(
-                    'Logged In.',
-                    'info',
+                    error.message,
+                    'error',
                     5000,
                     [],
                     true,
                     ''
                   );
-                  this.router.navigate(['home']);
+                });
+            })
+            .catch((error) => {
+              console.log('ErrorCatched authorizing', error);
+              this.dataProvider.pageSetting.blur = false;
+              this.alertify.presentToast(
+                error.message,
+                'error',
+                5000,
+                [],
+                true,
+                ''
+              );
+            });
+        })
+        .catch((error) => {
+          console.log('ErrorCatched', error);
+          this.dataProvider.pageSetting.blur = false;
+          this.alertify.presentToast(
+            error.message,
+            'error',
+            5000,
+            [],
+            true,
+            ''
+          );
+        });
+    } else {
+      const gauth = new GoogleAuthProvider();
+      signInWithRedirect(this.auth, gauth).then(
+        (credentials: UserCredential) => {
+          console.log('Credentials ', credentials);
+          getDoc(doc(this.firestore, 'users/' + credentials.user.uid))
+            .then((userDocument: any) => {
+              if (!userDocument.exists()) {
+                logEvent(this.analytics, 'Marked_Attendance');
+                if (credentials.user.phoneNumber == null) {
+                  this.userData
+                    .setGoogleUserData(credentials.user, {
+                      phoneNumber: '',
+                    })
+                    .then(() => {
+                      this.router.navigate(['']);
+                    });
+                } else {
+                  this.userData
+                    .setGoogleUserData(credentials.user, {
+                      phoneNumber: credentials.user.phoneNumber || '',
+                    })
+                    .then(() => {
+                      this.router.navigate(['']);
+                    });
                 }
-              })
-              .catch((error) => {
-                console.log('ErrorCatched getting data', error);
+              } else {
                 this.dataProvider.pageSetting.blur = false;
                 this.alertify.presentToast(
-                  error.message,
-                  'error',
+                  'Logged In.',
+                  'info',
                   5000,
                   [],
                   true,
                   ''
                 );
-              });
-          })
-          .catch((error) => {
-            console.log('ErrorCatched authorizing', error);
-            this.dataProvider.pageSetting.blur = false;
-            this.alertify.presentToast(
-              error.message,
-              'error',
-              5000,
-              [],
-              true,
-              ''
-            );
-          });
-      })
-      .catch((error) => {
-        console.log('ErrorCatched', error);
-        this.dataProvider.pageSetting.blur = false;
-        this.alertify.presentToast(error.message, 'error', 5000, [], true, '');
-      });
+                this.router.navigate(['']);
+              }
+            })
+            .catch((error) => {
+              console.log('ErrorCatched getting data', error);
+              this.dataProvider.pageSetting.blur = false;
+              this.alertify.presentToast(
+                error.message,
+                'error',
+                5000,
+                [],
+                true,
+                ''
+              );
+            });
+        }
+      );
+    }
   }
   public async loginAnonymously() {
     let data = signInAnonymously(this.auth).then(
@@ -347,11 +408,13 @@ export class AuthencationService {
   // Sign in functions end
   // Sign out functions start
   public async logout() {
-    await Storage.remove({ key: 'auth' });
-    await Storage.remove({ key: 'userData' });
-    await signOut(this.auth);
-    logEvent(this.analytics, 'Logged_Out');
-    this.router.navigate(['../login']);
+    if (confirm('Are you sure you want to logout?')) {
+      await Storage.remove({ key: 'auth' });
+      await Storage.remove({ key: 'userData' });
+      await signOut(this.auth);
+      logEvent(this.analytics, 'Logged_Out');
+      this.router.navigate(['../login']);
+    }
   }
 
   private async setDataObserver(user: Observable<User | null>) {
