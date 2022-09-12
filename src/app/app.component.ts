@@ -52,19 +52,19 @@ export class AppComponent implements OnInit {
     this.menu.close();
   }
   ngOnInit() {
-    this.authService.user.subscribe((user) => {
-      if (user) {
-        this.databaseService.getUser(user.uid).then((user) => {
-          if (user.exists){
-            this.router.navigate(['']);
-          }
-        });
-        // this.router.navigate(['/admin']);
-      } else {
-        SplashScreen.hide();
-        this.router.navigate(['login']);
-      }
-    });
+    // this.authService.user.subscribe((user) => {
+    //   if (user) {
+    //     this.databaseService.getUser(user.uid).then((user) => {
+    //       if (user.exists){
+    //         this.router.navigate(['']);
+    //       }
+    //     });
+    //     // this.router.navigate(['/admin']);
+    //   } else {
+    //     SplashScreen.hide();
+    //     this.router.navigate(['login']);
+    //   }
+    // });
   }
   logout(){
     this.close()
