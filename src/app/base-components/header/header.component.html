@@ -1,6 +1,6 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar color="primary ">
-    <ion-title>Mahavadanya</ion-title>
+    <ion-title></ion-title>
     <ion-buttons slot="start" class="ion-padding-end" *ngIf="pannel ==='others'" >
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
@@ -14,4 +14,12 @@
       routerLink="/notification"
     ></ion-icon>
   </ion-toolbar>
+</ion-header> -->
+<ion-header>
+  <div class="header" >
+    <div class="back" (click)="back()">
+      <img width="45px" src="assets/headerNagivation.png" alt="">
+    </div>
+    <div class="text-header ">{{title}}</div>
+  </div>
 </ion-header>

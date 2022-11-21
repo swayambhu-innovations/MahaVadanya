@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { BookSlotsPageRoutingModule } from './book-slots-routing.module';
 
 import { BookSlotsPage } from './book-slots.page';
+import { BaseComponentsModule } from 'src/app/base-components/base-components.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { BookSlotsPage } from './book-slots.page';
     FormsModule,
     IonicModule,
     BookSlotsPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BaseComponentsModule
   ],
   declarations: [BookSlotsPage]
 })

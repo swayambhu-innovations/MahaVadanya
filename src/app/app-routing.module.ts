@@ -120,6 +120,11 @@ const routes: Routes = [
         (m) => m.ForgotPasswordPageModule
       ),
   },
+  {
+    path: 'admission-confirmation',
+    loadChildren: () => import('./admission-confirmation/admission-confirmation.module').then(m => m.AdmissionConfirmationPageModule)
+  },
+
 ];
 
 @NgModule({
@@ -128,4 +133,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

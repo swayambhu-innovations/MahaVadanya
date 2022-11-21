@@ -1,12 +1,21 @@
-<ion-content>
+<ion-content >
   <div class="bubbleContainer"></div>
   <div class="container">
     <img src="assets/logo.png" alt="Mahavadnya">
-    <h1>Hello Again!</h1>
-    <p>Welcome back you've</p>
-    <p>been missed</p>
-    <form [formGroup]="signInForm" (ngSubmit)="login()">
-      <input type="email" [formControl]="emailControl" placeholder="Enter email">
+    <h1>MAHAVADANYA</h1>
+    <form [formGroup]="signInForm" (ngSubmit)="login()" class="w-100">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Enter email</ion-label>
+          <ion-input type="email" [formControl]="emailControl" placeholder="Enter email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Enter password</ion-label>
+          <ion-input type="password" [formControl]="passwordControl" placeholder="Enter password"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <!-- <input >
       <div class="text-danger"
         *ngIf="emailControl && emailControl.errors && (emailControl.dirty || emailControl.touched)">
         <div *ngIf="emailControl.errors?.['required']">
@@ -16,7 +25,7 @@
           <small>Please provide a correct email address</small>
         </div>
       </div>
-      <input type="password" [formControl]="passwordControl" placeholder="Enter password">
+      <input >
       <div class="text-danger"
         *ngIf="passwordControl && passwordControl.errors && (passwordControl.dirty || passwordControl.touched)">
         <div *ngIf="passwordControl.errors?.['required']">
@@ -28,21 +37,25 @@
         <div *ngIf="passwordControl.errors?.['maxlength']">
           <small>Maximum length for password is 50</small>
         </div>
-      </div>
-      <p routerLink="../forgot-password">Recovery Password</p>
-      <button type="submit">Sign In</button>
+      </div> -->
+      <div class="t-blue fs-15 Fredoka400 my-4" routerLink="../forgot-password">Recovery Password</div>
+      <!-- <button type="submit">Sign In</button> -->
+      <ion-button type="submit" slot="center" expand="full" shape="round" color="primary" fill="solid" class="mt-5">Sign In
+      </ion-button>
     </form>
-    <div class="liner">
-      <hr>
-      <p>Or Continue With</p>
-      <hr>
-    </div>
+
     <!-- <h5>Forgot Password?</h5> -->
-    <div class="social">
-      <button (click)="authService.signInWithGoogle()" fill="clear">
-        <ion-icon name="logo-google" class="logo"></ion-icon>
-      </button>
-    </div>
-    <h4 class="register">Don't have an account ? <span routerLink="../signup">Sign Up</span></h4>
+
+
   </div>
+  <div class="box">
+    <ion-button slot="center" expand="full" shape="round" color="primary" fill="outline">
+      <ion-icon name="logo-google" class="logo"></ion-icon>
+      <span class="ms-3">Login with Google</span>
+    </ion-button>
+    <h4 class="Nunito400 t-grey fs-15">Don't have an account ? <span class="t-blue" routerLink="../signup">Sign
+        Up</span>
+    </h4>
+  </div>
+
 </ion-content>
