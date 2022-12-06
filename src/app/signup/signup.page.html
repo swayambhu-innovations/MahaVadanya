@@ -8,21 +8,27 @@
       </ion-row>
       <ion-row id="form">
         <ion-col size="11" offset="0.5">
-          <form size="11" offset="0.5" [formGroup]="signupForm" (ngSubmit)="submit()">
+          <form size="11" offset="0.5" [formGroup]="signupForm" (ngSubmit)="signup()">
             <ion-card>
-              <ion-input type="text" placeholder="Username" autocomplete="off" autocorrect="off" autofocus="true"
-                formControlName="username">
+              <ion-input type="text" placeholder="fullName" autocomplete="off" autocorrect="off" autofocus="true"
+                formControlName="fullName">
               </ion-input>
             </ion-card>
             <ion-card>
               <ion-input type="email" class="input-reverse ion-no-border" autocomplete="off" placeholder="Email"
-                autocorrect="off" color="dark" formControlName="email" pattern="email" formControlName="email">
+                autocorrect="off" color="dark" formControlName="email" pattern="email" >
 
               </ion-input>
             </ion-card>
             <ion-card>
               <ion-input type="password" class="input-reverse ion-no-border" autocomplete="off" placeholder="Password"
-                autocorrect="off" color="dark" formControlName="password" pattern="password" formControlName="password">
+                autocorrect="off" color="dark" formControlName="password" pattern="password" >
+
+              </ion-input>
+            </ion-card>
+            <ion-card>
+              <ion-input type="password" class="input-reverse ion-no-border" autocomplete="off" placeholder="confirmPassword"
+                autocorrect="off" color="dark" formControlName="confirmPassword" pattern="password" >
 
               </ion-input>
             </ion-card>

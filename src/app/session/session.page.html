@@ -1,0 +1,10 @@
+<app-header pannel="others" title="Session"></app-header>
+
+<ion-content>
+  <!-- <p>{{getTime(this.dataProvider?.user?.currentSessionTime)}}</p> -->
+
+<div class="h-100 d-flex justify-content-center align-items-center w-100">
+  <!-- <div class="t-blue Nunito800 fs-26">{{time}}</div> -->
+</div>  
+<button (click)="addSession()" *ngIf="!(time)">add session</button>
+</ion-content>

@@ -6,6 +6,12 @@ import { DatabaseService } from './services/database.service';
 import { Router } from '@angular/router';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { DataProvider } from './providers/data.provider';
+import { DataProviderService } from './services/dataProvider/data-provider.service';
+import { UserService } from './services/user/user.service';
+import { doc, docData, Firestore } from '@angular/fire/firestore';
+import { Auth, authState, User } from '@angular/fire/auth';
+import { EMPTY, Observable, Subject } from 'rxjs';
+import { urls } from './services/urls';
 
 
 @Component({
@@ -24,13 +30,21 @@ export class AppComponent implements OnInit {
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   isModalOpen = false;
+  public readonly user: Observable<User | null> = EMPTY;
+
+  public loggedInUserData: Subject<any> = new Subject();
+
+  public userdata: any;
   constructor(
     private menu: MenuController,
     private platform: Platform,
     public databaseService: DatabaseService,
     public authService: AuthencationService,
     private router: Router,
-    public dataProvider:DataProvider
+    public dataProvider: DataProvider,
+    private auth: Auth,
+    public dataProviderr: DataProviderService,
+    private fs: Firestore
   ) {
     if (!this.platform.is('capacitor')) {
       this.platform.ready().then(() => {
@@ -44,6 +58,31 @@ export class AppComponent implements OnInit {
         console.log(GoogleAuth);
       });
     }
+
+
+    if (this.auth) {
+      this.user = authState(this.auth);
+      this.user.subscribe((user: any) => {
+        if (user) {
+          this.dataProviderr.LoggedInUser = true;
+          this.loggedInUserData.next(user)
+          const userUrl = urls.user.replace('{{USER_ID}}', user.uid);
+          docData(doc(this.fs, userUrl)).subscribe((res) => {
+            this.dataProviderr.user = res;
+            console.log(this.dataProviderr.user)
+
+          })
+        }
+        else {
+          this.dataProviderr.LoggedInUser = false;
+          this.loggedInUserData.next(false)
+        }
+      })
+    }
+    else {
+      alert('loggedout')
+
+    }
   }
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
@@ -51,22 +90,20 @@ export class AppComponent implements OnInit {
   close() {
     this.menu.close();
   }
-  ngOnInit() {
-    // this.authService.user.subscribe((user) => {
-    //   if (user) {
-    //     this.databaseService.getUser(user.uid).then((user) => {
-    //       if (user.exists){
-    //         this.router.navigate(['']);
-    //       }
-    //     });
-    //     // this.router.navigate(['/admin']);
-    //   } else {
-    //     SplashScreen.hide();
-    //     this.router.navigate(['login']);
-    //   }
-    // });
+
+
+  ngOnInit() {}
+
+
+
+
+
+
+  public get getUserData(): Observable<User | null> {
+    console.log(this.user)
+    return this.user;
   }
-  logout(){
+  logout() {
     this.close()
     this.authService.logout();
   }

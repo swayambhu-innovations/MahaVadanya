@@ -23,26 +23,39 @@ export class AddDetailsPage implements OnInit {
     dateOfBirth: new FormControl('', [Validators.required]),
     gender: new FormControl('Male', [Validators.required]),
     selectPlan: new FormControl('Weekly', [Validators.required]),
-    startDate: new FormControl(Date.now(), [Validators.required]),
+    startDate: new FormControl(new Date(), [Validators.required]),
     batchSlot: new FormControl('', [Validators.required]),
   });
 
-  
+  public allPlans:any[] = []
 
-  constructor( private dataProvider:DataProviderService, private router:Router) { }
+  constructor( private dataProvider:DataProviderService, private router:Router, private admission:AdmissionService) { }
 
   toggleOpen() { this.isModalOpen = !this.isModalOpen; }
 
-  ngOnInit() { }
+  ngOnInit() { this.plans() }
 
   addAdmission() {
     const data = {
       ...this.addAdmissionForm.value,
       status: false,
     }
+    console.log(this.addAdmissionForm.value)
     this.dataProvider.admission = data;
     this.router.navigateByUrl('/select-seat')
     console.log(this.dataProvider.admission)
+  }
+
+  plans(){
+    this.admission.plans().then((res)=>{
+      res.forEach((element: any) => {
+        this.allPlans.push({
+          ...element.data(),
+          id: element.id,
+        });
+        console.log(this.allPlans)
+      });
+    })
   }
 
 

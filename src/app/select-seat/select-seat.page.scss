@@ -63,3 +63,34 @@
     max-height: 18px;
     border-radius: 50%;
   }
+
+  .available{
+    background: #0B80ED !important;
+    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    max-height: 40px;
+    border-radius: 5px;
+    color: #ffff;
+  }
+
+  .booked{
+    background: #DDDDDD  !important;
+    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    max-height: 40px;
+    border-radius: 5px;
+
+  }
+
+  .box{
+    position: fixed;
+    bottom: 50px;
+    padding: 30px;
+    width: 100%;
+  }

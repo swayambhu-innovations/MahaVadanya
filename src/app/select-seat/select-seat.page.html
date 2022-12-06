@@ -1,5 +1,5 @@
-<app-header pannel="others"></app-header>
-<ion-content>
+<app-header pannel="others" title="Book Seats"></app-header>
+<ion-content class="h-100 d-flex justify-content-evenly flex-column align-items-center w-100">
   <ion-list class="mt-2">
     <ion-item>
       <ion-select expand="full" placeholder="Choose Section">
@@ -21,62 +21,9 @@
 
   </div>
   <div class="grid-container">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1" class="disableSeat">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1" class="disableSeat">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1" class="disableSeat">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1" class="disableSeat">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-    <input type="text" disabled value="A1">
-
-
-
+    <button *ngFor="let seat of seats" (click)="getSeatTrigger(seat)"   [ngClass]="{'available': seat.available === true , 'booked' : seat.available === false }">{{seat.seatNo}}</button>
+  </div>
+  <div class="box">
+    <ion-button type="submit"  slot="center" expand="full" shape="round" color="primary" fill="outline" class="w-100" (click)="addAdmission()">Save</ion-button>
   </div>
 </ion-content>

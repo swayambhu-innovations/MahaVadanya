@@ -123,7 +123,15 @@ const routes: Routes = [
   {
     path: 'admission-confirmation',
     loadChildren: () => import('./admission-confirmation/admission-confirmation.module').then(m => m.AdmissionConfirmationPageModule)
+  },  {
+    path: 'qr-scan',
+    loadChildren: () => import('./qr-scan/qr-scan.module').then( m => m.QrScanPageModule)
   },
+  {
+    path: 'session',
+    loadChildren: () => import('./session/session.module').then( m => m.SessionPageModule)
+  },
+
 
 ];
 

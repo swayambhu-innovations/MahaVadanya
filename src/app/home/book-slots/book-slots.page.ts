@@ -6,6 +6,7 @@ import { Console } from 'console';
 import { DataProvider } from 'src/app/providers/data.provider';
 import { BookingServiceService } from 'src/app/services/booking-service.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { DataProviderService } from 'src/app/services/dataProvider/data-provider.service';
 import { Booking } from 'src/app/structures/booking.structure';
 
 @Component({
@@ -14,6 +15,9 @@ import { Booking } from 'src/app/structures/booking.structure';
   styleUrls: ['./book-slots.page.scss'],
 })
 export class BookSlotsPage implements OnInit {
+
+  admissionData : any;
+
   bookingForm: FormGroup = new FormGroup({
     date: new FormControl('', [Validators.required]),
     timeSlot: new FormControl(null, [Validators.required]),
@@ -22,10 +26,16 @@ export class BookSlotsPage implements OnInit {
   constructor(
     private bookingService: BookingServiceService,
     private router: Router,
-    private dataProvider: DataProvider
+    private dataProvider: DataProvider,
+    private dataprovider :DataProviderService
+
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.admissionData =  this.dataprovider.user
+    console.log(this.admissionData)
+  }
+
   async submit() {
     this.bookingForm.value.date = Timestamp.fromDate(
       new Date(this.bookingForm.get('date')?.value)

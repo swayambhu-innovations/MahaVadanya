@@ -359,7 +359,7 @@ export class AuthencationService {
   public signUpWithEmailAndPassword(
     email: string,
     password: string,
-    username: string
+    fullname: string
   ) {
     console.log('Signing Up');
     this.dataProvider.pageSetting.blur = true;
@@ -368,7 +368,7 @@ export class AuthencationService {
       .then(async (credentials: UserCredential) => {
         logEvent(this.analytics, 'Signed_Up');
         await this.userData.setEmailUserData(credentials.user, {
-          displayName: username,
+          displayName: fullname,
           phoneNumber: '',
           photoURL: '',
         });

@@ -1,5 +1,5 @@
 <app-header title="Add your details"></app-header>
-<ion-content color="dark">
+<ion-content color="light">
   <ion-modal class="exchange_Seat" [isOpen]="isModalOpen">
     <ng-template>
       <ion-content color="dark">
@@ -22,7 +22,7 @@
     </ion-item>
 
     <ion-item id="custom-item" counter="true">
-      <ion-label position="floating" >Address</ion-label>
+      <ion-label position="floating">Address</ion-label>
       <ion-input maxlength="20" formControlName="address"></ion-input>
     </ion-item>
 
@@ -44,18 +44,21 @@
       </ion-select>
     </ion-item>
 
-    <ion-item>
-      <ion-select interface="popover" placeholder="Select Plan" formControlName="selectPlan">
+    <!-- <ion-item>
+      <ion-select interface="popover" placeholder="Select Plan" >
         <ion-select-option value="Weekly">Weekly</ion-select-option>
         <ion-select-option value="Monthly">Monthly</ion-select-option>
         <ion-select-option value="yearly">yearly</ion-select-option>
       </ion-select>
-    </ion-item>
+    </ion-item> -->
 
     <ion-item>
       <ion-label position="floating">Start Date</ion-label>
-      <ion-input placeholder="Enter text" formControlName="startDate" ></ion-input>
+      <ion-input placeholder="Enter text" formControlName="startDate"></ion-input>
     </ion-item>
+
+    
+
 
     <ion-item>
       <ion-select interface="popover" placeholder="Select a batch" formControlName="batchSlot">
@@ -64,13 +67,31 @@
         <ion-select-option value="10pm - 11pm">10pm - 11pm</ion-select-option>
       </ion-select>
     </ion-item>
+
+    <div class="Nunito600 fs-16 px-3 mt-3 ">Select Plan</div>
+    <ion-card *ngFor="let plan of allPlans">
+      <ion-item>
+        <!-- <ion-checkbox slot="start" name="1"></ion-checkbox> -->
+        <input type="radio" formControlName="selectPlan" [value]="plan.timePeriod">
+        <ion-label class="Nunito500 fs-20 d-flex justify-content-between align-items-center"><span>{{plan.timePeriod}}</span> <span
+            class="t-blue fs-15">Rs {{plan.price}} P/M</span></ion-label>
+      </ion-item>
+      <ion-card-content>
+        <div *ngFor="let feature of plan.features">{{feature}}</div>
+        <div *ngFor="let missingFeatures of plan.missingFeatures">{{missingFeatures}}</div>
+        
+      </ion-card-content>
+    </ion-card>
     
-    <ion-input placeholder="Enter text" formControlName="batchSlot"></ion-input>
-   
+
+
+
+
 
 
     <div class="px-3 pt-5">
-      <ion-button type="submit" slot="center" expand="full" shape="round" color="primary" fill="solid">Select Your Seat</ion-button>
+      <ion-button type="submit" slot="center" expand="full" shape="round" color="primary" fill="solid">Select Your Seat
+      </ion-button>
     </div>
 
 

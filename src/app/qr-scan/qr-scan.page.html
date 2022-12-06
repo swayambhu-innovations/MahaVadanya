@@ -1,0 +1,41 @@
+<app-header title="Qr Scan"></app-header>
+<ion-content>
+  <div>
+     <div class="scanner">
+       <video #video width="100%"></video>
+       <canvas #canvas hidden></canvas>
+     </div>
+     
+   </div>
+   
+   <div class="mt-5 w-100">
+    <ion-button expand="full" (click)="startScan()">
+      <ion-icon slot="start" name="qr-scanner"></ion-icon>
+      Start scan
+    </ion-button>
+    <ion-button expand="full" (click)="reset()" color="warning" *ngIf="scanResult">
+      <ion-icon slot="start" name="refresh"></ion-icon>
+      Reset
+    </ion-button>
+    <ion-button expand="full" (click)="stopScan()" color="danger" *ngIf="scanActive">
+      <ion-icon slot="start" name="close"></ion-icon>
+      Stop scan
+    </ion-button>
+   </div>
+   <ion-card>
+     <ion-card-header>
+       <ion-card-title>QR Code</ion-card-title>
+     </ion-card-header>
+     <ion-card-content>
+       {{ scanResult || 'N/A'}}
+     </ion-card-content>
+   </ion-card>
+   <!-- <ion-card *ngIf="scanResult">
+     <ion-card-header>
+       <ion-card-title>QR Code</ion-card-title>
+     </ion-card-header>
+     <ion-card-content>
+       {{ scanResult }}
+     </ion-card-content>
+   </ion-card> -->
+</ion-content>

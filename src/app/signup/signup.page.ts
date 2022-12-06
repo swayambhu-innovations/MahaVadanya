@@ -28,16 +28,14 @@ export class SignupPage implements OnInit {
   ngOnInit() {}
 
   signup():void{
-    console.log(this.signupForm,this.confirmPasswordControl);
-    if (this.signupForm.status === 'VALID'){
+    console.log(this.signupForm.value)
+    
       if (this.signupForm.value.password === this.signupForm.value.confirmPassword){
         console.log(this.signupForm.value)
-        this.authService.signUpWithEmailAndPassword(this.signupForm.value.email,this.signupForm.value.password,this.signupForm.value.fullName)
+        this.authService.signUpWithEmailAndPassword(this.signupForm.value.email, this.signupForm.value.password,this.signupForm.value.fullName)
       } else {
         this.alertify.presentToast("Password and Confirm Password do not match",'error',3000);
       }
-    } else {
-      this.alertify.presentToast('Please fill all the fields correctly','error',3000);
-    }
-  }
+    } 
+  
 }

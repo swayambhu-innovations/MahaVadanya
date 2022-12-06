@@ -26,6 +26,7 @@
     "@capacitor-community/native-audio": "^3.0.3",
     "@capacitor/android": "3.6.0",
     "@capacitor/app": "1.1.1",
+    "@capacitor/camera": "^4.1.4",
     "@capacitor/core": "3.6.0",
     "@capacitor/haptics": "1.1.4",
     "@capacitor/keyboard": "1.2.2",
@@ -35,12 +36,13 @@
     "@codetrix-studio/capacitor-google-auth": "^3.1.4",
     "@ionic/angular": "^6.0.0",
     "angular-svg-round-progressbar": "^8.0.0",
+    "jsqr": "^1.4.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~13.2.3",
+    "@angular-devkit/build-angular": "^13.3.10",
     "@angular-eslint/builder": "~13.0.1",
     "@angular-eslint/eslint-plugin": "~13.0.1",
     "@angular-eslint/eslint-plugin-template": "~13.0.1",

@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataProviderService {
+  
+  public LoggedInUser: boolean;
+  public user: any;
 
   constructor() { }
 
