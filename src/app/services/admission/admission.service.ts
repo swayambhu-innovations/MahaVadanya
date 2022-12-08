@@ -15,7 +15,7 @@ export class AdmissionService {
     return addDoc(collection(this.fs, urls.admissions), data);
   }
 
-  session(USER_ID, data){
+  session(USER_ID, data:any){
     const userSessionUrl = urls.user.replace('{{USER_ID}}', USER_ID);
     return addDoc(collection(this.fs, userSessionUrl + urls.session), data);
   }
