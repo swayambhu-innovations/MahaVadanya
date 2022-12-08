@@ -25,7 +25,7 @@ import { AlertsAndNotificationsService } from './uiService/alerts-and-notificati
 import { UserDataService } from './user-data.service';
 import { DataProvider } from '../providers/data.provider';
 import { Router } from '@angular/router';
-import { Storage } from '@capacitor/storage';
+// import { Storage } from '@capacitor/storage';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { Platform } from '@ionic/angular';
 import {
@@ -409,8 +409,8 @@ export class AuthencationService {
   // Sign out functions start
   public async logout() {
     if (confirm('Are you sure you want to logout?')) {
-      await Storage.remove({ key: 'auth' });
-      await Storage.remove({ key: 'userData' });
+      // await Storage.remove({ key: 'auth' });
+      // await Storage.remove({ key: 'userData' });
       await signOut(this.auth);
       logEvent(this.analytics, 'Logged_Out');
       this.router.navigate(['../login']);
@@ -421,17 +421,17 @@ export class AuthencationService {
     // console.log('Starting data observer')
     if (user) {
       // console.log('Setting data observer')
-      user.subscribe(async (u: User) => {
+      user.subscribe(async (u: any) => {
         if (u) {
           this.dataProvider.loggedIn = true;
           this.dataProvider.gettingUserData = true;
           // console.log('User is Logged In')
           // this.markAttendance(u.uid);
           this.userDoc = doc(this.firestore, 'users/' + u.uid);
-          await Storage.set({
-            key: 'auth',
-            value: JSON.stringify(u),
-          });
+          // await Storage.set({
+          //   key: 'auth',
+          //   value: JSON.stringify(u),
+          // });
           // console.log("User data from auth",u);
           if (this.userServerSubscription !== undefined) {
             this.userServerSubscription.unsubscribe();
@@ -452,10 +452,10 @@ export class AuthencationService {
                 this.dataProvider.userData = data;
                 // this.setMissingFields();
                 this.dataProvider.gettingUserData = false;
-                await Storage.set({
-                  key: 'userData',
-                  value: JSON.stringify(data),
-                });
+                // await Storage.set({
+                //   key: 'userData',
+                //   value: JSON.stringify(data),
+                // });
               }
             }
           );
@@ -469,7 +469,7 @@ export class AuthencationService {
   }
   setMissingFields() {
     if (!this.dataProvider.userData?.phoneNumber) {
-      const res = prompt('Enter your phone number');
+      const res:any = prompt('Enter your phone number');
       if (res.length === 10) {
         setDoc(doc(this.firestore, 'users/' + this.dataProvider.userID), {
           phoneNumber: '+91' + res,

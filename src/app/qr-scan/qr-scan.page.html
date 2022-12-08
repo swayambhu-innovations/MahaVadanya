@@ -9,15 +9,15 @@
    </div>
    
    <div class="mt-5 w-100">
-    <ion-button expand="full" (click)="startScan()">
+    <ion-button expand="full" >
       <ion-icon slot="start" name="qr-scanner"></ion-icon>
       Start scan
     </ion-button>
-    <ion-button expand="full" (click)="reset()" color="warning" *ngIf="scanResult">
+    <ion-button expand="full"  color="warning" *ngIf="scanResult">
       <ion-icon slot="start" name="refresh"></ion-icon>
       Reset
     </ion-button>
-    <ion-button expand="full" (click)="stopScan()" color="danger" *ngIf="scanActive">
+    <ion-button expand="full"  color="danger" *ngIf="scanActive">
       <ion-icon slot="start" name="close"></ion-icon>
       Stop scan
     </ion-button>

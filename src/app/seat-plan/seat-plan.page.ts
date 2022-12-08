@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SeatPlanPage implements OnInit {
   // @Input() buttonColor: string = "#28ba62";
-  seats: Seat[];
+  public seats: any[];
   selected = false;
   bookedSeat: any;
 

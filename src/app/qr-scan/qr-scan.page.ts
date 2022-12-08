@@ -1,17 +1,19 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Camera } from '@capacitor/camera';
-import { Haptics, ImpactStyle } from '@capacitor/haptics';
+
 import { Platform } from '@ionic/angular';
-import jsQR from 'jsqr';
+// import jsQR from 'jsqr';
 import { AlertsAndNotificationsService } from '../services/uiService/alerts-and-notifications.service';
+import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { Haptics } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-qr-scan',
   templateUrl: './qr-scan.page.html',
   styleUrls: ['./qr-scan.page.scss'],
 })
-export class QrScanPage implements OnInit , AfterViewInit {
+export class QrScanPage implements OnInit {
 
   @ViewChild('video', { static: false }) video: ElementRef;
   @ViewChild('canvas', { static: false }) canvas: ElementRef;
@@ -29,74 +31,67 @@ export class QrScanPage implements OnInit , AfterViewInit {
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
-    this.canvasElement = this.canvas.nativeElement;
-    this.canvasContext = this.canvasElement.getContext('2d');
-    this.videoElement = this.video.nativeElement;
-  }
 
-   // Helper functions
-   async showQrToast() {
-    if (confirm('Do you want to ')) {
-      window.open(this.scanResult, '_system', 'location=yes');
-    }
-  }
 
-  reset() {
-    this.scanResult = null;
-  }
 
-  stopScan() {
-    this.scanActive = false;
-  }
-  async startScan() {
-    // Not working on iOS standalone mode!
-    console.log("DEBUG")
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: { facingMode: 'environment' },
-    });
-    console.log(stream)
-    this.videoElement.srcObject = stream;
-    // Required for Safari
-    this.videoElement.setAttribute('playsinline', true);
+  
 
-    this.videoElement.play();
-    this.interval = setInterval(()=>{
-      this.scan()
-    },300)
-  }
 
-  async scan() {
-    if (this.videoElement.readyState === this.videoElement.HAVE_ENOUGH_DATA) {
-      if (this.loading) {
-        await this.loading.dismiss();
-        this.loading = null;
-        this.scanActive = true;
-      }
-      this.canvasElement.height = this.videoElement.videoHeight;
-      this.canvasElement.width = this.videoElement.videoWidth;
-   
-      this.canvasContext.drawImage(this.videoElement,0,0,this.canvasElement.width,this.canvasElement.height);
-      const imageData = this.canvasContext.getImageData(0,0,this.canvasElement.width,this.canvasElement.height);
-      const code = jsQR(imageData.data, imageData.width, imageData.height, {
-        inversionAttempts: 'dontInvert'
-      });
-      console.log(code)
+    globalSearch() {
       
-      if (code) {
-        alert('heello')
-        // if (code.data==this.productId){
-        //   this.router.navigate(['/product-details/',this.productId]);
-        //   await Haptics.impact({ style: ImpactStyle.Heavy });
-        //   this.alertify.presentToast("Product Found");
-          clearInterval(this.interval)
-        }
-      }
-      //   if (this.scanActive) {
-      //     requestAnimationFrame(this.scan.bind(this));
-      //   }
-      // }
-    } 
+      // this.router.navigateByUrl('product-details/' + '49052825038959470');
+      Camera.checkPermissions()
+        .then(async (res) => {
+          if (res) {
+            const startScan = async () => {
+              // Check camera permission
+              // This is just a simple example, check out the better checks below
+              await BarcodeScanner.checkPermission({ force: true });
+  
+              // make background of WebView transparent
+              // note: if you are using ionic this might not be enough, check below
+              (document.querySelector('app-root') as HTMLElement).style.display =
+                'none';
+              BarcodeScanner.hideBackground();
+  
+              const result = await BarcodeScanner.startScan(); // start scanning and wait for a result
+              
+              alert(result)
+              // if the result has content
+              // if (result.hasContent && this.validIds.includes(result.content)) {
+              //   console.log('result.content', result.content);
+              //   // alert(result.content); // log the raw scanned content
+              //   const stockId =
+              //     this.stocksIds[this.validIds.indexOf(result.content)];
+              //   const purchaseId = this.purchaseIds[this.validIds.indexOf(result.content)];
+              //   console.log('purchaseId', stockId);
+              //   (
+              //     document.querySelector('app-root') as HTMLElement
+              //   ).style.display = 'block';
+              //   BarcodeScanner.showBackground();
+              //   await BarcodeScanner.stopScan();
+              //   this.dataProvider.purchaseProductId = result.content;
+              //   this.dataProvider.purchaseId = purchaseId;
+              //   this.router.navigateByUrl('product-details/' + stockId);
+              //   setTimeout(() => {
+              //     location.reload();
+              //   }, 500);
+              //   await Haptics.impact({ style: ImpactStyle.Heavy });
+              //   this.alertify.presentToast('Product Found');
+              // }
+            };
+            await startScan();
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          Camera.requestPermissions().then((res) => {
+            console.log(res);
+          });
+        });
+      // this.startScan();
+    }
+  
   }
 
 
