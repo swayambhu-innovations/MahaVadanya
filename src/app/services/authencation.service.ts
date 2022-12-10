@@ -18,6 +18,7 @@ import {
   UserCredential,
   signInWithCredential,
   signInWithRedirect,
+  signInWithPopup,
 } from '@angular/fire/auth';
 import { EMPTY, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -282,7 +283,7 @@ export class AuthencationService {
         });
     } else {
       const gauth = new GoogleAuthProvider();
-      signInWithRedirect(this.auth, gauth).then(
+      signInWithPopup(this.auth, gauth).then(
         (credentials: UserCredential) => {
           console.log('Credentials ', credentials);
           getDoc(doc(this.firestore, 'users/' + credentials.user.uid))
