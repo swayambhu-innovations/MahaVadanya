@@ -27,14 +27,11 @@ export class BookSlotsPage implements OnInit {
     private bookingService: BookingServiceService,
     private router: Router,
     private dataProvider: DataProvider,
-    private dataprovider :DataProviderService
+    public dataprovider :DataProviderService
 
   ) {}
 
-  ngOnInit() {
-    this.admissionData =  this.dataprovider.user
-    console.log(this.admissionData)
-  }
+  ngOnInit() {}
 
   async submit() {
     this.bookingForm.value.date = Timestamp.fromDate(

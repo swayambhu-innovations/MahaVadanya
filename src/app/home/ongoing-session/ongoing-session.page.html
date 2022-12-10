@@ -1,124 +1,53 @@
-<!-- <ion-modal class="exchange_Seat" [isOpen]="exchangeSeat">
-  <ng-template>
-    <ion-content color="dark">
-      <div class="card">
-        <ion-grid>
-          <ion-row class="ion-text-center">
-            <ion-col>
-              <ion-avatar>
-                <ion-img src="../../assets/exchange.svg"></ion-img>
-              </ion-avatar>
-            </ion-col>
-          </ion-row>
-          <ion-row class="ion-text-center">
-            <ion-col class="ion-margin">
-              <ion-text>Exchange Successful</ion-text>
-            </ion-col>
-          </ion-row>
-          <ion-row class="ion-text-center">
-            <ion-col class="ion-margin">
-              <ion-text>New Seat :{{exchangeSeatNumber}} </ion-text>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-    </ion-content>
-  </ng-template>
-</ion-modal>
+<button (click)="setOpen(true)">Exchange seat</button>
 
-<ion-grid class="ion-text-center">
-  <ion-row>
-    <ion-col>
-      <ion-text>Session is Active</ion-text>
-      <p>Seat: Z18</p>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <round-progress
-        [current]="60"
-        [max]="100"
-        [color]="'#3880ff'"
-        [background]="'#e2edff'"
-        [radius]="80"
-        [stroke]="25"
-        [semicircle]="false"
-        [rounded]="false"
-        [clockwise]="true"
-        [responsive]="false"
-        [duration]="800"
-        [animation]="'easeInOutQuart'"
-        [animationDelay]="0"
-      ></round-progress>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <div>
-        <strong
-          ><b>26</b> <br />
-          min left</strong
-        >
-      </div>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <b>Session will end at 12:00</b>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-<ion-button
-  expand="full"
-  class="ion-text-center ion-margin"
-  (click)="setOpen(true)"
-  >EXCHANGE SEAT</ion-button
->
+
 <ion-modal [isOpen]="isModalOpen">
-  <ng-template>
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title slot="secondary" slot="start">Exchange Seat</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="setOpen(false)" id="heading">Close</ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content color="dark">
-      <ion-grid>
-        <ion-row class="ion-text-center">
-          <ion-col>
-            <span
-              >Select Seat for<br />
-              Exchange</span
-            >
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-list>
-              <form  [formGroup]="seatExchangeForm" (ngSubmit)="submit()">
-              <ion-item color="light">
-                <ion-label color="primary">Seat </ion-label>
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Exchange Seat</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <div class="grid-container">
+            <button *ngFor="let seat of seats" (click)="getSeatTrigger(seat)"   [ngClass]="{'available': seat.available === true , 'booked' : seat.available === false }">{{seat.seatNo}}</button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
-                <ion-select formControlName="seat" *ngIf="availableSeats">
-                  <ion-select-option  *ngFor="let seat of availableSeats" [value]="seat" >{{seat.seatNumber}}</ion-select-option>
-            
-                </ion-select>
-                <ion-select>
-                  <ion-text color="danger">
- Sorry No Seats Available
-                  </ion-text>
-                </ion-select>
-              </ion-item>
-              <ion-button expand="full" shape="round" (click)="seatExchange()" type="submit"   [disabled]="!seatExchangeForm.valid"
-                >Request for Exchange</ion-button
-              >
-            </form>
-            </ion-list>
-          </ion-col>
+
+
+
+
+<ion-card>
+    <ion-card-header>
+        <ion-card-title>Exchange Seat</ion-card-title>
+        <div class="Nunito pt-2 fs-14 t-grey"><span class="t-blue">Approve</span> only, if you want exchange your seat with bellow seat, other wise <span class="t-blue">Reject</span></div>
+    </ion-card-header>
+
+    <ion-list lines="full" class="no-margin">
+        <ion-item>
+            <ion-label>Seat No - {{iWantExchangeWith?.seatNo}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>Username - {{iWantExchangeWith?.seatNo}}</ion-label>
+        </ion-item>
+    </ion-list>
+
+    <ion-grid  class="no-margin">
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" color="primary" fill="outline" class="no-margin" (click)="exchangeSeat('approve')">Approve</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button expand="block" color="primary" fill="solid" class="no-margin" (click)="exchangeSeat('reject')">Reject</ion-button>
+            </ion-col>
         </ion-row>
-      </ion-grid>
-    </ion-content>
-  </ng-template>
-</ion-modal> -->
+    </ion-grid>
+
+</ion-card>
+
