@@ -1,0 +1,46 @@
+<app-header pannel="others" title="Exchange Seat"></app-header>
+
+<ion-content>
+  <div *ngFor="let exchangeSeat of exchangeSeats">
+    <div *ngIf="this.dataProvider?.user.userId == exchangeSeat?.orignalSeat?.userId; else exchangeSeatUser">
+      <ion-item>
+        <ion-label>
+          <h3 class="pb-2 Fredoka400">Your Requested For seat</h3>
+          <div class="Nunito d-flex justify-content-between align-items-center">
+            <p>{{exchangeSeat?.orignalSeat?.seatNo}} > {{exchangeSeat?.exchangeSeat?.seatNo}}</p>
+            <p class="text-uppercase">{{exchangeSeat?.status}}</p>
+          </div>
+        </ion-label>
+      </ion-item>
+    </div>
+    <ng-template #exchangeSeatUser>
+      <ion-card>
+        <ion-card-header>
+            <ion-card-title>Exchange Seat</ion-card-title>
+            <div class="Nunito pt-2 fs-14 t-grey"><span class="t-blue">Approve</span> only, if you want exchange your seat with bellow seat, other wise <span class="t-blue">Reject</span></div>
+        </ion-card-header>
+    
+        <ion-list lines="full" class="no-margin" (click)="exchangeSeat()">
+            <ion-item>
+                <ion-label>Seat No - {{exchangeSeat?.orignalSeat?.seatNo}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Username - {{exchangeSeat?.orignalSeat?.fullName}}</ion-label>
+            </ion-item>
+        </ion-list>
+    
+        <ion-grid  class="no-margin">
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="block" color="primary" fill="outline" class="no-margin" (click)="exchangeSeatApprove(exchangeSeat, 'approve')">Approve</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button expand="block" color="primary" fill="solid" class="no-margin" (click)="exchangeSeat('reject')">Reject</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    
+    </ion-card>
+    </ng-template>
+  </div>
+</ion-content>

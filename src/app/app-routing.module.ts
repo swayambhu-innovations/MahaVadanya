@@ -131,6 +131,14 @@ const routes: Routes = [
     path: 'session',
     loadChildren: () => import('./session/session.module').then( m => m.SessionPageModule)
   },
+  {
+    path: 'exchange-seat',
+    loadChildren: () => import('./exchange-seat/exchange-seat.module').then( m => m.ExchangeSeatPageModule)
+  },
+  {
+    path: 'plans',
+    loadChildren: () => import('./plans/plans.module').then( m => m.PlansPageModule)
+  },
 
 
 ];

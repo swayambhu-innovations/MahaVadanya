@@ -13,14 +13,14 @@ import { Seat } from 'src/app/structures/seat.structure';
 })
 export class OngoingSessionPage implements OnInit {
 
-  seats:any = []
+  seats: any = []
   public mySeat: any;
   public iWantExchangeWith: any;
   public selectedSeat: any;
   isModalOpen = false;
-  mySeatID:any = this.dataProvider?.user?.currentAdmission?.seat?.id
+  mySeatID: any = this.dataProvider?.user?.currentAdmission?.seat?.id
 
-  
+
   constructor(
     public dataProvider: DataProviderService,
     private seatService: SeatsService,
@@ -36,33 +36,51 @@ export class OngoingSessionPage implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  
 
-  getSeatTrigger(data) {
+
+  async getSeatTrigger(data) {
     this.selectedSeat = data;
     console.log(this.selectedSeat)
-    this.seatService.seat(this.mySeatID).then((res) => {
-      this.mySeat = res.data();
-      console.log(this.mySeat)
-    })
 
-    this.seatService.seat(this.selectedSeat).then((res) => {
-      this.iWantExchangeWith = res.data();
+    let orignalSeatFields = await this.seatService.seat(this.mySeatID)
+    this.mySeat = orignalSeatFields.data();
 
-    })
+    let exchangeSeatField = await this.seatService.seat(this.selectedSeat.id)
+    this.iWantExchangeWith = exchangeSeatField.data();
+
+
+
+    // creating Id's
+    const adminDocId = this.mySeat.userId + this.iWantExchangeWith.userId;
+    const mySeatDocId = 'seat' + this.mySeat.userId + this.iWantExchangeWith.userId;
+    const exchangeSeatId = 'exchange' + this.mySeat.userId + this.iWantExchangeWith.userId;
+
+    console.log(adminDocId)
+    console.log(mySeatDocId)
+    console.log(exchangeSeatId)
+
+
     const exchangeSeatData = {
-      orignalSeat: {...this.mySeat},
-      exchangeSeat: {...this.iWantExchangeWith},
-      status:'pending'
+      orignalSeat: this.mySeat,
+      exchangeSeat: this.iWantExchangeWith,
+      adminDocId: adminDocId,
+      orignalSeatId: mySeatDocId,
+      exchangeSeatId: exchangeSeatId,
+      status: 'pending'
+
     }
-    this.admissions.exchangeSeatAdminLog(exchangeSeatData);
-    this.admissions.exchangeSeatMyUserLog(this.mySeat.userId.replace(' ', '') ,exchangeSeatData);
-    this.admissions.exchangeSeatMyUserLog(this.iWantExchangeWith.userId.replace(' ', '') ,exchangeSeatData);
-    
+
+    this.admissions.exchangeSeatAdminLog(adminDocId, exchangeSeatData);
+    // console.log(this.mySeat.userId)
+    // console.log(this.iWantExchangeWith.userId)
+
+    this.admissions.exchangeSeatMyUserLog(this.mySeat.userId, mySeatDocId, exchangeSeatData);
+    this.admissions.exchangeSeatMyUserLog(this.iWantExchangeWith.userId, exchangeSeatId, exchangeSeatData);
+
   }
 
-  getSeat(){
-    this.admissions.seats().then((res)=>{
+  getSeat() {
+    this.admissions.seats().then((res) => {
       res.forEach((element: any) => {
         console.log(element.data())
         this.seats.push({
@@ -74,10 +92,10 @@ export class OngoingSessionPage implements OnInit {
   }
 
 
-  
+
 
   async exchangeSeat(data) {
-    
+
 
     if (data == 'approve') {
       // console.log(data)
@@ -87,18 +105,18 @@ export class OngoingSessionPage implements OnInit {
         let dataOne = await this.admissions.confirmUserAdmission(mySeatChange,
           {
             currentAdmission: {
-              
+
               seat: {
-                
+
                 id: this.iWantExchangeWith.id,
                 seatNo: this.iWantExchangeWith.seatNo,
               },
-              
+
             }
           });
-          
+
       } catch (error) {
-        
+
       }
 
       const exchangeUserSeatChanges = this.iWantExchangeWith.userId.replace(' ', '');
@@ -116,19 +134,19 @@ export class OngoingSessionPage implements OnInit {
       await this.seatService.updateSeat(mySeatId, {
         seatNo: this.iWantExchangeWith.seatNo,
         id: this.iWantExchangeWith.id
-        
+
       });
 
       const exchangeUserSeatId = this.iWantExchangeWith.id.replace(' ', '');
       await this.seatService.updateSeat(exchangeUserSeatId, {
         seatNo: this.mySeat.seatNo,
         id: this.mySeat.id
-        
+
       });
 
 
     }
-    
+
 
 
   }

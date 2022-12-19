@@ -7,5 +7,7 @@ export const urls = {
     plans:'/plans',
     seats:`/seats`,
     seat:`/seats/{{SEAT_ID}}`,
-    exchangeSeat:`/exchangeSeat`
+    exchangeSeat:`/exchangeSeat`,
+    exchangeSeatDoc:`/exchangeSeat/{{SEAT_ID}}`,
+
 }

@@ -1,0 +1,19 @@
+<app-header pannel="others" title="Plans"></app-header>
+
+<ion-content>
+  <ion-card *ngFor="let plan of allPlans">
+    <ion-item >
+      <!-- <ion-checkbox slot="start" name="1"></ion-checkbox> -->
+      <!-- <input type="radio" formControlName="selectPlan" [value]="plan.timePeriod"> -->
+      <ion-label class="Nunito500 fs-20 d-flex justify-content-between align-items-center"><span>{{plan.timePeriod}}</span> <span
+          class="t-blue fs-15">Rs {{plan.price}} P/M</span></ion-label>
+    </ion-item>
+    <ion-card-content>
+      <div *ngFor="let feature of plan.features">{{feature}}</div>
+      <div *ngFor="let missingFeatures of plan.missingFeatures">{{missingFeatures}}</div>
+      <ion-range (ionChange)="onIonChange($event)" [min]="1" [max]="10" [value]="1" [pin]="true" [ticks]="true" [snaps]="true"></ion-range>
+      <ion-button  (click)="payForPlan(plan.timePeriod )" type="submit" slot="center" expand="full" shape="round" color="primary" fill="solid" class="mt-3">Select Plan
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

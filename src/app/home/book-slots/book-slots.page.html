@@ -1,4 +1,4 @@
-<ion-content *ngIf="(this.dataprovider.user); else noCurrentAdmission">
+<ion-content *ngIf="(this.dataprovider?.user?.currentAdmission); else noCurrentAdmission">
   <ion-card>
     <ion-card-header>
       <div class="Fredoka400 fs-20 t-blue">Current Active Booking</div>

@@ -47,14 +47,39 @@ export class AdmissionService {
     return setDoc(doc(this.fs, userUrl), data, {merge:true})
   }
 
-  exchangeSeatAdminLog(data){
-    return addDoc(collection(this.fs, urls.exchangeSeat), data);
+  // admin
+  exchangeSeatAdminLog(SEAT_ID:any, data:any,){
+    // return addDoc(collection(this.fs, urls.exchangeSeat), data);
+    const exchangeSeatDocUrl = urls.exchangeSeatDoc.replace('{{SEAT_ID}}', SEAT_ID);
+    return setDoc(doc(this.fs, exchangeSeatDocUrl), data, {merge:true});
 
   }
 
-  exchangeSeatMyUserLog(USER_ID:any ,data:any){
+  // user
+  exchangeSeatMyUserLog(USER_ID:any, SEAT_ID:any ,data:any){
     const userUrl = urls.user.replace('{{USER_ID}}', USER_ID);
-    return addDoc(collection(this.fs, userUrl + urls.exchangeSeat), data);    
+    const exchangeSeatDocUrl = urls.exchangeSeatDoc.replace('{{SEAT_ID}}', SEAT_ID);
+    return setDoc(doc(this.fs, userUrl + exchangeSeatDocUrl), data);    
+  }
+
+// update apporve
+  updateExchangeSeatAdminLog(SEAT_ID:any, data:any){
+    console.log('main', urls.exchangeSeat)
+    const exchangeSeatDocUrl = urls.user.replace('{{SEAT_ID}}', SEAT_ID);
+    return setDoc(doc(this.fs, exchangeSeatDocUrl), data, {merge:true});
+  }
+
+
+  updateExchangeSeatMyUserLog(USER_ID:any, SEAT_ID:any ,data:any){
+    const userUrl = urls.user.replace('{{USER_ID}}', USER_ID);
+    const exchangeSeatDocUrl = urls.user.replace('{{SEAT_ID}}', SEAT_ID);
+    console.log('main2', urls.exchangeSeat);
+    return setDoc(doc(this.fs, userUrl + exchangeSeatDocUrl), data ,{merge:true});    
+  }
+
+  getExchangeSeatMyUserLog(USER_ID:any ){
+    const userUrl = urls.user.replace('{{USER_ID}}', USER_ID);
+    return getDocs(collection(this.fs, userUrl + urls.exchangeSeat));    
   }
 
 }
