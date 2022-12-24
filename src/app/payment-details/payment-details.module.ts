@@ -1,24 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AddDetailsPageRoutingModule } from './add-details-routing.module';
+import { PaymentDetailsPageRoutingModule } from './payment-details-routing.module';
 
-import { AddDetailsPage } from './add-details.page';
+import { PaymentDetailsPage } from './payment-details.page';
 import { BaseComponentsModule } from '../base-components/base-components.module';
-
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddDetailsPageRoutingModule,
-    ReactiveFormsModule,
+    PaymentDetailsPageRoutingModule,
     BaseComponentsModule
   ],
-  declarations: [AddDetailsPage]
+  declarations: [PaymentDetailsPage]
 })
-export class AddDetailsPageModule {}
+export class PaymentDetailsPageModule {}

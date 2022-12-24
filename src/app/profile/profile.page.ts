@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataProvider } from '../providers/data.provider';
 import { DatabaseService } from '../services/database.service';
+import { DataProviderService } from '../services/dataProvider/data-provider.service';
+import { UserService } from '../services/user/user.service';
 // declare const UIkit: any;
 import { UserData } from '../structures/user.structure';
 
@@ -15,35 +17,27 @@ export class EditProfilePage implements OnInit {
   currentEditId = '';
   isModalOpen = false;
   editForm: FormGroup = new FormGroup({
-    photoURL: new FormControl(),
+    
     displayName: new FormControl(),
     dob: new FormControl(''),
-    aadharNo: new FormControl(),
     profession: new FormControl(),
     age: new FormControl(),
     gender: new FormControl(),
   });
 
-  constructor(public dataProvider: DataProvider,private databaseService: DatabaseService) {}
+  constructor(public dataProvider: DataProvider,private user:UserService,  public dataProviderr:DataProviderService) {}
 
   ngOnInit() {
-    console.log('jii');
-    console.log(this.dataProvider);
-  }
- submit() {
-  console.log('submit');
-  console.log(this.editForm.value);
- }
-  toggleOpen() {
-    this.isModalOpen = !this.isModalOpen;
+    if(this.dataProviderr.user){
+      this.editForm.patchValue(this.dataProviderr.user);
+    }
   }
 
-  goToEditMode() {
-    this.editProfile = true;
-    if (this.dataProvider.userData) {
-      this.editForm.patchValue(this.dataProvider.userData);
-      console.log(this.dataProvider.userData);
-      console.log(this.editForm.value);
-    }
+
+  updateProfile() {
+    console.log(this.editForm.value)
+    this.editForm.patchValue(this.dataProviderr.user);
+    this.user.updateUser(this.dataProviderr.user.userId.replace(' ', ''), this.editForm.value)
+
   }
 }

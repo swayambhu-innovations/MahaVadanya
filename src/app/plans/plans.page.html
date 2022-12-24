@@ -12,7 +12,7 @@
       <div *ngFor="let feature of plan.features">{{feature}}</div>
       <div *ngFor="let missingFeatures of plan.missingFeatures">{{missingFeatures}}</div>
       <ion-range (ionChange)="onIonChange($event)" [min]="1" [max]="10" [value]="1" [pin]="true" [ticks]="true" [snaps]="true"></ion-range>
-      <ion-button  (click)="payForPlan(plan.timePeriod )" type="submit" slot="center" expand="full" shape="round" color="primary" fill="solid" class="mt-3">Select Plan
+      <ion-button  (click)="payForPlan(plan.timePeriod, plan.price )" type="submit" slot="center" expand="full" shape="round" color="primary" fill="solid" class="mt-3">Select Plan
       </ion-button>
     </ion-card-content>
   </ion-card>

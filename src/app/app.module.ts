@@ -19,7 +19,6 @@ import { setPersistence } from '@firebase/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideFunctions, getFunctions } from '@angular/fire/functions';
 import { provideStorage, getStorage } from '@angular/fire/storage';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BaseComponentsModule } from './base-components/base-components.module';
 import { DataProvider } from './providers/data.provider';
 
@@ -41,7 +40,7 @@ import { DataProvider } from './providers/data.provider';
     provideFirestore(() => getFirestore()),
     provideFunctions(() => getFunctions()),
     provideStorage(() => getStorage()),
-    BrowserAnimationsModule,
+
     BaseComponentsModule,
   ],
   providers: [

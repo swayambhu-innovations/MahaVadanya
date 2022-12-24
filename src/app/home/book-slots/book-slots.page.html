@@ -1,28 +1,37 @@
 <ion-content *ngIf="(this.dataprovider?.user?.currentAdmission); else noCurrentAdmission">
   <ion-card>
     <ion-card-header>
-      <div class="Fredoka400 fs-20 t-blue">Current Active Booking</div>
-      <div class="Fredoka400 fs-14 t-blue" *ngIf="this.dataprovider.user?.currentAdmission?.selectPlan">
-        {{this.dataprovider.user?.currentAdmission?.selectPlan}}</div>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="Fredoka400 fs-20 ">Current Active Booking</div>
+        <div class="Fredoka400 fs-14 Plan" *ngIf="this.dataprovider.user?.currentAdmission?.selectPlan">
+          {{this.dataprovider.user?.currentAdmission?.selectPlan}}</div>
+      </div>
+      <div>
+        1 Month
+      </div>
     </ion-card-header>
 
     <ion-card-content>
-      <div class="Fredoka400 fs-14">Start date : <span>20 April 2023</span></div>
-      <div class="Fredoka400 fs-14">Seat No : <span>{{this.dataprovider.user?.currentAdmission?.seat?.seatNo}}</span>
-      </div>
-      <div class="Fredoka400 fs-14">Block : <span>A</span></div>
-      <div class="Fredoka400 fs-14">Location : <span>{{this.dataprovider.user?.currentAdmission?.address}}</span></div>
-      <div class="Fredoka400 fs-14">Batch time : <span>{{this.dataprovider.user?.currentAdmission?.batchSlot}}</span>
+      <div class="Fredoka400 fs-14 my-2">Start date : <span>20 April 2023</span></div>
+      <div class="Fredoka400 fs-14 my-2">End date : <span>20 April 2023</span></div>
+      <div class="Fredoka400 fs-14 my-2">Seat No : <span>{{this.dataprovider.user?.currentAdmission?.seat?.seatNo}}</span></div>
+      <div class="Fredoka400 fs-14 my-2">Block : <span>A</span></div>
+      <div class="Fredoka400 fs-14 my-2">Location : <span>{{this.dataprovider.user?.currentAdmission?.address}}</span></div>
+      <div class="Fredoka400 fs-14 my-2">sessions : <span>10 Attend | 5 Miss</span></div>
+      <div class="Fredoka400 fs-14 my-2">Unpaid Days : <span>Day</span></div>
+
+
+      <div class="Fredoka400 fs-14 my-2">Batch time : <span>{{this.dataprovider.user?.currentAdmission?.batchSlot}}</span>
       </div>
 
 
       <ion-grid class="mt-3">
         <ion-row>
           <ion-col>
-            <ion-button expand="block" color="primary" fill="outline">Cancel Booking</ion-button>
+            <ion-button expand="block" color="primary" fill="outline">End Booking</ion-button>
           </ion-col>
           <ion-col>
-            <ion-button expand="block" color="primary" fill="solid">Pay Now</ion-button>
+            <ion-button expand="block" color="primary" fill="solid">Start Session</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -32,9 +41,9 @@
     </ion-card-content>
 
   </ion-card>
-  <div class="px-3">
+  <div class="px-2 mt-4">
     <ion-button expand="block" color="primary" fill="outline">Change Slot</ion-button>
-    <ion-button expand="block" color="primary" fill="outline">Change Time</ion-button>
+    <ion-button expand="block" color="primary" fill="outline"  class="mt-2">Change Time</ion-button>
   </div>
 </ion-content>
 
@@ -49,7 +58,8 @@
         <ion-grid class="mt-3">
           <ion-row>
             <ion-col>
-              <ion-button routerLink="/add-details" expand="block" color="primary" fill="outline">Book Admission</ion-button>
+              <ion-button routerLink="/add-details" expand="block" color="primary" fill="outline">Book
+                Admission</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>

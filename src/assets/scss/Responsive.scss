@@ -566,3 +566,17 @@ body{
 .no-margin{
   margin: 0 !important;
 }
+
+.border{
+  border-top: 1px solid #C9C9C9;
+  width: 100%;
+}
+
+.text-start{
+  text-align: left;
+}
+.exSeat {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

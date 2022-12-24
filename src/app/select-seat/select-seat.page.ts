@@ -46,11 +46,12 @@ export class SelectSeatPage implements OnInit {
       userId: this.dataProvider.user?.userId,
       status:'pending'
     }
-    
-    this.admission.addAdmission(admission).then((res)=>{
-      this.alertify.presentToast('Registration Success');
-      this.router.navigateByUrl('/admission-confirmation');
-    })
+    this.dataProvider.admission = admission;
+    this.router.navigateByUrl('/plans');
+    // this.admission.addAdmission(admission).then((res)=>{
+    //   this.alertify.presentToast('Registration Success');
+    //   this.router.navigateByUrl('/admission-confirmation');
+    // })
   }
 
 }

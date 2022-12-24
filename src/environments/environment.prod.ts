@@ -9,5 +9,6 @@ export const environment = {
     messagingSenderId: '525383161466',
     measurementId: 'G-30R6N05ZNY',
   },
-  production: true
+  production: true,
+  RAZORPAY_KEY_ID:'rzp_test_1QmrWfuaKyfY4l',
 };

@@ -15,11 +15,17 @@
     ></ion-icon>
   </ion-toolbar>
 </ion-header> -->
-<ion-header>
-  <div class="header" >
-    <div class="back" (click)="back()">
-      <img width="45px" src="assets/headerNagivation.png" alt="">
-    </div>
-    <div class="text-header ">{{title}}</div>
-  </div>
+<ion-header class="header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <!-- <img width="45px" src="assets/headerNagivation.png" alt=""> -->
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>

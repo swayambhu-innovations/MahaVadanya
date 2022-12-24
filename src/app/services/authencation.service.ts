@@ -338,7 +338,7 @@ export class AuthencationService {
   }
   public async loginAnonymously() {
     let data = signInAnonymously(this.auth).then(
-      (credentials: UserCredential) => {}
+      (credentials: UserCredential) => { }
     );
     this.router.navigate(['']);
   }
@@ -470,7 +470,7 @@ export class AuthencationService {
   }
   setMissingFields() {
     if (!this.dataProvider.userData?.phoneNumber) {
-      const res:any = prompt('Enter your phone number');
+      const res: any = prompt('Enter your phone number');
       if (res.length === 10) {
         setDoc(doc(this.firestore, 'users/' + this.dataProvider.userID), {
           phoneNumber: '+91' + res,

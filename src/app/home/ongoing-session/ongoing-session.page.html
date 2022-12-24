@@ -1,21 +1,34 @@
-<button (click)="setOpen(true)">Exchange seat</button>
+<ion-content>
+  <div class="d-flex align-items-center flex-column">
+    <div class="Fredoka500 t-blue fs-26 py-5 text-center">Session is Active</div>
+    <div class="Fredoka400 t-blue fs-18 text-center">Section: A, Seat: Z18</div>
+    <div class="timeBox">26</div>
+    <div class="Fredoka400 t-blue fs-18 pt-4 text-center">Session will end at 12:00</div>
+    <button class="connectedDevices" expand="block" color="primary" fill="outline" routerLink="/home/connected-devices">2 Devices are Connected</button>
+  </div>
+  <!-- <button (click)="setOpen(true)"></button> -->
+  <ion-button class="exSeat" expand="block" color="primary" fill="solid" (click)="setOpen(true)">Exchange seat</ion-button>
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Exchange Seat</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <div class="grid-container">
+          <button *ngFor="let seat of seats" (click)="getSeatTrigger(seat)"
+            [ngClass]="{'available': seat.available === true , 'booked' : seat.available === false }">{{seat.seatNo}}</button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
 
 
-<ion-modal [isOpen]="isModalOpen">
-  <ng-template>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Exchange Seat</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="setOpen(false)">Close</ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
-      <div class="grid-container">
-        <button *ngFor="let seat of seats" (click)="getSeatTrigger(seat)"
-          [ngClass]="{'available': seat.available === true , 'booked' : seat.available === false }">{{seat.seatNo}}</button>
-      </div>
-    </ion-content>
-  </ng-template>
-</ion-modal>
+
+
+

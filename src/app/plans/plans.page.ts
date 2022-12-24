@@ -6,6 +6,8 @@ import { DataProviderService } from '../services/dataProvider/data-provider.serv
 import { PlanService } from '../services/plan/plan.service';
 import { RangeCustomEvent } from '@ionic/angular';
 import { RangeValue } from '@ionic/core';
+import { UserService } from '../services/user/user.service';
+import { AlertsAndNotificationsService } from '../services/uiService/alerts-and-notifications.service';
 
 @Component({
   selector: 'app-plans',
@@ -17,18 +19,18 @@ export class PlansPage implements OnInit {
   public monthValue: any = 1;
   public allPlans: any[] = []
 
-  constructor(private admission: AdmissionService, private plan: PlanService, private dataProvider: DataProviderService) { }
+  constructor(private admission: AdmissionService, private plan: PlanService, private dataProvider: DataProviderService, private router:Router, private alertify: AlertsAndNotificationsService) { }
 
   ngOnInit() {
     this.plans();
-    this.planChange();
+    // this.planChange();
 
   }
 
   onIonChange(ev: Event) {
     this.monthValue = (ev as RangeCustomEvent).detail.value;
     console.log(this.monthValue)
-    this.planChange();
+    // this.planChange();
   }
 
   plans() {
@@ -43,7 +45,7 @@ export class PlansPage implements OnInit {
     })
   }
 
-  async payForPlan(planType: any, planPrice: any = 500) {
+  async payForPlan(planType: any, planPrice: any) {
     if (planType) {
       const plan = {
         plan: {
@@ -60,38 +62,46 @@ export class PlansPage implements OnInit {
         }
 
       }
-      await this.plan.plan(this.dataProvider?.user?.userId, { ...plan });
-      console.log(plan)
-    }
+      console.log(this.dataProvider.admission);
+      console.log(plan);
 
-  }
-
-
-  planChange(newplanPrice: any = 800, planType: any = "expert",) {
-    if (planType) {
-
-      let current = {
-
-        oneDayOldPlan: Number(this.dataProvider?.user?.latestPlanLog.billingAmount)/Number(this.dataProvider?.user?.latestPlanLog?.validity),
-        currentDaysPrice: (Number(this.dataProvider?.user?.latestPlanLog.billingAmount)/Number(this.dataProvider?.user?.latestPlanLog?.validity)) * Number(this.dataProvider?.user?.plan.validity),
-        dayleft:(Number(this.dataProvider?.user?.latestPlanLog.billingAmount)/Number(this.dataProvider?.user?.latestPlanLog?.validity)) * Number(this.dataProvider?.user?.plan.validity),
-        // priceLeft: Number(this.dataProvider?.user?.latestPlanLog.billingAmount) - (Number(this.dataProvider?.user?.latestPlanLog.billingAmount/Number(this.dataProvider?.user?.plan.validity)) * Number(this.dataProvider?.user?.plan.validity))
-      }
-
-     console.log(current)
-
-
-      const plan = {
-        myPlan: planType,
-        validity: ( Number(this.dataProvider?.user?.latestPlanLog.billingAmount) - 
-                    ((Number(this.dataProvider?.user?.latestPlanLog?.billingAmount) / 
-                    Number(this.dataProvider?.user?.latestPlanLog?.validity)) * Number(this.dataProvider?.user?.plan.validity))) / 
-                    (Number(newplanPrice) * Number(this.monthValue) /  Number(this.dataProvider?.user?.latestPlanLog?.validity))
-      }
+      await this.admission.addAdmission(this.dataProvider.admission)
+      await this.plan.plan(this.dataProvider?.user?.userId, { ...plan }).then((res)=>{
+        this.alertify.presentToast('Registration Success');
+        this.router.navigateByUrl('/admission-confirmation');
+        console.log(this.dataProvider?.user)
+      });
       
-      // console.log(plan)
     }
+
   }
+
+
+  // planChange(newplanPrice: any = 800, planType: any = "expert",) {
+  //   if (planType) {
+
+  //     let current = {
+
+  //       oneDayOldPlan: Number(this.dataProvider?.user?.latestPlanLog.billingAmount)/Number(this.dataProvider?.user?.latestPlanLog?.validity),
+  //       currentDaysPrice: (Number(this.dataProvider?.user?.latestPlanLog.billingAmount)/Number(this.dataProvider?.user?.latestPlanLog?.validity)) * Number(this.dataProvider?.user?.plan.validity),
+  //       dayleft:(Number(this.dataProvider?.user?.latestPlanLog.billingAmount)/Number(this.dataProvider?.user?.latestPlanLog?.validity)) * Number(this.dataProvider?.user?.plan.validity),
+  //       // priceLeft: Number(this.dataProvider?.user?.latestPlanLog.billingAmount) - (Number(this.dataProvider?.user?.latestPlanLog.billingAmount/Number(this.dataProvider?.user?.plan.validity)) * Number(this.dataProvider?.user?.plan.validity))
+  //     }
+
+  //    console.log(current)
+
+
+  //     const plan = {
+  //       myPlan: planType,
+  //       validity: ( Number(this.dataProvider?.user?.latestPlanLog.billingAmount) - 
+  //                   ((Number(this.dataProvider?.user?.latestPlanLog?.billingAmount) / 
+  //                   Number(this.dataProvider?.user?.latestPlanLog?.validity)) * Number(this.dataProvider?.user?.plan.validity))) / 
+  //                   (Number(newplanPrice) * Number(this.monthValue) /  Number(this.dataProvider?.user?.latestPlanLog?.validity))
+  //     }
+      
+  //     // console.log(plan)
+  //   }
+  // }
 
 
 

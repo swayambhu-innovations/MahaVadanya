@@ -27,6 +27,11 @@ const routes: Routes = [
             (m) => m.OngoingSessionPageModule
           ),
       },
+      {
+        path: 'connected-devices',
+        loadChildren: () => import('./connected-devices/connected-devices.module').then( 
+          (m) => m.ConnectedDevicesPageModule)
+      },
     ],
   },
 ];

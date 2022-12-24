@@ -123,7 +123,8 @@ const routes: Routes = [
   {
     path: 'admission-confirmation',
     loadChildren: () => import('./admission-confirmation/admission-confirmation.module').then(m => m.AdmissionConfirmationPageModule)
-  },  {
+  },
+  {
     path: 'qr-scan',
     loadChildren: () => import('./qr-scan/qr-scan.module').then( m => m.QrScanPageModule)
   },
@@ -139,6 +140,11 @@ const routes: Routes = [
     path: 'plans',
     loadChildren: () => import('./plans/plans.module').then( m => m.PlansPageModule)
   },
+  {
+    path: 'payment-details',
+    loadChildren: () => import('./payment-details/payment-details.module').then( m => m.PaymentDetailsPageModule)
+  },
+
 
 
 ];

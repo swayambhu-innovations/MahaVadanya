@@ -4,56 +4,20 @@
     <img src="assets/logo.png" alt="Mahavadnya">
     <h1>MAHAVADANYA</h1>
     <form [formGroup]="signInForm" (ngSubmit)="login()" class="w-100">
-      <ion-list>
-        <ion-item>
-          <ion-label position="floating">Enter email</ion-label>
-          <ion-input type="email" [formControl]="emailControl" placeholder="Enter email"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Enter password</ion-label>
-          <ion-input type="password" [formControl]="passwordControl" placeholder="Enter password"></ion-input>
-        </ion-item>
-      </ion-list>
-
-      <!-- <input >
-      <div class="text-danger"
-        *ngIf="emailControl && emailControl.errors && (emailControl.dirty || emailControl.touched)">
-        <div *ngIf="emailControl.errors?.['required']">
-          <small>Email is required</small>
-        </div>
-        <div *ngIf="emailControl.errors?.['email']">
-          <small>Please provide a correct email address</small>
-        </div>
-      </div>
-      <input >
-      <div class="text-danger"
-        *ngIf="passwordControl && passwordControl.errors && (passwordControl.dirty || passwordControl.touched)">
-        <div *ngIf="passwordControl.errors?.['required']">
-          <small>Password is required</small>
-        </div>
-        <div *ngIf="passwordControl.errors?.['minlength']">
-          <small>Minimum length for password is 8</small>
-        </div>
-        <div *ngIf="passwordControl.errors?.['maxlength']">
-          <small>Maximum length for password is 50</small>
-        </div>
-      </div> -->
-      <div class="t-blue fs-15 Fredoka400 my-4" routerLink="../forgot-password">Recovery Password</div>
-      <!-- <button type="submit">Sign In</button> -->
-      <ion-button type="submit" slot="center" expand="full" shape="round" color="primary" fill="solid" class="mt-5">Sign In
+        <input type="text" class="formInput" placeholder="Enter email" [formControl]="emailControl">
+        <input type="password" class="formInput" placeholder="Enter password" [formControl]="passwordControl" >
+      <div class=" fs-15 Fredoka400 my-4" routerLink="../forgot-password">Recovery Password</div>
+      <ion-button type="submit" slot="center" expand="full" shape="round" color="light" fill="solid" class="mt-5">Sign In
       </ion-button>
     </form>
 
-    <!-- <h5>Forgot Password?</h5> -->
-
-
   </div>
   <div class="box">
-    <ion-button slot="center" expand="full" shape="round" color="primary" fill="outline" (click)="authService.signInWithGoogle()">
+    <ion-button slot="center" expand="full" shape="round" color="light" fill="outline" (click)="authService.signInWithGoogle()">
       <ion-icon name="logo-google" class="logo"></ion-icon>
       <span class="ms-3">Login with Google</span>
     </ion-button>
-    <h4 class="Nunito400 t-grey fs-15">Don't have an account ? <span class="t-blue" routerLink="../signup">Sign
+    <h4 class="Nunito400  fs-15">Don't have an account ? <span class="" routerLink="../signup">Sign
         Up</span>
     </h4>
   </div>

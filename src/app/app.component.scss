@@ -1,0 +1,30 @@
+.notification {
+    margin-right: 30px;
+    font-size: 21px;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 55px;
+    background: #2B5AE3;
+    color: #fff;
+  }
+  
+  .back {
+    padding-left: 10px;
+    position: absolute;
+    left: 3px;
+    top: 7px;
+  }
+  
+  .text-header {
+    font-family: "Comfortaa", cursive;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0.2px;
+  }

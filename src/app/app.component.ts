@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuController, Platform } from '@ionic/angular';
+import { Component, Input, OnInit } from '@angular/core';
+import { MenuController, NavController, Platform } from '@ionic/angular';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { AuthencationService } from './services/authencation.service';
 import { DatabaseService } from './services/database.service';
@@ -20,6 +20,8 @@ import { urls } from './services/urls';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  @Input() pannel = '';
+  @Input() title: String = '';
   public appPages = [
     { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
     { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
@@ -44,7 +46,9 @@ export class AppComponent implements OnInit {
     public dataProvider: DataProvider,
     private auth: Auth,
     public dataProviderr: DataProviderService,
-    private fs: Firestore
+    private fs: Firestore,
+    private navController: NavController, 
+
   ) {
     if (!this.platform.is('capacitor')) {
       this.platform.ready().then(() => {
@@ -59,7 +63,7 @@ export class AppComponent implements OnInit {
       });
     }
 
-
+    
     if (this.auth) {
       this.user = authState(this.auth);
       this.user.subscribe((user: any) => {
@@ -80,7 +84,7 @@ export class AppComponent implements OnInit {
       })
     }
     else {
-      alert('loggedout')
+      // alert('loggedout')
 
     }
   }
@@ -93,6 +97,18 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {}
+
+  back() {
+    this.navController.setDirection('back');
+    const firstRoute = this.router.url;
+    this.navController.pop()
+    setTimeout(() => {
+      console.log("navigated", firstRoute, this.router.url);
+      if (firstRoute == this.router.url) {
+        this.navController.navigateBack('/home/book-slots');
+      }
+    }, 10)
+  }
 
 
 
