@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { DataProvider } from '../providers/data.provider';
 import { DatabaseService } from '../services/database.service';
 // declare const UIkit: any;
@@ -14,14 +14,14 @@ export class EditProfilePage implements OnInit {
   editProfile = false;
   currentEditId = '';
   isModalOpen = false;
-  editForm: FormGroup = new FormGroup({
-    photoURL: new FormControl(),
-    displayName: new FormControl(),
-    dob: new FormControl(''),
-    aadharNo: new FormControl(),
-    profession: new FormControl(),
-    age: new FormControl(),
-    gender: new FormControl(),
+  editForm: UntypedFormGroup = new UntypedFormGroup({
+    photoURL: new UntypedFormControl(),
+    displayName: new UntypedFormControl(),
+    dob: new UntypedFormControl(''),
+    aadharNo: new UntypedFormControl(),
+    profession: new UntypedFormControl(),
+    age: new UntypedFormControl(),
+    gender: new UntypedFormControl(),
   });
 
   constructor(public dataProvider: DataProvider,private databaseService: DatabaseService) {}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Seat } from 'src/app/structures/seat.structure';
@@ -13,8 +13,8 @@ export class OngoingSessionPage implements OnInit {
   exchangeSeat = false;
   availableSeats: Seat[];
   exchangeSeatNumber: any;
-  seatExchangeForm: FormGroup = new FormGroup({
-    seat: new FormControl('', [Validators.required]),
+  seatExchangeForm: UntypedFormGroup = new UntypedFormGroup({
+    seat: new UntypedFormControl('', [Validators.required]),
   });
 
   constructor(

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, Platform } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { AuthencationService } from './services/authencation.service';
 import { DatabaseService } from './services/database.service';
 import { Router } from '@angular/router';
-import { SplashScreen } from '@capacitor/splash-screen';
 import { DataProvider } from './providers/data.provider';
 
 
@@ -25,7 +24,6 @@ export class AppComponent implements OnInit {
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   isModalOpen = false;
   constructor(
-    private menu: MenuController,
     private platform: Platform,
     public databaseService: DatabaseService,
     public authService: AuthencationService,
@@ -49,22 +47,10 @@ export class AppComponent implements OnInit {
     this.isModalOpen = isOpen;
   }
   close() {
-    this.menu.close();
+    
   }
   ngOnInit() {
-    // this.authService.user.subscribe((user) => {
-    //   if (user) {
-    //     this.databaseService.getUser(user.uid).then((user) => {
-    //       if (user.exists){
-    //         this.router.navigate(['']);
-    //       }
-    //     });
-    //     // this.router.navigate(['/admin']);
-    //   } else {
-    //     SplashScreen.hide();
-    //     this.router.navigate(['login']);
-    //   }
-    // });
+    
   }
   logout(){
     this.close()

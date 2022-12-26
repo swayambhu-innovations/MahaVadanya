@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Timestamp } from '@angular/fire/firestore';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Console } from 'console';
 import { DataProvider } from 'src/app/providers/data.provider';
@@ -14,10 +14,10 @@ import { Booking } from 'src/app/structures/booking.structure';
   styleUrls: ['./book-slots.page.scss'],
 })
 export class BookSlotsPage implements OnInit {
-  bookingForm: FormGroup = new FormGroup({
-    date: new FormControl('', [Validators.required]),
-    timeSlot: new FormControl(null, [Validators.required]),
-    bookedFor: new FormControl(null, [Validators.required]),
+  bookingForm: UntypedFormGroup = new UntypedFormGroup({
+    date: new UntypedFormControl('', [Validators.required]),
+    timeSlot: new UntypedFormControl(null, [Validators.required]),
+    bookedFor: new UntypedFormControl(null, [Validators.required]),
   });
   constructor(
     private bookingService: BookingServiceService,

@@ -24,32 +24,31 @@ import { BaseComponentsModule } from './base-components/base-components.module';
 import { DataProvider } from './providers/data.provider';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAnalytics(() => getAnalytics()),
-    provideAuth(() => getAuth()),
-    provideAuth(() => {
-      const auth = getAuth();
-      setPersistence(auth, browserLocalPersistence);
-      return auth;
-    }),
-    provideFirestore(() => getFirestore()),
-    provideFunctions(() => getFunctions()),
-    provideStorage(() => getStorage()),
-    BrowserAnimationsModule,
-    BaseComponentsModule,
-  ],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    ScreenTrackingService,
-    UserTrackingService,
-    DataProvider,
-  ],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAnalytics(() => getAnalytics()),
+        provideAuth(() => getAuth()),
+        provideAuth(() => {
+            const auth = getAuth();
+            setPersistence(auth, browserLocalPersistence);
+            return auth;
+        }),
+        provideFirestore(() => getFirestore()),
+        provideFunctions(() => getFunctions()),
+        provideStorage(() => getStorage()),
+        BrowserAnimationsModule,
+        BaseComponentsModule,
+    ],
+    providers: [
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        ScreenTrackingService,
+        UserTrackingService,
+        DataProvider,
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}
