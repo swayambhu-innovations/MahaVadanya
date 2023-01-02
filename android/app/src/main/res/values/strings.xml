@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MahaVadanya</string>
+    <string name="title_activity_main">MahaVadanya</string>
+    <string name="package_name">com.shreeva.mahavadanya</string>
+    <string name="custom_url_scheme">com.shreeva.mahavadanya</string>
+</resources>

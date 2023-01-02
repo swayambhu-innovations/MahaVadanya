@@ -32,7 +32,6 @@ export class AppComponent implements OnInit {
   ) {
     if (!this.platform.is('capacitor')) {
       this.platform.ready().then(() => {
-        GoogleAuth.initialize();
         GoogleAuth.initialize({
           clientId:
             '525383161466-cr4dgb3mnfbd5gdrds6ths2gqo1jsc1e.apps.googleusercontent.com',
